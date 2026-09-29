@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+<meta charset="UTF-8">
+<meta naame="viewport" content="width=device-width, initial-scale=1.0">
+<title>সিদ্ধান্ত প্যাকেজ — বালাইনাশক ব্যবস্থাপনা সংস্কার ও বালাই প্রতিরোধ ক্ষমতারোধ রূপরেখা</title>
+<meta name="description" content="বালাইনাশক আইন ২০১৮-এর অধীনে লেবেলিং, মোড অব অ্যাকশন (MoA) কোড বাধ্যতামূলককরণ, প্রতিরোধ ক্ষমতা ব্যবস্থাপনা এবং ডিজিটাল ট্রেসেবিলিটি সংস্কারের জন্য প্রস্তাবিত নীতি প্যাকেজ।">
+<meta name="theme-color" content="#006A4E">
+<style>
+  :root {
+    --bd-green: #006A4E;
+    --bd-green-dark: #004d38;
+    --bd-green-light: #e8f5e9;
+    --bd-red: #F42A41;
+    --bd-red-light: #ffebee;
+    --gold: #C5A028;
+    --gold-light: #fff9e0;
+    --dark: #0f172a;
+    --slate: #334155;
+    --light-bg: #f8fafc;
+    --border: #e2e8f0;
+    --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: 'SolaimanLipi', 'Kalpurush', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
+    line-height: 1.8;
+    color: var(--slate);
+    background: #f1f5f9;
+    padding-bottom: 80px;
+  }
+
+  .container {
+    max-width: 980px;
+    margin: 30px auto;
+    background: #ffffff;
+    box-shadow: 0 15px 50px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+  }
+
+  /* Header Styling */
+  .official-header {
+    background: linear-gradient(135deg, var(--bd-green-dark) 0%, var(--bd-green) 100%);
+    color: #ffffff;
+    padding: 40px 40px 30px;
+    text-align: center;
+    position: relative;
+    border-bottom: 5px solid var(--gold);
+  }
+
+  .official-header::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0;
+    height: 6px;
+    background: linear-gradient(90deg, var(--bd-green) 0%, var(--bd-red) 50%, var(--gold) 100%);
+  }
+
+  .crest {
+    width: 80px;
+    height: 80px;
+    background: #ffffff;
+    border-radius: 50%;
+    margin: 0 auto 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--bd-green);
+    font-size: 32px;
+    font-weight: bold;
+    border: 3px solid var(--gold);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+  }
+
+  .target-authority-badge {
+    display: inline-block;
+    background: rgba(255,255,255,0.15);
+    border: 1px solid var(--gold);
+    color: var(--gold-light);
+    font-size: 12px;
+    padding: 4px 14px;
+    border-radius: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 12px;
+    font-weight: bold;
+  }
+
+  .official-header h1 {
+    font-size: 24px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 6px;
+  }
+
+  .official-header h2 {
+    font-size: 14px;
+    font-weight: 400;
+    color: #cbd5e1;
+    letter-spacing: 0.5px;
+  }
+
+  .report-title-box {
+    margin-top: 25px;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.2);
+  }
+
+  .report-title-box h3 {
+    font-size: 22px;
+    color: #ffffff;
+    font-weight: 700;
+  }
+
+  .report-title-box p {
+    font-size: 14px;
+    color: var(--gold-light);
+    font-style: italic;
+    margin-top: 6px;
+  }
+
+  .header-meta {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+    background: rgba(0,0,0,0.25);
+    padding: 12px 20px;
+    margin-top: 25px;
+    border-radius: 6px;
+    font-size: 12.5px;
+    text-align: center;
+  }
+
+  /* Navigation Bar */
+  .nav-bar {
+    position: sticky;
+    top: 0;
+    background: #ffffff;
+    z-index: 1000;
+    border-bottom: 2px solid var(--border);
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    overflow-x: auto;
+    padding: 0 15px;
+  }
+
+  .nav-bar a {
+    padding: 14px 16px;
+    color: var(--slate);
+    text-decoration: none;
+    font-size: 13px;
+    font-weight: 600;
+    white-space: nowrap;
+    border-bottom: 3px solid transparent;
+    transition: all 0.2s;
+  }
+
+  .nav-bar a:hover, .nav-bar a.active {
+    color: var(--bd-green);
+    border-bottom-color: var(--bd-green);
+    background: var(--light-bg);
+  }
+
+  /* Content Body */
+  .content {
+    padding: 40px;
+  }
+
+  section {
+    margin-bottom: 50px;
+    scroll-margin-top: 70px;
+  }
+
+  .section-title {
+    font-size: 19px;
+    color: var(--bd-green);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--bd-green);
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .section-title span.num {
+    background: var(--bd-green);
+    color: #ffffff;
+    font-size: 12px;
+    padding: 2px 10px;
+    border-radius: 20px;
+    margin-right: 10px;
+  }
+
+  /* MOVEMENT 1: DECISION MEMO */
+  .decision-memo {
+    position: relative;
+    background: var(--gold-light);
+    border: 2px solid var(--gold);
+    border-radius: 8px;
+    padding: 30px;
+    margin-bottom: 40px;
+    box-shadow: var(--shadow);
+  }
+
+  .decision-memo .stamp {
+    position: absolute;
+    top: 20px;
+    right: 25px;
+    border: 3px double var(--bd-red);
+    color: var(--bd-red);
+    font-weight: 800;
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    padding: 4px 12px;
+    transform: rotate(-4deg);
+    background: #ffffff;
+  }
+
+  .memo-header-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+    font-size: 13.5px;
+    border-bottom: 1px dashed var(--gold);
+    padding-bottom: 15px;
+    margin-bottom: 20px;
+  }
+
+  .memo-ask {
+    background: #ffffff;
+    border-left: 5px solid var(--bd-green);
+    padding: 16px 20px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 20px;
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--bd-green-dark);
+  }
+
+  .memo-directives {
+    background: #ffffff;
+    padding: 20px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .memo-directives h4 {
+    font-size: 13px;
+    text-transform: uppercase;
+    color: var(--slate);
+    margin-bottom: 12px;
+    letter-spacing: 0.5px;
+  }
+
+  .directive-checkbox {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-bottom: 12px;
+    font-size: 13.5px;
+    cursor: pointer;
+  }
+
+  .directive-checkbox input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    margin-top: 3px;
+    accent-color: var(--bd-green);
+    cursor: pointer;
+  }
+
+  .memo-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+    text-align: center;
+  }
+
+  .memo-stat-card {
+    background: #ffffff;
+    padding: 12px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+  }
+
+  .memo-stat-card .val {
+    font-size: 18px;
+    font-weight: 800;
+    color: var(--bd-green);
+  }
+
+  .memo-stat-card .lbl {
+    font-size: 11px;
+    color: #64748b;
+    text-transform: uppercase;
+  }
+
+  /* MOVEMENT 4: LIVE COST TICKER & BURDEN */
+  .live-ticker-box {
+    background: var(--dark);
+    color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    text-align: center;
+    margin-bottom: 30px;
+    box-shadow: 0 10px 25px rgba(15,23,42,0.3);
+  }
+
+  .live-ticker-box h3 {
+    color: var(--gold);
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 10px;
+  }
+
+  .ticker-amount {
+    font-family: monospace;
+    font-size: 36px;
+    font-weight: bold;
+    color: var(--bd-red);
+    margin: 10px 0;
+  }
+
+  .ticker-desc {
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  .cost-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .cost-card {
+    background: #1e293b;
+    padding: 16px;
+    border-radius: 6px;
+    text-align: center;
+    border-top: 3px solid var(--bd-red);
+  }
+
+  .cost-card .num {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+  }
+
+  .cost-card .lbl {
+    font-size: 11px;
+    color: #cbd5e1;
+    margin-top: 4px;
+  }
+
+  /* TESTIMONIALS & FIELD VOICE */
+  .testimonial-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .testimonial-card {
+    background: var(--light-bg);
+    padding: 22px;
+    border-radius: 6px;
+    position: relative;
+    border-left: 4px solid var(--bd-green);
+  }
+
+  .testimonial-card.officer {
+    border-left-color: var(--gold);
+  }
+
+  .testimonial-card::before {
+    content: '“';
+    font-size: 50px;
+    color: var(--gold);
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    opacity: 0.4;
+    line-height: 1;
+  }
+
+  .testimonial-quote {
+    font-style: italic;
+    font-size: 13.5px;
+    color: #334155;
+    position: relative;
+    z-index: 1;
+    padding-left: 15px;
+  }
+
+  .testimonial-author {
+    margin-top: 15px;
+    text-align: right;
+    font-size: 12px;
+    font-weight: bold;
+    color: var(--bd-green);
+  }
+
+  .testimonial-author span {
+    font-weight: normal;
+    color: #64748b;
+  }
+
+  /* TABLES */
+  table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-size: 13px;
+    background: #ffffff;
+    border-radius: 6px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
+  }
+
+  th {
+    background: var(--bd-green);
+    color: #ffffff;
+    padding: 12px 14px;
+    text-align: left;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+  }
+
+  td {
+    padding: 12px 14px;
+    border-bottom: 1px solid var(--border);
+  }
+
+  tr:nth-child(even) td { background: var(--light-bg); }
+
+  /* CARDS GRID */
+  .cards-3-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    margin: 20px 0;
+  }
+
+  .root-card, .arch-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    border-top: 4px solid var(--bd-green);
+    border-radius: 6px;
+    padding: 20px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+
+  .root-card:hover, .arch-card:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--shadow);
+  }
+
+  .root-card h4, .arch-card h4 {
+    font-size: 14.5px;
+    color: var(--bd-green-dark);
+    margin-bottom: 10px;
+  }
+
+  .root-card p, .arch-card p {
+    font-size: 12.5px;
+    color: #475569;
+  }
+
+  /* COALITION TABLE */
+  .coalition-table tr.champion td { background: var(--bd-green-light); }
+  .coalition-table tr.opponent td { background: var(--bd-red-light); }
+  .coalition-table tr.neutralizer td { background: var(--gold-light); }
+
+  /* TIMELINE */
+  .timeline-100 {
+    background: var(--gold-light);
+    border-left: 4px solid var(--gold);
+    padding: 20px 25px;
+    border-radius: 0 6px 6px 0;
+    margin-bottom: 30px;
+  }
+
+  .timeline-item {
+    position: relative;
+    padding-left: 25px;
+    margin-bottom: 12px;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 8px;
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: var(--gold);
+    border: 2px solid #ffffff;
+  }
+
+  .timeline-day {
+    font-weight: bold;
+    color: var(--bd-green);
+    font-size: 13px;
+  }
+
+  .phase-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+  }
+
+  .phase-card {
+    background: #ffffff;
+    border: 1px solid var(--border);
+    padding: 20px;
+    border-radius: 6px;
+    border-top: 4px solid var(--bd-green);
+  }
+
+  .phase-card h4 {
+    color: var(--bd-green);
+    font-size: 13.5px;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  /* LEGACY BOX */
+  .legacy-box {
+    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+    border-left: 5px solid var(--bd-red);
+    padding: 30px;
+    border-radius: 6px;
+    margin: 30px 0;
+    box-shadow: var(--shadow);
+  }
+
+  .legacy-box p {
+    font-style: italic;
+    color: var(--slate);
+    font-size: 14.5px;
+    line-height: 1.8;
+  }
+
+  .legacy-box strong {
+    color: var(--bd-green);
+    font-style: normal;
+  }
+
+  /* SIGNATURE BLOCK */
+  .signature-container {
+    background: #ffffff;
+    border: 3px double var(--bd-green);
+    border-radius: 8px;
+    padding: 35px;
+    margin-top: 40px;
+    position: relative;
+  }
+
+  .signature-container h3 {
+    color: var(--bd-green);
+    font-size: 18px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 10px;
+  }
+
+  .approval-options {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 25px;
+    flex-wrap: wrap;
+  }
+
+  .approval-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 13.5px;
+    font-weight: 600;
+    cursor: pointer;
+  }
+
+  .approval-option input[type="radio"] {
+    accent-color: var(--bd-green);
+    width: 18px;
+    height: 18px;
+  }
+
+  .stamp-approval-overlay {
+    display: none;
+    position: absolute;
+    top: 25px;
+    right: 40px;
+    border: 4px dashed var(--bd-green);
+    color: var(--bd-green);
+    padding: 10px 25px;
+    font-size: 18px;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    transform: rotate(-8deg);
+    background: rgba(255,255,255,0.95);
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    animation: stampIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+  }
+
+  @keyframes stampIn {
+    0% { transform: scale(3) rotate(-20deg); opacity: 0; }
+    100% { transform: scale(1) rotate(-8deg); opacity: 1; }
+  }
+
+  .sig-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 40px;
+    margin-top: 40px;
+    padding-top: 20px;
+    border-top: 1px solid var(--border);
+  }
+
+  .sig-line {
+    border-bottom: 1.5px solid var(--slate);
+    height: 45px;
+    margin-bottom: 6px;
+  }
+
+  .sig-label {
+    font-size: 11px;
+    text-transform: uppercase;
+    color: #64748b;
+    text-align: center;
+    letter-spacing: 1px;
+  }
+
+  /* Toolbar */
+  .toolbar-floating {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    display: flex;
+    gap: 10px;
+    z-index: 9999;
+  }
+
+  .btn-tool {
+    background: var(--bd-green);
+    color: #ffffff;
+    border: none;
+    padding: 10px 18px;
+    border-radius: 30px;
+    font-size: 13px;
+    font-weight: 600;
+    cursor: pointer;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+
+  .btn-tool:hover {
+    background: var(--bd-green-dark);
+    transform: translateY(-2deg);
+  }
+
+  .doc-footer {
+    text-align: center;
+    padding-top: 40px;
+    border-top: 2px solid var(--border);
+    margin-top: 50px;
+    font-size: 12px;
+    color: #94a3b8;
+  }
+
+  @media (max-width: 768px) {
+    .content { padding: 20px; }
+    .memo-header-grid, .memo-stats-grid, .cost-grid, .testimonial-grid, .cards-3-grid, .phase-grid, .sig-grid, .header-meta {
+      grid-template-columns: 1fr;
+    }
+    .official-header h1 { font-size: 18px; }
+    .ticker-amount { font-size: 26px; }
+  }
+
+  @media print {
+    body { background: #ffffff; padding-bottom: 0; }
+    .container { box-shadow: none; max-width: 100%; margin: 0; }
+    .nav-bar, .toolbar-floating { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <!-- OFFICIAL HEADER -->
+  <div class="official-header">
+    <div class="crest">কৃষি</div>
+    <div class="target-authority-badge">প্রস্তাবনাটি কাদের জন্য: কৃষি সম্প্রসারণ অধিদপ্তর · উদ্ভিদ সংরক্ষণ উইং · কৃষি মন্ত্রণালয়</div>
+    <h1>মন্ত্রীপর্যায় সিদ্ধান্ত প্যাকেজ (MINISTERIAL DECISION PACKAGE)</h1>
+    <h2>লেবেল থেকে জমিতে: বালাইনাশক মোড অব অ্যাকশন (MoA) কোড বাধ্যতামূলককরণ ও প্রতিরোধ ক্ষমতা ব্যবস্থাপনা রূপরেখা</h2>
+    
+    <div class="report-title-box">
+      <h3>বালাইনাশক আইন, ২০১৮-এর অধীনে অধীনস্থ বিধিমালা জারির মাধ্যমে বালাই প্রতিরোধ ক্ষমতা প্রতিরোধ ও কৃষি উৎপাদন রক্ষা</h3>
+      <p>প্রস্তুতকারী/উপস্থাপক: আবু মো. মনিরুজ্জামান, অতিরিক্ত উপপরিচালক (উদ্যান), কৃষি সম্প্রসারণ অধিদপ্তর, কুড়িগ্রাম</p>
+    </div>
+
+    <div class="header-meta">
+      <div><strong>স্মারক নম্বর:</strong> ডিএই/উদ্ভিদ/২০২৬/০৯-এমওএ</div>
+      <div><strong>তারিখ:</strong> সেপ্টেম্বর ২০২৬</div>
+      <div><strong>শ্রেণিবিভাগ:</strong> জরুরি নীতিনির্ধারণী সিদ্ধান্ত / ডিএই-এমওএ নির্দেশিকা</div>
+    </div>
+  </div>
+
+  <!-- NAVIGATION BAR -->
+  <div class="nav-bar">
+    <a href="#memo" class="active">০১ নির্বাহী সিদ্ধান্ত প্রস্তাব</a>
+    <a href="#burden">০২ বিলম্বের অর্থনৈতিক ক্ষতি</a>
+    <a href="#paradox">০৩ মাঠপর্যায়ের বাস্তবতা</a>
+    <a href="#causes">০৪ কাঠামোগত দুর্বলতা</a>
+    <a href="#assets">০৫ বিদ্যমান আইনি ভিত্তি</a>
+    <a href="#regional">০৬ আন্তর্জাতিক দৃষ্টান্ত</a>
+    <a href="#architecture">০৭ ৪-স্তরীয় ব্যবস্থাপনা</a>
+    <a href="#roadmap">০৮ ১০০ দিনের রোডম্যাপ</a>
+    <a href="#coalition">০৯ অংশীজন কৌশল</a>
+    <a href="#scorecard">১০ মূল্যায়ন ও স্কোরকার্ড</a>
+    <a href="#signature">১১ কার্যনির্বাহী অনুমোদন</a>
+  </div>
+
+  <div class="content">
+
+    <!-- MOVEMENT 1: DECISION MEMO -->
+    <section id="memo">
+      <div class="decision-memo">
+        <div class="stamp">মহাপরিচালক / শীর্ষ নীতিনির্ধারকের সিদ্ধান্তের জন্য</div>
+        
+        <div class="memo-header-grid">
+          <div><strong>প্রস্তাবনাটি কাদের জন্য:</strong> মহাপরিচালক, কৃষি সম্প্রসারণ অধিদপ্তর (DAE) এবং সচিব, কৃষি মন্ত্রণালয়</div>
+          <div><strong>প্রস্তুতকর্তা:</strong> আবু মো. মনিরুজ্জামান, অতিরিক্ত উপপরিচালক (উদ্যান), কৃষি সম্প্রসারণ অধিদপ্তর, কুড়িগ্রাম</div>
+          <div><strong>বিষয়:</strong> বালাইনাশক আইন ২০১৮-এর অধীনে IRAC/FRAC/HRAC MoA কোড ও ঘূর্ণায়মান (IRM) নির্দেশিকা বাধ্যতামূলককরণ</div>
+          <div><strong>আর্থিক সংস্থান:</strong> ৳ ০ (বিদ্যমান পরিচালন বাজেটের ভেতরে পুনর্বিন্যাসযোগ্য)</div>
+        </div>
+
+        <div class="memo-ask">
+          <strong>নির্বাহী সিদ্ধান্তের মূল দাবি (THE EXECUTIVE ASK):</strong> বালাইনাশক আইন, ২০১৮-এর ১৬(২) ধারার প্রদত্ত ক্ষমতাবলে কৃষি সম্প্রসারণ অধিদপ্তর এবং বালাইনাশক কারিগরি উপদেষ্টা কমিটির (PTAC) মাধ্যমে আগামী ৯০ দিনের মধ্যে বাজারে বাজারজাতকৃত সকল বাণিজ্যিক বালাইনাশকের লেবেলে সুনির্দিষ্ট কালো বাক্সে IRAC/FRAC/HRAC মোড অব অ্যাকশন (MoA) কোড, বালাই প্রতিরোধ ক্ষমতা সতর্কবার্তা এবং পর্যায়ক্রমিক ব্যবহার নির্দেশিকা বাধ্যতামূলক করার আদেশ জারি করা।
+        </div>
+
+        <div class="memo-directives">
+          <h4>প্রয়োজনীয় সুনির্দিষ্ট নির্বাহী নির্দেশনাবলী (অনুমোদনের জন্য টিক দিন):</h4>
+          
+          <label class="directive-checkbox">
+            <input type="checkbox" class="sync-dir" data-index="0" onchange="updateDirectives(this)">
+            <span><strong>নির্দেশনা ১:</strong> বালাইনাশক আইন ২০১৮-এর ১৬(২) ধারার অধীনে কৃষি সম্প্রসারণ অধিদপ্তর হতে পরিপত্র জারি করে সকল রিটেইল প্যাকেজিংয়ে দৃশ্যমান কালো বাক্সে IRAC/FRAC/HRAC কোড (`GROUP [CODE] [TYPE]`) মুদ্রণ বাধ্যতামূলক করা।</span>
+          </label>
+
+          <label class="directive-checkbox">
+            <input type="checkbox" class="sync-dir" data-index="1" onchange="updateDirectives(this)">
+            <span><strong>নির্দেশনা ২:</strong> বার্ক (BARC), বাড়ি (BARI), ব্রি (BRRI) ও কৃষি সম্প্রসারণ অধিদপ্তরের যৌথ টাস্কফোর্স গঠন করে ফসলভিত্তিক সহজ বাংলায় 'কীটপতঙ্গ প্রতিরোধ ক্ষমতা ব্যবস্থাপনা' (IRM) রোটেশন গাইডলাইন প্রকাশ করা।</span>
+          </label>
+
+          <label class="directive-checkbox">
+            <input type="checkbox" class="sync-dir" data-index="2" onchange="updateDirectives(this)">
+            <span><strong>নির্দেশনা ৩:</strong> বালাইনাশক নিবন্ধন ডাটাবেসে MoA শ্রেণিবিভাগ যুক্ত করা এবং মোবাইল অ্যাপ <i>AgriChem Guide</i>-এর সাথে সরাসরি বারকোড স্ক্যানিং ফিচার চালু করা।</span>
+          </label>
+
+          <label class="directive-checkbox">
+            <input type="checkbox" class="sync-dir" data-index="3" onchange="updateDirectives(this)">
+            <span><strong>নির্দেশনা ৪:</strong> প্ল্যান্টওয়াইজ প্লাস (PlantwisePlus) ফ্রেমওয়ার্কের অধীনে মাঠপর্যায়ের উপসহকারী কৃষি কর্মকর্তা (SAAO) ও পরিবেশকদের MoA রোটেশন ও লেবেল প্রয়োগ মনিটরিংয়ে প্রশিক্ষিত করা।</span>
+          </label>
+        </div>
+
+        <div class="memo-stats-grid">
+          <div class="memo-stat-card">
+            <div class="val">৳ ০</div>
+            <div class="lbl">নতুন অতিরিক্ত বাজেট</div>
+          </div>
+          <div class="memo-stat-card">
+            <div class="val">৪৯,০০০ মে.টন</div>
+            <div class="lbl">বার্ষিক স্প্রে ব্যবস্থাপনা লক্ষ্য</div>
+          </div>
+          <div class="memo-stat-card">
+            <div class="val">৳ ১,৫০০ কোটি</div>
+            <div class="lbl">বার্ষিক অপচয় রোধ সম্ভাবনা</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOVEMENT 4: LIVE COST OF INACTION & BURDEN -->
+    <section id="burden">
+      <div class="section-title">
+        <div><span class="num">০২</span> বিলম্বের আর্থিক ও স্বাস্থ্যগত ঝুঁকি</div>
+      </div>
+
+      <div class="live-ticker-box">
+        <h3>অকার্যকর বালাইনাশক প্রয়োগ ও অপচয়ে রিয়েল-টাইম সঞ্চিত ক্ষতির পরিমাণ</h3>
+        <div class="ticker-amount" id="liveTicker">৳ 0.00</div>
+        <div class="ticker-desc">কীটপতঙ্গের অনিয়ন্ত্রিত প্রতিরোধ ক্ষমতা ও ফলন হানির ফলে বছরে প্রায় ১,৫০০ কোটি টাকার অপচয়ের ভিত্তিতে প্রস্তুতকৃত (প্রতি সেকেন্ডে প্রায় ৳ ৪৭৫.৬০)</div>
+      </div>
+
+      <div class="cost-grid">
+        <div class="cost-card">
+          <div class="num">২৫%</div>
+          <div class="lbl">৪৯,০০০ মে.টন বিষ ছিটানোর পরও পোকার আক্রমণে জাতীয় ফসল ক্ষতি</div>
+        </div>
+        <div class="cost-card">
+          <div class="num">২৯.২%</div>
+          <div class="lbl">সবজি নমুনায় পাওয়া অনাকাঙ্ক্ষিত রাসায়নিক অবশিষ্টাংশ</div>
+        </div>
+        <div class="cost-card">
+          <div class="num">৭৩%</div>
+          <div class="lbl">দূষিত নমুনার মধ্যে সর্বোচ্চ অবশিষ্টাংশ সীমা (MRL) অতিক্রমের হার</div>
+        </div>
+        <div class="cost-card">
+          <div class="num">HQ > ২৫৫</div>
+          <div class="lbl">কিশোরদের বেগুন খাওয়ার ক্ষেত্রে সাইপারমেথ্রিনের বিপদজনক সূচক</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOVEMENT 2 & 3: HUMAN COST & THE PARADOX -->
+    <section id="paradox">
+      <div class="section-title">
+        <div><span class="num">০৩</span> মাঠপর্যায়ের বাস্তবতা ও তথ্যের অসমতা</div>
+      </div>
+
+      <p>বাংলাদেশে ৩৬৩টিরও বেশি অনুমোদিত সক্রিয় উপাদান এবং হাজার হাজার নিবন্ধিত বাণিজ্য নাম বা ব্র্যাণ্ড রয়েছে। কিন্তু দুর্ভাগ্যজনকভাবে, ভিন্ন ভিন্ন ব্র্যাণ্ড নামের অসংখ্য বালাইনাশকের ভেতরের কাজ করার পদ্ধতি বা মোড অব অ্যাকশন (MoA) হুবহু এক। বেগুন বা টমেটো চাষিরা একই মৌসুমে ১০-১৫ বার ভিন্ন ভিন্ন ব্র্যাণ্ড পরিবর্তন করে প্রকৃতপক্ষে একই গ্রুপের বিষ প্রয়োগ করছেন, যা দ্রুত পোকাদের প্রতিরোধ ক্ষমতা বাড়িয়ে দিচ্ছে এবং স্প্রে সম্পূর্ণরূপে ব্যর্থ করছে।</p>
+
+      <div class="testimonial-grid">
+        <div class="testimonial-card farmer">
+          <div class="testimonial-quote">
+            "ডিলারের পরামর্শে বেগুনের ডগা ও ফল ছিদ্রকারী পোকার জন্য প্রথমে 'ব্র্যাণ্ড ক', তারপর 'ব্র্যাণ্ড খ' আর শেষে 'ব্র্যাণ্ড গ' কিনে স্প্রে করেছি। কিন্তু বিষে পোকা মরে না! আমি জানতামই না যে তিনটা ব্র্যাণ্ডের ভেতরেই একই অর্গানোফসফেট বিষ ছিল। বোতলের গায়ে যদি স্পষ্ট 'গ্রুপ ১বি' লেখা থাকত, তবে আমি কষ্টার্জিত টাকা আর সময় নষ্ট করতাম না।"
+          </div>
+          <div class="testimonial-author">— আবুল হোসেন, <span>সবজি চাষি, যশোর</span></div>
+        </div>
+
+        <div class="testimonial-card officer">
+          <div class="testimonial-quote">
+            "কৃষকরা আমাদের কাছে এসে অভিযোগ করেন কেন বিষে কাজ হচ্ছে না। বোতল পরীক্ষা করে দেখি যে ভিন্ন ব্র্যাণ্ড মনে করে তারা পর পর চারবার পাইরেথ্রয়েড প্রয়োগ করেছেন। বোতলে স্পষ্ট MoA কোড থাকলে আমাদের উপসহকারী কৃষি কর্মকর্তারা (SAAO) এক নজর দেখিয়েই সঠিক রোটেশন পরামর্শ দিতে পারেন।"
+          </div>
+          <div class="testimonial-author">— মো. রফিকুল ইসলাম, উপসহকারী কৃষি কর্মকর্তা, <span>কুড়িগ্রাম</span></div>
+        </div>
+      </div>
+
+      <h4>জাতীয় বালাইনাশক নিবন্ধন ডাটাবেসে রাসায়নিক কেন্দ্রীভবন (তথ্য বৈষম্য):</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>MoA শ্রেণিবিভাগ গ্রুপ</th>
+            <th>লক্ষ্যমাত্রা প্রকার</th>
+            <th>নিবন্ধিত বাণিজ্যিক পণ্য</th>
+            <th>মাঠপর্যায়ে প্রতিরোধ ক্ষমতার ঝুঁকি</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>IRAC Group 1B (অর্গানোফসফেটস)</strong></td>
+            <td>কীটনাশক</td>
+            <td>৮৯০ টি ব্র্যাণ্ড</td>
+            <td>চরম সিলেকশন প্রেসার; কাণ্ড মাজরা পোকায় তীব্র প্রতিরোধ ক্ষমতা</td>
+          </tr>
+          <tr>
+            <td><strong>IRAC Group 3A (পাইরেথ্রয়েডস)</strong></td>
+            <td>কীটনাশক</td>
+            <td>৫৭৩ টি ব্র্যাণ্ড</td>
+            <td>সবজিতে অবশিষ্টাংশের ঝুঁকি (সাইপারমেথ্রিন HQ > ২৫৫)</td>
+          </tr>
+          <tr>
+            <td><strong>IRAC Group 1A (কার্বামেটস)</strong></td>
+            <td>কীটনাশক</td>
+            <td>৪৩৩ টি ব্র্যাণ্ড</td>
+            <td>উচ্চমাত্রার বিষাক্ততা; ব্র্যাণ্ড বিভ্রান্তিতে বারংবার প্রয়োগ</td>
+          </tr>
+          <tr>
+            <td><strong>FRAC Group M3 (মাল্টি-সাইট কন্টাক্ট)</strong></td>
+            <td>ছত্রাকনাশক</td>
+            <td>৪০৯ টি ব্র্যাণ্ড</td>
+            <td>রোটেশন ছাড়া ঢালাও প্রতিরক্ষামূলক স্প্রে</td>
+          </tr>
+          <tr>
+            <td><strong>FRAC Group 3 (DMI-ছত্রাকনাশক)</strong></td>
+            <td>ছত্রাকনাশক</td>
+            <td>২৭৭ টি ব্র্যাণ্ড</td>
+            <td>ধান ও সবজির ধসা রোগে দ্রুত অকার্যকারিতা</td>
+          </tr>
+          <tr>
+            <td><strong>HRAC Group K3 / B</strong></td>
+            <td>আগাছানাশক</td>
+            <td>৩৪৭ টি ব্র্যাণ্ড</td>
+            <td>সঘন ধান চাষে উদীয়মান আগাছা প্রতিরোধ ক্ষমতা</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- MOVEMENT 5: ROOT CAUSES -->
+    <section id="causes">
+      <div class="section-title">
+        <div><span class="num">০৪</span> বর্তমান ব্যবস্থার ৩টি মূল কাঠামোগত ত্রুটি</div>
+      </div>
+
+      <div class="cards-3-grid">
+        <div class="root-card">
+          <h4>১. বাণিজ্য নামভিত্তিক বিভ্রান্তি</h4>
+          <p>বাণিজ্যিক ব্র্যাণ্ডিং রাসায়নিক সত্যকে ঢেকে রাখে। শত শত ভিন্ন নাম বৈচিত্র্যের মিথ্যা আভাস তৈরি করে বাস্তবে ৮০% স্প্রে সাইকেলে পোকাকে একই জৈবনিক হুমকির মুখোমুখি করে।</p>
+        </div>
+        <div class="root-card">
+          <h4>২. লেবেলিং বিধিমালার আধুনিকায়নের অভাব</h4>
+          <p>বালাইনাশক আইন ২০১৮ কাগজে-কলমে শক্তিশালী হলেও, ১৬(২) ধারার অধীনস্থ লেবেলিং বিধিতে দৃশ্যমান আইকন বা MoA ভিত্তিক আবর্তন (Rotation) বাধ্যতামূলক করা হয়নি।</p>
+        </div>
+        <div class="root-card">
+          <h4>৩. গবেষণা ও প্রসার সংযোগে দূরত্ব</h4>
+          <p>গবেষণা প্রতিষ্ঠানের (BARI/BRRI) প্রতিরোধ ক্ষমতা সংক্রান্ত আবিষ্কারগুলো অ্যাকাডেমিক কাগজে আটকে থাকে, কারণ মাঠপর্যায়ে বারকোডযুক্ত ডিজিটাল সার্চ অ্যাপের অভাব রয়েছে।</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOVEMENT 6: ASSETS IN HAND -->
+    <section id="assets">
+      <div class="section-title">
+        <div><span class="num">০৫</span> প্রাতিষ্ঠানিক ও আইনি ভিত্তি (বিদ্যমান সক্ষমতা)</div>
+      </div>
+
+      <p>নতুন কোনো আইন পাশের প্রয়োজন নেই; কৃষি সম্প্রসারণ অধিদপ্তরের হাতে বিদ্যমান ৪টি আইনি ও প্রাতিষ্ঠানিক ভিত্তি ব্যবহার করেই এই সংস্কার তাৎক্ষণিকভাবে বাস্তবায়ন সম্ভব:</p>
+
+      <table>
+        <thead>
+          <tr>
+            <th>বিদ্যমান সম্পদ</th>
+            <th>বর্তমান প্রস্তুতি</th>
+            <th>সংস্কার বাস্তবায়নে আইনি/কার্যকরী ভূমিকা</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>বালাইনাশক আইন, ২০১৮ (ধারা ১৬)</strong></td>
+            <td>কার্যকর আইন</td>
+            <td>১৬(২) ধারা অনুযায়ী কোনো আইনি বিলম্ব ছাড়াই ডিজি পরিপত্রের মাধ্যমে লেবেল শর্ত নির্ধারণের পূর্ণ এখতিয়ার দেয়।</td>
+          </tr>
+          <tr>
+            <td><strong>বালাইনাশক কারিগরি উপদেষ্টা কমিটি (PTAC)</strong></td>
+            <td>২২-সদস্যের শীর্ষ কমিটি</td>
+            <td>বার্ক নির্বাহী চেয়ারম্যানের নেতৃত্বে পরিচালিত এই কমিটি অবিলম্বে MoA লেবেল প্রোটোকল অনুমোদন দিতে সক্ষম।</td>
+          </tr>
+          <tr>
+            <td><strong>প্ল্যান্টওয়াইজ প্লাস ও প্ল্যান্ট ডক্টর নেটওয়ার্ক</strong></td>
+            <td>৮০০ কৃষি সম্প্রসারণ কর্মকর্তা ও ৮,০০০ SAAO</td>
+            <td>মাঠপর্যায়ে সরাসরি MoA রোটেশন পরামর্শ ও রিটেইল লেবেল মনিটরিংয়ের জন্য প্রস্তুত জনবল।</td>
+          </tr>
+          <tr>
+            <td><strong>AgriChem Guide ও এফএও (FAO) সহযোগিতা</strong></td>
+            <td>ডিজিটাল প্ল্যাটফর্ম ও পলিসি সুপারিশ</td>
+            <td>এফএও কর্তৃক প্রস্তাবিত গাইডলাইন দ্রুত বাস্তবায়নে আন্তর্জাতিক মানদণ্ড প্রদান করে।</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- MOVEMENT 7: REGIONAL PROOF -->
+    <section id="regional">
+      <div class="section-title">
+        <div><span class="num">০৬</span> আন্তর্জাতিক ও আঞ্চলিক দৃষ্টান্ত</div>
+      </div>
+
+      <div class="cards-3-grid">
+        <div class="arch-card">
+          <h4>অস্ট্রেলিয়া (APVMA)</h4>
+          <p><strong>বাধ্যতামূলক গ্রুপ বক্স:</strong> মোড়কের সামনে স্পষ্ট কালো বক্সে `GROUP [X] INSECTICIDE` এবং সতর্কবার্তা: <i>"একই গ্রুপের বিষ ঘনঘন ব্যবহারে কার্যকারিতা কমে যায়।"</i></p>
+        </div>
+        <div class="arch-card">
+          <h4>ইউরোপীয় ইউনিয়ন / বেলজিয়াম</h4>
+          <p><strong>স্পষ্ট রোটেশন নির্দেশিকা:</strong> লেবেলে আইনি বাধ্যবাধকতা: <i>"প্রতিরোধ ক্ষমতা এড়াতে এই কীটনাশক প্রয়োগের পর অন্য গ্রুপের বালাইনাশক ব্যবহার করুন।"</i></p>
+        </div>
+        <div class="arch-card">
+          <h4>যুক্তরাষ্ট্র (EPA / FIFRA)</h4>
+          <p><strong>আইনসিদ্ধ FRAC/IRAC কোড:</strong> লেবেলে MoA কোড বাধ্যতামূলক এবং ট্যাঙ্ক-মিক্স অসামঞ্জস্যতা (Physical Incompatibility) এড়াতে 'জার টেস্ট' নির্দেশ প্রদান।</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOVEMENT 8: SYSTEM ARCHITECTURE -->
+    <section id="architecture">
+      <div class="section-title">
+        <div><span class="num">০৭</span> প্রস্তাবিত ৪-স্তরীয় সমন্বিত ব্যবস্থা</div>
+      </div>
+
+      <table>
+        <thead>
+          <tr>
+            <th>স্তর (Layer)</th>
+            <th>মূল উপাদান</th>
+            <th>কারিগরি ও প্রশাসনিক সুনির্দিষ্ট রূপরেখা</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>১. লেবেলিং স্তর</strong></td>
+            <td>বাধ্যতামূলক MoA বক্স ও রোটেশন নির্দেশ</td>
+            <td>মানসম্মত কালো বক্সে `GROUP [CODE] [TYPE]` এবং বেলজিয়াম স্টাইলের পর্যায়ক্রমিক ব্যবহার বার্তা মুদ্রণ।</td>
+          </tr>
+          <tr>
+            <td><strong>২. কারিগরি স্তর</strong></td>
+            <td>স্থানীয় IRM গাইডলাইন</td>
+            <td>বার্ক-বাড়ি-ব্রি-ডিএই যৌথ টাস্কফোর্স কর্তৃক ধান, বেগুন, টমেটো ও শসার জন্য সুনির্দিষ্ট স্প্রে উইন্ডো তৈরি।</td>
+          </tr>
+          <tr>
+            <td><strong>৩. ডিজিটাল স্তর</strong></td>
+            <td>AgriChem Guide মোবাইল স্ক্যান</td>
+            <td>বারকোড ভিত্তিক মোবাইল অ্যাপ্লিকেশন যেখানে স্ক্যান করলেই কেমিস্ট্রি, বিকল্প রোটেশন পার্টনার ও সতর্কতা দেখা যাবে।</td>
+          </tr>
+          <tr>
+            <td><strong>৪. সক্ষমতা স্তর</strong></td>
+            <td>SAAO ও ডিলার মনিটরিং</td>
+            <td>৮,৮০০ উপসহকারী কৃষি কর্মকর্তা (SAAO) কর্তৃক ডিলার দোকানে লেবেল যাচাই ও কৃষককে সচেতন করা।</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- MOVEMENT 9: ROADMAP -->
+    <section id="roadmap">
+      <div class="section-title">
+        <div><span class="num">০৮</span> ১০০ দিনের দ্রুত বাস্তবায়ন রোডম্যাপ</div>
+      </div>
+
+      <div class="timeline-100">
+        <h4 style="color:var(--gold); margin-bottom:12px;">ফেজ ০: প্রথম ১০০ দিন (জরুরি সমন্বিত পদক্ষেপ)</h4>
+        <div class="timeline-item">
+          <span class="timeline-day">১৫ দিন:</span> বালাইনাশক আইন ২০১৮-এর ১৬(২) ধারার অধীনে ডিএই কর্তৃক প্রাতিষ্ঠানিক গ্যাজেট/পরিপত্র জারি।
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-day">৪৫ দিন:</span> শীর্ষ ৫টি ফসলের (ধান, বেগুন, টমেটো, মরিচ, শসা) জন্য সহজ বাংলায় IRM গাইডলাইন প্রকাশ।
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-day">৭৫ দিন:</span> <i>AgriChem Guide</i> মোবাইল অ্যাপে মোড অব অ্যাকশন (MoA) বারকোড স্ক্যানার সক্রিয়করণ।
+        </div>
+        <div class="timeline-item">
+          <span class="timeline-day">১০০ দিন:</span> সারাদেশে রিটেইল দোকান অডিট এবং অ-সম্মতিযুক্ত পুরনো লেবেলের পুনঃআমদানি ও রিবোটলিং বন্ধকরণ।
+        </div>
+      </div>
+
+      <div class="phase-grid">
+        <div class="phase-card">
+          <h4>প্রথম পর্যায়: দেশব্যাপী পূর্ণ বাস্তবায়ন (১ম বছর)</h4>
+          <p>সকল নিবন্ধিত বাণিজ্য পণ্যের লেবেলে ১০০% MoA বক্স নিশ্চিতকরণ। ৮,০০০ SAAO এবং ১৫,০০০ লাইসেন্সপ্রাপ্ত ডিলারকে প্রশিক্ষণ দান।</p>
+        </div>
+        <div class="phase-card">
+          <h4>দ্বিতীয় পর্যায়: স্মার্ট কৃষি ও রপ্তানি অঞ্চল (২-৩ বছর)</h4>
+          <p>রপ্তানিমুখী অঞ্চলে অবশিষ্টাংশ পরীক্ষাগারের সাথে MoA মনিটরিং যুক্তকরণ। জৈব-বালাইনাশককে রোটেশনে অগ্রাধিকার প্রদান।</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- MOVEMENT 10 & 11: COALITION & ECONOMICS -->
+    <section id="coalition">
+      <div class="section-title">
+        <div><span class="num">০৯</span> অংশীজন ব্যবস্থাপনা ও রাজনৈতিক কৌশল</div>
+      </div>
+
+      <h4>অংশীজন অবস্থান বিশ্লেষণ (Stakeholder Alignment):</h4>
+      <table class="coalition-table">
+        <thead>
+          <tr>
+            <th>অংশীজন গ্রুপ</th>
+            <th>মূল আগ্রহ / প্রতিক্রিয়া</th>
+            <th>কৌশলগত এনগেজমেন্ট ও সমাধান</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr class="champion">
+            <td><strong>সমর্থক (Champions)</strong></td>
+            <td>অগ্রগামী কৃষক, সবজি রপ্তানিকারক, FAO, CABI PlantwisePlus</td>
+            <td>প্রচারক হিসেবে নিযুক্তকরণ; খরচ হ্রাস ও নিরাপদ খাদ্য নিশ্চিতকরণ তুলে ধরা।</td>
+          </tr>
+          <tr class="opponent">
+            <td><strong>বাধা প্রদানকারী (Opponents)</strong></td>
+            <td>ব্র্যাণ্ড বিভ্রান্তিতে অভ্যস্ত কিছু জেনেরিক আমদানিকারক</td>
+            <td>নতুন লেবেল মুদ্রণে ৯০ দিনের ট্রানজিশন সময় প্রদান; পুনঃনিবন্ধনে MoA বাধ্যতামূলক করা।</td>
+          </tr>
+          <tr class="neutralizer">
+            <td><strong>নিরপেক্ষ/সহযোগী (Neutralizers)</strong></td>
+            <td>বালাইনাশক বিক্রেতা/ডিলার ও মাঠপর্যায়ের SAAO কর্মী</td>
+            <td>বিনামূল্যে MoA পোস্টার, ডিজিটাল অ্যাপ অ্যাক্সেস এবং সেরা ডিলারদের স্বীকৃতি প্রদান।</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- MOVEMENT 12 & 13: SCORECARD & ALIGNMENT -->
+    <section id="scorecard">
+      <div class="section-title">
+        <div><span class="num">১০</span> অর্থনৈতিক লাভ ও মনিটরিং স্কোরকার্ড</div>
+      </div>
+
+      <h4>অর্থনৈতিক বিনিয়োগের রিটার্ন (Cost-Benefit):</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>সূচক</th>
+            <th>সংস্কার পূর্ব অবস্থা</th>
+            <th>সংস্কার পরবর্তী লক্ষ্য (৩ বছর)</th>
+            <th>প্রত্যাশিত অর্থনৈতিক ও স্বাস্থ্যগত প্রভাব</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>বালাইনাশক অকার্যকারিতা</td>
+            <td>২৫% ফসলের ক্ষতি</td>
+            <td>&lt; ১০% ক্ষতির মাত্রা</td>
+            <td><strong>৳ ১,২০০–১,৫০০ কোটি টাকার ফসল রক্ষা</strong></td>
+          </tr>
+          <tr>
+            <td>সবজিতে ক্ষতিকর অবশিষ্টাংশ</td>
+            <td>২৯.২% নমুনায় বিষ (৭৩% MRL অতিক্রম)</td>
+            <td>&lt; ৫% নমুনায় অবশিষ্টাংশ</td>
+            <td>জনস্বাস্থ্য সুরক্ষা ও সবজি রপ্তানি বৃদ্ধি</td>
+          </tr>
+          <tr>
+            <td>কৃষকের স্প্রে নির্ভরতা</td>
+            <td>মৌসুমে ১০০-১৫০ বার স্প্রে (বেগুন)</td>
+            <td>৩৫-৪০ বার নিখুঁত রোটেশন স্প্রে</td>
+            <td><strong>কৃষকের বালাইনাশক খরচ ৬০% হ্রাস</strong></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h4 style="margin-top:25px;">মনিটরিং, মূল্যায়ন ও শিক্ষা (MEL) স্কোরকার্ড:</h4>
+      <table>
+        <thead>
+          <tr>
+            <th>মূল কার্যকারিতা সূচক (KPI)</th>
+            <th>ভিত্তি (Baseline)</th>
+            <th>লক্ষ্য (১০০ দিন)</th>
+            <th>লক্ষ্য (১ বছর)</th>
+            <th>যাচাইয়ের মাধ্যম</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>MoA বক্সযুক্ত সঠিক বাজারজাত লেবেল</td>
+            <td>০%</td>
+            <td>৬০% নতুন ব্যাচ</td>
+            <td>১০৩% দেশব্যাপী</td>
+            <td>ডিএই মাঠপর্যায়ের অডিট রিপোর্ট</td>
+          </tr>
+          <tr>
+            <td>MoA বিষয়ে প্রশিক্ষিত SAAO</td>
+            <td>১৫%</td>
+            <td>৫০% (৪,০০০ জন)</td>
+            <td>১০০% (৮,০০০ জন)</td>
+            <td>প্ল্যান্টওয়াইজ প্লাস ট্রেনিং রেকর্ড</td>
+          </tr>
+          <tr>
+            <td>AgriChem Guide বারকোড স্ক্যান সংখ্যা</td>
+            <td>০</td>
+            <td>৫০,০০০ স্ক্যান</td>
+            <td>৫০০,০০০ স্ক্যান</td>
+            <td>সিস্টেম সার্ভার টেলিম্যাট্রি লগ</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+
+    <!-- MOVEMENT 14 & 15: LEGACY & EXECUTIVE ACTION -->
+    <section id="legacy">
+      <div class="section-title">
+        <div><span class="num">১১</span> জাতীয় রূপকল্প ও দীর্ঘমেয়াদী অঙ্গীকার</div>
+      </div>
+
+      <div class="legacy-box">
+        <p>
+          আমাদের মাটির স্বাস্থ্য, খাদ্যের নিরাপত্তা এবং কোটি ক্ষুদ্র কৃষকের ঘামঝরা উপার্জনকে রক্ষা করা <strong>কৃষি সম্প্রসারণ অধিদপ্তরের</strong> সবচেয়ে পবিত্র দায়িত্ব।
+        </p>
+        <p style="margin-top:12px;">
+          অনিয়ন্ত্রিত বিষের ব্যবহার থেকে দেশের কৃষিকে মুক্ত করে বৈজ্ঞানিক 'মোড অব অ্যাকশন' (MoA) ভিত্তিক ব্যবস্থাপনায় উন্নীত করার মাধ্যমেই অর্জিত হবে টেকসই খাদ্য নিরাপত্তা ও কৃষকের প্রকৃত অর্থনৈতিক মুক্তি।
+        </p>
+        <p style="margin-top:12px; font-weight:bold; color:var(--bd-green-dark); font-style:normal;">
+          "করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ।" 🇧🇩
+        </p>
+      </div>
+    </section>
+
+    <!-- MOVEMENT 15: EXECUTIVE ACTION & SIGNATURE BLOCK -->
+    <section id="signature">
+      <div class="signature-container">
+        <div class="stamp-approval-overlay" id="approvalStamp">অনুমোদিত ও নির্দেশিত</div>
+
+        <h3>কৃষি সম্প্রসারণ অধিদপ্তর — নির্বাহী সিদ্ধান্ত ও অনুমোদন ফরম</h3>
+
+        <div class="approval-options">
+          <label class="approval-option">
+            <input type="radio" name="dg_decision" value="approved" onchange="checkApprovalState()">
+            <span>সকল প্রস্তাবিত নির্দেশনাবলী অনুমোদন করা হলো</span>
+          </label>
+          <label class="approval-option">
+            <input type="radio" name="dg_decision" value="modified" onchange="checkApprovalState()">
+            <span>আংশিক সংশোধনসহ অনুমোদন করা হলো</span>
+          </label>
+          <label class="approval-option">
+            <input type="radio" name="dg_decision" value="review" onchange="checkApprovalState()">
+            <span>পুনর্বিবেচনার জন্য ফেরৎ পাঠানো হলো</span>
+          </label>
+        </div>
+
+        <p style="font-size:13.5px; font-weight:bold; margin-bottom:12px; text-transform:uppercase;">অনুমোদিত নির্দেশনাসমূহ:</p>
+
+        <div class="memo-directives" style="margin-bottom:25px;">
+          <label class="directive-checkbox">
+            <input type="checkbox" class="sync-dir" data-index="0" onchange="updateDirectives(this)">
+            <span>১. বালাইনাশক আইন ২০১৮-এর ১৬(২) ধারা মতে MoA বক্স বাধ্যতামূলক করে পরিপত্র জারি।</span>
+          </label>
+          <label class="directive-checkbox">
+            <input type="checkbox" class="sync-dir" data-index="1" onchange="updateDirectives(this)">
+            <span>২. বার্ক-বাড়ি-ব্রি-ডিএই সমন্বিত টাস্কফোর্স গঠন ও সহজ বাংলা IRM গাইডলাইন অনুমোদন।</span>
+          </label>
+          <label class="directive-checkbox">
+            <input type="checkbox" class="sync-dir" data-index="2" onchange="updateDirectives(this)">
+            <span>৩. AgriChem Guide অ্যাপে MoA বারকোড ভিত্তিক রিয়েল-টাইম স্ক্যানার সংযোজন।</span>
+          </label>
+          <label class="directive-checkbox">
+            <input type="checkbox" class="sync-dir" data-index="3" onchange="updateDirectives(this)">
+            <span>৪. প্ল্যান্টওয়াইজ প্লাস কাঠামোর মাধ্যমে ৮,৮০০ SAAO ও ডিলারদের কার্যকর তদারকি নির্দেশ।</span>
+          </label>
+        </div>
+
+        <div class="sig-grid">
+          <div>
+            <div class="sig-line"></div>
+            <div class="sig-label">মহাপরিচালকের স্বাক্ষর, কৃষি সম্প্রসারণ অধিদপ্তর</div>
+          </div>
+          <div>
+            <div class="sig-line"></div>
+            <div class="sig-label">তারিখ ও সরকারি সীলাইট Seal</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <div class="doc-footer">
+      <p><strong>প্রস্তাবনাটি উপস্থাপিত কাদের জন্য: কৃষি সম্প্রসারণ অধিদপ্তর · উদ্ভিদ সংরক্ষণ উইং · কৃষি মন্ত্রণালয়</strong></p>
+      <p>প্রস্তুতকারী: আবু মো. মনিরুজ্জামান, অতিরিক্ত উপপরিচালক (উদ্যান), কৃষি সম্প্রসারণ অধিদপ্তর, কুড়িগ্রাম</p>
+    </div>
+
+  </div>
+</div>
+
+<!-- FLOATING TOOLBAR -->
+<div class="toolbar-floating">
+  <button class="btn-tool" onclick="window.print()">🖨️ প্রিন্ট / পিডিএফে সেভ</button>
+  <button class="btn-tool" onclick="downloadWordDoc()">📄 ওওয়ার্ড ফাইলে এক্সপোর্ট (DOCX)</button>
+</div>
+
+<!-- JAVASCRIPT FOR PERSUASION PRIMITIVES -->
+<script>
+  // 1. Live Ticking Cost of Delay Counter
+  let startTime = Date.now();
+  const costPerSecond = 475.65; // Based on Tk 1,500 Cr annual loss / 31,536,000 seconds
+
+  function updateTicker() {
+    let elapsedSeconds = (Date.now() - startTime) / 1000;
+    let accumulatedLoss = elapsedSeconds * costPerSecond;
+    document.getElementById('liveTicker').textContent = '৳ ' + accumulatedLoss.toLocaleString('bn-BD', {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    });
+  }
+  setInterval(updateTicker, 100);
+
+  // 2. Directive Synchronization & Approval Stamp Logic
+  function updateDirectives(source) {
+    const index = source.getAttribute('data-index');
+    const checked = source.checked;
+    const allMatching = document.querySelectorAll(`.sync-dir[data-index="${index}"]`);
+    allMatching.forEach(cb => cb.checked = checked);
+    checkApprovalState();
+  }
+
+  function checkApprovalState() {
+    const allCheckboxes = document.querySelectorAll('.directive-checkbox input[type="checkbox"]');
+    const allChecked = Array.from(allCheckboxes).every(cb => cb.checked);
+    const radioDecision = document.querySelector('input[name="dg_decision"]:checked');
+    const stamp = document.getElementById('approvalStamp');
+
+    if (allChecked || (radioDecision && radioDecision.value === 'approved')) {
+      stamp.style.display = 'block';
+    } else {
+      stamp.style.display = 'none';
+    }
+  }
+
+  // 3. Export to Word Function
+  function downloadWordDoc() {
+    const head = '<meta charset="utf-8"><title>Ministerial Decision Package - Pesticide Management</title><style>table{border-collapse:collapse;width:100%;}td,th{border:1px solid #ccc;padding:6px;}</style>';
+    const bodyContent = document.querySelector('.container').innerHTML;
+    const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head>${head}</head><body>${bodyContent}</body></html>`;
+    
+    const blob = new Blob(['\ufeff' + html], { type: 'application/msword' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'DAE_Ministerial_Decision_Package_Pesticide_Reform.doc';
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
+  }
+</script>
+
+</body>
+</html>
