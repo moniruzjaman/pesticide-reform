@@ -2,1322 +2,1593 @@
 <html lang="bn">
 <head>
 <meta charset="UTF-8">
-<meta naame="viewport" content="width=device-width, initial-scale=1.0">
-<title>সিদ্ধান্ত প্যাকেজ — বালাইনাশক ব্যবস্থাপনা সংস্কার ও বালাই প্রতিরোধ ক্ষমতারোধ রূপরেখা</title>
-<meta name="description" content="বালাইনাশক আইন ২০১৮-এর অধীনে লেবেলিং, মোড অব অ্যাকশন (MoA) কোড বাধ্যতামূলককরণ, প্রতিরোধ ক্ষমতা ব্যবস্থাপনা এবং ডিজিটাল ট্রেসেবিলিটি সংস্কারের জন্য প্রস্তাবিত নীতি প্যাকেজ।">
-<meta name="theme-color" content="#006A4E">
-<style>
-  :root {
-    --bd-green: #006A4E;
-    --bd-green-dark: #004d38;
-    --bd-green-light: #e8f5e9;
-    --bd-red: #F42A41;
-    --bd-red-light: #ffebee;
-    --gold: #C5A028;
-    --gold-light: #fff9e0;
-    --dark: #0f172a;
-    --slate: #334155;
-    --light-bg: #f8fafc;
-    --border: #e2e8f0;
-    --shadow: 0 10px 30px -5px rgba(0, 0, 0, 0.08);
-  }
-
-  * { margin: 0; padding: 0; box-sizing: border-box; }
-
-  body {
-    font-family: 'SolaimanLipi', 'Kalpurush', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Georgia, serif;
-    line-height: 1.8;
-    color: var(--slate);
-    background: #f1f5f9;
-    padding-bottom: 80px;
-  }
-
-  .container {
-    max-width: 980px;
-    margin: 30px auto;
-    background: #ffffff;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.1);
-    border-radius: 8px;
-    overflow: hidden;
-  }
-
-  /* Header Styling */
-  .official-header {
-    background: linear-gradient(135deg, var(--bd-green-dark) 0%, var(--bd-green) 100%);
-    color: #ffffff;
-    padding: 40px 40px 30px;
-    text-align: center;
-    position: relative;
-    border-bottom: 5px solid var(--gold);
-  }
-
-  .official-header::before {
-    content: '';
-    position: absolute;
-    top: 0; left: 0; right: 0;
-    height: 6px;
-    background: linear-gradient(90deg, var(--bd-green) 0%, var(--bd-red) 50%, var(--gold) 100%);
-  }
-
-  .crest {
-    width: 80px;
-    height: 80px;
-    background: #ffffff;
-    border-radius: 50%;
-    margin: 0 auto 15px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: var(--bd-green);
-    font-size: 32px;
-    font-weight: bold;
-    border: 3px solid var(--gold);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-  }
-
-  .target-authority-badge {
-    display: inline-block;
-    background: rgba(255,255,255,0.15);
-    border: 1px solid var(--gold);
-    color: var(--gold-light);
-    font-size: 12px;
-    padding: 4px 14px;
-    border-radius: 20px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 12px;
-    font-weight: bold;
-  }
-
-  .official-header h1 {
-    font-size: 24px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 6px;
-  }
-
-  .official-header h2 {
-    font-size: 14px;
-    font-weight: 400;
-    color: #cbd5e1;
-    letter-spacing: 0.5px;
-  }
-
-  .report-title-box {
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,0.2);
-  }
-
-  .report-title-box h3 {
-    font-size: 22px;
-    color: #ffffff;
-    font-weight: 700;
-  }
-
-  .report-title-box p {
-    font-size: 14px;
-    color: var(--gold-light);
-    font-style: italic;
-    margin-top: 6px;
-  }
-
-  .header-meta {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 10px;
-    background: rgba(0,0,0,0.25);
-    padding: 12px 20px;
-    margin-top: 25px;
-    border-radius: 6px;
-    font-size: 12.5px;
-    text-align: center;
-  }
-
-  /* Navigation Bar */
-  .nav-bar {
-    position: sticky;
-    top: 0;
-    background: #ffffff;
-    z-index: 1000;
-    border-bottom: 2px solid var(--border);
-    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
-    display: flex;
-    overflow-x: auto;
-    padding: 0 15px;
-  }
-
-  .nav-bar a {
-    padding: 14px 16px;
-    color: var(--slate);
-    text-decoration: none;
-    font-size: 13px;
-    font-weight: 600;
-    white-space: nowrap;
-    border-bottom: 3px solid transparent;
-    transition: all 0.2s;
-  }
-
-  .nav-bar a:hover, .nav-bar a.active {
-    color: var(--bd-green);
-    border-bottom-color: var(--bd-green);
-    background: var(--light-bg);
-  }
-
-  /* Content Body */
-  .content {
-    padding: 40px;
-  }
-
-  section {
-    margin-bottom: 50px;
-    scroll-margin-top: 70px;
-  }
-
-  .section-title {
-    font-size: 19px;
-    color: var(--bd-green);
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-    padding-bottom: 10px;
-    border-bottom: 2px solid var(--bd-green);
-    margin-bottom: 25px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-  }
-
-  .section-title span.num {
-    background: var(--bd-green);
-    color: #ffffff;
-    font-size: 12px;
-    padding: 2px 10px;
-    border-radius: 20px;
-    margin-right: 10px;
-  }
-
-  /* MOVEMENT 1: DECISION MEMO */
-  .decision-memo {
-    position: relative;
-    background: var(--gold-light);
-    border: 2px solid var(--gold);
-    border-radius: 8px;
-    padding: 30px;
-    margin-bottom: 40px;
-    box-shadow: var(--shadow);
-  }
-
-  .decision-memo .stamp {
-    position: absolute;
-    top: 20px;
-    right: 25px;
-    border: 3px double var(--bd-red);
-    color: var(--bd-red);
-    font-weight: 800;
-    font-size: 11px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    padding: 4px 12px;
-    transform: rotate(-4deg);
-    background: #ffffff;
-  }
-
-  .memo-header-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 15px;
-    font-size: 13.5px;
-    border-bottom: 1px dashed var(--gold);
-    padding-bottom: 15px;
-    margin-bottom: 20px;
-  }
-
-  .memo-ask {
-    background: #ffffff;
-    border-left: 5px solid var(--bd-green);
-    padding: 16px 20px;
-    border-radius: 0 6px 6px 0;
-    margin-bottom: 20px;
-    font-size: 15px;
-    font-weight: 600;
-    color: var(--bd-green-dark);
-  }
-
-  .memo-directives {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-  }
-
-  .memo-directives h4 {
-    font-size: 13px;
-    text-transform: uppercase;
-    color: var(--slate);
-    margin-bottom: 12px;
-    letter-spacing: 0.5px;
-  }
-
-  .directive-checkbox {
-    display: flex;
-    align-items: flex-start;
-    gap: 12px;
-    margin-bottom: 12px;
-    font-size: 13.5px;
-    cursor: pointer;
-  }
-
-  .directive-checkbox input[type="checkbox"] {
-    width: 18px;
-    height: 18px;
-    margin-top: 3px;
-    accent-color: var(--bd-green);
-    cursor: pointer;
-  }
-
-  .memo-stats-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 15px;
-    margin-top: 20px;
-    text-align: center;
-  }
-
-  .memo-stat-card {
-    background: #ffffff;
-    padding: 12px;
-    border-radius: 6px;
-    border: 1px solid var(--border);
-  }
-
-  .memo-stat-card .val {
-    font-size: 18px;
-    font-weight: 800;
-    color: var(--bd-green);
-  }
-
-  .memo-stat-card .lbl {
-    font-size: 11px;
-    color: #64748b;
-    text-transform: uppercase;
-  }
-
-  /* MOVEMENT 4: LIVE COST TICKER & BURDEN */
-  .live-ticker-box {
-    background: var(--dark);
-    color: #ffffff;
-    padding: 30px;
-    border-radius: 8px;
-    text-align: center;
-    margin-bottom: 30px;
-    box-shadow: 0 10px 25px rgba(15,23,42,0.3);
-  }
-
-  .live-ticker-box h3 {
-    color: var(--gold);
-    font-size: 13px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 10px;
-  }
-
-  .ticker-amount {
-    font-family: monospace;
-    font-size: 36px;
-    font-weight: bold;
-    color: var(--bd-red);
-    margin: 10px 0;
-  }
-
-  .ticker-desc {
-    font-size: 12px;
-    color: #94a3b8;
-  }
-
-  .cost-grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    gap: 15px;
-    margin-top: 20px;
-  }
-
-  .cost-card {
-    background: #1e293b;
-    padding: 16px;
-    border-radius: 6px;
-    text-align: center;
-    border-top: 3px solid var(--bd-red);
-  }
-
-  .cost-card .num {
-    font-size: 20px;
-    font-weight: bold;
-    color: #ffffff;
-  }
-
-  .cost-card .lbl {
-    font-size: 11px;
-    color: #cbd5e1;
-    margin-top: 4px;
-  }
-
-  /* TESTIMONIALS & FIELD VOICE */
-  .testimonial-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-    margin: 20px 0;
-  }
-
-  .testimonial-card {
-    background: var(--light-bg);
-    padding: 22px;
-    border-radius: 6px;
-    position: relative;
-    border-left: 4px solid var(--bd-green);
-  }
-
-  .testimonial-card.officer {
-    border-left-color: var(--gold);
-  }
-
-  .testimonial-card::before {
-    content: '“';
-    font-size: 50px;
-    color: var(--gold);
-    position: absolute;
-    top: 5px;
-    left: 10px;
-    opacity: 0.4;
-    line-height: 1;
-  }
-
-  .testimonial-quote {
-    font-style: italic;
-    font-size: 13.5px;
-    color: #334155;
-    position: relative;
-    z-index: 1;
-    padding-left: 15px;
-  }
-
-  .testimonial-author {
-    margin-top: 15px;
-    text-align: right;
-    font-size: 12px;
-    font-weight: bold;
-    color: var(--bd-green);
-  }
-
-  .testimonial-author span {
-    font-weight: normal;
-    color: #64748b;
-  }
-
-  /* TABLES */
-  table {
-    width: 100%;
-    border-collapse: collapse;
-    margin: 20px 0;
-    font-size: 13px;
-    background: #ffffff;
-    border-radius: 6px;
-    overflow: hidden;
-    box-shadow: 0 2px 8px rgba(0,0,0,0.04);
-  }
-
-  th {
-    background: var(--bd-green);
-    color: #ffffff;
-    padding: 12px 14px;
-    text-align: left;
-    font-size: 12px;
-    text-transform: uppercase;
-    letter-spacing: 0.5px;
-  }
-
-  td {
-    padding: 12px 14px;
-    border-bottom: 1px solid var(--border);
-  }
-
-  tr:nth-child(even) td { background: var(--light-bg); }
-
-  /* CARDS GRID */
-  .cards-3-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-    margin: 20px 0;
-  }
-
-  .root-card, .arch-card {
-    background: #ffffff;
-    border: 1px solid var(--border);
-    border-top: 4px solid var(--bd-green);
-    border-radius: 6px;
-    padding: 20px;
-    transition: transform 0.2s, box-shadow 0.2s;
-  }
-
-  .root-card:hover, .arch-card:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--shadow);
-  }
-
-  .root-card h4, .arch-card h4 {
-    font-size: 14.5px;
-    color: var(--bd-green-dark);
-    margin-bottom: 10px;
-  }
-
-  .root-card p, .arch-card p {
-    font-size: 12.5px;
-    color: #475569;
-  }
-
-  /* COALITION TABLE */
-  .coalition-table tr.champion td { background: var(--bd-green-light); }
-  .coalition-table tr.opponent td { background: var(--bd-red-light); }
-  .coalition-table tr.neutralizer td { background: var(--gold-light); }
-
-  /* TIMELINE */
-  .timeline-100 {
-    background: var(--gold-light);
-    border-left: 4px solid var(--gold);
-    padding: 20px 25px;
-    border-radius: 0 6px 6px 0;
-    margin-bottom: 30px;
-  }
-
-  .timeline-item {
-    position: relative;
-    padding-left: 25px;
-    margin-bottom: 12px;
-  }
-
-  .timeline-item::before {
-    content: '';
-    position: absolute;
-    left: 0;
-    top: 8px;
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background: var(--gold);
-    border: 2px solid #ffffff;
-  }
-
-  .timeline-day {
-    font-weight: bold;
-    color: var(--bd-green);
-    font-size: 13px;
-  }
-
-  .phase-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 20px;
-  }
-
-  .phase-card {
-    background: #ffffff;
-    border: 1px solid var(--border);
-    padding: 20px;
-    border-radius: 6px;
-    border-top: 4px solid var(--bd-green);
-  }
-
-  .phase-card h4 {
-    color: var(--bd-green);
-    font-size: 13.5px;
-    text-transform: uppercase;
-    margin-bottom: 8px;
-  }
-
-  /* LEGACY BOX */
-  .legacy-box {
-    background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
-    border-left: 5px solid var(--bd-red);
-    padding: 30px;
-    border-radius: 6px;
-    margin: 30px 0;
-    box-shadow: var(--shadow);
-  }
-
-  .legacy-box p {
-    font-style: italic;
-    color: var(--slate);
-    font-size: 14.5px;
-    line-height: 1.8;
-  }
-
-  .legacy-box strong {
-    color: var(--bd-green);
-    font-style: normal;
-  }
-
-  /* SIGNATURE BLOCK */
-  .signature-container {
-    background: #ffffff;
-    border: 3px double var(--bd-green);
-    border-radius: 8px;
-    padding: 35px;
-    margin-top: 40px;
-    position: relative;
-  }
-
-  .signature-container h3 {
-    color: var(--bd-green);
-    font-size: 18px;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    margin-bottom: 20px;
-    border-bottom: 2px solid var(--border);
-    padding-bottom: 10px;
-  }
-
-  .approval-options {
-    display: flex;
-    gap: 20px;
-    margin-bottom: 25px;
-    flex-wrap: wrap;
-  }
-
-  .approval-option {
-    display: flex;
-    align-items: center;
-    gap: 8px;
-    font-size: 13.5px;
-    font-weight: 600;
-    cursor: pointer;
-  }
-
-  .approval-option input[type="radio"] {
-    accent-color: var(--bd-green);
-    width: 18px;
-    height: 18px;
-  }
-
-  .stamp-approval-overlay {
-    display: none;
-    position: absolute;
-    top: 25px;
-    right: 40px;
-    border: 4px dashed var(--bd-green);
-    color: var(--bd-green);
-    padding: 10px 25px;
-    font-size: 18px;
-    font-weight: 900;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    transform: rotate(-8deg);
-    background: rgba(255,255,255,0.95);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-    animation: stampIn 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
-  }
-
-  @keyframes stampIn {
-    0% { transform: scale(3) rotate(-20deg); opacity: 0; }
-    100% { transform: scale(1) rotate(-8deg); opacity: 1; }
-  }
-
-  .sig-grid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-    margin-top: 40px;
-    padding-top: 20px;
-    border-top: 1px solid var(--border);
-  }
-
-  .sig-line {
-    border-bottom: 1.5px solid var(--slate);
-    height: 45px;
-    margin-bottom: 6px;
-  }
-
-  .sig-label {
-    font-size: 11px;
-    text-transform: uppercase;
-    color: #64748b;
-    text-align: center;
-    letter-spacing: 1px;
-  }
-
-  /* Toolbar */
-  .toolbar-floating {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    display: flex;
-    gap: 10px;
-    z-index: 9999;
-  }
-
-  .btn-tool {
-    background: var(--bd-green);
-    color: #ffffff;
-    border: none;
-    padding: 10px 18px;
-    border-radius: 30px;
-    font-size: 13px;
-    font-weight: 600;
-    cursor: pointer;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    text-decoration: none;
-    transition: all 0.2s;
-  }
-
-  .btn-tool:hover {
-    background: var(--bd-green-dark);
-    transform: translateY(-2deg);
-  }
-
-  .doc-footer {
-    text-align: center;
-    padding-top: 40px;
-    border-top: 2px solid var(--border);
-    margin-top: 50px;
-    font-size: 12px;
-    color: #94a3b8;
-  }
-
-  @media (max-width: 768px) {
-    .content { padding: 20px; }
-    .memo-header-grid, .memo-stats-grid, .cost-grid, .testimonial-grid, .cards-3-grid, .phase-grid, .sig-grid, .header-meta {
-      grid-template-columns: 1fr;
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Decision Package — Mandatory IRAC/FRAC MoA Classification, Rotation Window & Tank-Mix Compatibility on Pesticide Labels under Section 16(2) of the Pesticides Act, 2018. DAE Kurigram.">
+<title>MoA লেবেল অন্তর্ভুক্তি · সিদ্ধান্ত প্যাকেজ v2.1.3 — DAE কুড়িগ্রাম</title>
+
+<!--
+  ============================================================================
+  v2.1.3 — NATIONAL PLEDGE UPDATE
+  ----------------------------------------------------------------------------
+  Changes:
+    • “স্মার্ট বাংলাদেশ ২০৪১”  →  “স্বনির্ভর বাংলাদেশ ২০৩০”
+    • “ডেল্টা প্ল্যান ২১০০”      →  “কৃষি মহাপরিকল্পনা ২০৫০”
+    • Legacy paragraph rewritten honouring:
+        – বাংলাদেশি জাতীয়তাবাদের জনক শহীদ রাষ্ট্রপতি জিয়াউর রহমান
+        – কৃষক ও নারী ক্ষমতায়নের অগ্রদূত শহীদ দেশনেত্রী বেগম খালেদা জিয়া
+          (“দেশ বাঁচাও মানুষ বাঁচাও”)
+        – বর্তমান রাষ্ট্রনায়ক, তারুণ্যের অহংকার তারেক রহমান
+          (“সবজির আগে বাংলাদেশ”)
+    • Updated everywhere: ribbon marquee, national initiatives cards,
+      one-pager national alignment, EN translations (data-en).
+  v2.1.2 resilience architecture fully retained:
+    – content visible even if any CDN/JS fails (`.js` class gating)
+    – every module wrapped in safe() try/catch, guarded globals
+    – DOCX (.docx via html-docx-js, fallback .doc), PDF print, one-pager
+      attached to print/download, TTS play/stop, share, EN/BN switch,
+      analytics dashboard, version banner + changelog, endorsement.
+  ============================================================================
+-->
+
+<script>/* dependency-free: mark that JS is alive — without this class nothing is ever hidden */
+document.documentElement.className += ' js';</script>
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/hind-siliguri@5.0.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/hind-siliguri@5.0.0/600.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/hind-siliguri@5.0.0/700.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-bengali@5.0.0/index.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fontsource/noto-serif-bengali@5.0.0/700.css">
+
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+window.tailwind && (tailwind.config = {
+  theme: {
+    extend: {
+      fontFamily: {
+        sans: ['"Hind Siliguri"','system-ui','sans-serif'],
+        serif: ['"Noto Serif Bengali"','serif'],
+      },
+      colors: {
+        leaf: { 50:'#f2fbf6',100:'#e0f6e9',200:'#c2ecd4',300:'#92dcb4',400:'#5ac48d',500:'#33a96d',600:'#228a56',700:'#1c6e47',800:'#19583b',900:'#154832',950:'#0a281b' },
+        wheat:{ 50:'#fdf9ed',100:'#faf0d0',200:'#f4dfa0',300:'#edc96b',400:'#e6b244',500:'#dd9a28',600:'#c47c1f',700:'#a35d1c',800:'#854a1e',900:'#6e3d1c' },
+      },
+      boxShadow: {
+        card: '0 10px 30px -10px rgba(21,72,50,.16)',
+        lift: '0 24px 48px -16px rgba(21,72,50,.28)',
+      }
     }
-    .official-header h1 { font-size: 18px; }
-    .ticker-amount { font-size: 26px; }
   }
+});
+</script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.0"></script>
+<script src="https://unpkg.com/lucide@latest"></script>
+<script src="https://cdn.jsdelivr.net/npm/html-docx-js@0.3.1/dist/html-docx.js"></script>
 
-  @media print {
-    body { background: #ffffff; padding-bottom: 0; }
-    .container { box-shadow: none; max-width: 100%; margin: 0; }
-    .nav-bar, .toolbar-floating { display: none; }
+<style>
+  html{scroll-behavior:smooth}
+  @media (prefers-reduced-motion: reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}html{scroll-behavior:auto}}
+
+  .js .reveal{opacity:0;transform:translateY(24px);transition:opacity .65s ease,transform .65s ease}
+  .reveal.visible{opacity:1;transform:translateY(0)}
+
+  .gov-band{background:linear-gradient(90deg,#154832 0%,#1c6e47 45%,#a35d1c 100%)}
+  .doc-sheet{background:#fff;box-shadow:0 0 0 1px rgba(21,72,50,.08),0 24px 48px -20px rgba(21,72,50,.18)}
+  .stamp{border:3px double #a35d1c;color:#a35d1c;transform:rotate(-6deg)}
+  .decision-row.checked{background:#f2fbf6;border-color:#5ac48d}
+  .decision-row.checked .d-box{background:#1c6e47;border-color:#1c6e47;color:#fff}
+  .hl{background:linear-gradient(180deg,transparent 60%,#f4dfa0 60%)}
+
+  .flag-ribbon{background:linear-gradient(90deg,#154832 0%,#1c6e47 35%,#a35d1c 65%,#854a1e 100%)}
+  .marquee-track{display:flex;gap:3rem;width:max-content;animation:marq 32s linear infinite}
+  .marquee:hover .marquee-track{animation-play-state:paused}
+  @keyframes marq{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+  @media (prefers-reduced-motion: reduce){.marquee-track{animation:none;transform:none}}
+
+  .live-dot{position:relative;width:8px;height:8px;border-radius:9999px;background:#5ac48d;display:inline-block;flex-shrink:0}
+  .live-dot::after{content:'';position:absolute;inset:-4px;border-radius:9999px;border:2px solid #5ac48d;animation:ping 1.8s cubic-bezier(0,0,.2,1) infinite}
+  @keyframes ping{75%,100%{transform:scale(1.7);opacity:0}}
+
+  .dock{position:fixed;right:14px;bottom:18px;z-index:80;display:flex;flex-direction:column;gap:9px}
+  .dock-btn{position:relative;width:48px;height:48px;border-radius:15px;display:grid;place-items:center;background:#fff;border:1.5px solid #c2ecd4;color:#1c6e47;box-shadow:0 10px 24px -8px rgba(21,72,50,.35);transition:all .2s ease}
+  .dock-btn:hover{transform:translateY(-3px) scale(1.05);border-color:#1c6e47;background:#1c6e47;color:#fff}
+  .dock-btn:active{transform:scale(.94)}
+  .dock-btn .tip{position:absolute;right:58px;top:50%;transform:translateY(-50%);background:#154832;color:#fff;font-size:11px;font-weight:700;padding:5px 10px;border-radius:8px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .2s}
+  .dock-btn:hover .tip{opacity:1}
+  .dock-btn.tts-active{background:#a35d1c;border-color:#a35d1c;color:#fff;animation:pulseA 1.4s infinite}
+  @keyframes pulseA{0%,100%{box-shadow:0 0 0 0 rgba(163,93,28,.45)}50%{box-shadow:0 0 0 10px rgba(163,93,28,0)}}
+
+  .modal-back{position:fixed;inset:0;background:rgba(10,40,27,.55);backdrop-filter:blur(3px);z-index:90;display:none;align-items:center;justify-content:center;padding:1rem}
+  .modal-back.open{display:flex}
+  .modal-card{background:#fff;border-radius:1.5rem;max-width:580px;width:100%;max-height:82vh;overflow-y:auto;box-shadow:0 30px 60px -20px rgba(0,0,0,.4);animation:modalIn .3s ease}
+  @keyframes modalIn{from{opacity:0;transform:translateY(18px) scale(.97)}to{opacity:1;transform:none}}
+
+  .a4-sheet{max-width:210mm;margin:0 auto;background:#fff;border:1px solid #e2e8f0;box-shadow:0 20px 44px -18px rgba(21,72,50,.25);border-radius:14px;overflow:hidden}
+  .sig-line{height:44px;border-bottom:2px solid #cbd5e1;margin-bottom:6px}
+
+  #toast{position:fixed;left:50%;bottom:26px;transform:translateX(-50%) translateY(20px);background:#154832;color:#fff;font-size:13px;font-weight:700;padding:10px 18px;border-radius:14px;box-shadow:0 12px 30px -8px rgba(0,0,0,.4);opacity:0;pointer-events:none;transition:all .3s ease;z-index:95;max-width:90vw;text-align:center}
+  #toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+  @media print{
+    .no-print{display:none!important}
+    .reveal{opacity:1!important;transform:none!important}
+    body{background:#fff}
+    .doc-sheet{box-shadow:none;border:1px solid #ddd}
+    .a4-sheet{box-shadow:none;border:1px solid #bbb;border-radius:0;max-width:100%}
+    section{break-inside:avoid}
+    .print-break{break-before:page}
+    #onepager{break-before:page}
+    body.one-only main > section:not(#onepager),
+    body.one-only header, body.one-only footer, body.one-only .marquee,
+    body.one-only #modalChangelog, body.one-only #toast {display:none!important}
   }
 </style>
 </head>
-<body>
 
-<div class="container">
+<body class="bg-leaf-50/60 text-slate-800 antialiased">
 
-  <!-- OFFICIAL HEADER -->
-  <div class="official-header">
-    <div class="crest">কৃষি</div>
-    <div class="target-authority-badge">প্রস্তাবনাটি কাদের জন্য: কৃষি সম্প্রসারণ অধিদপ্তর · উদ্ভিদ সংরক্ষণ উইং · কৃষি মন্ত্রণালয়</div>
-    <h1>মন্ত্রীপর্যায় সিদ্ধান্ত প্যাকেজ (MINISTERIAL DECISION PACKAGE)</h1>
-    <h2>লেবেল থেকে জমিতে: বালাইনাশক মোড অব অ্যাকশন (MoA) কোড বাধ্যতামূলককরণ ও প্রতিরোধ ক্ষমতা ব্যবস্থাপনা রূপরেখা</h2>
-    
-    <div class="report-title-box">
-      <h3>বালাইনাশক আইন, ২০১৮-এর অধীনে অধীনস্থ বিধিমালা জারির মাধ্যমে বালাই প্রতিরোধ ক্ষমতা প্রতিরোধ ও কৃষি উৎপাদন রক্ষা</h3>
-      <p>প্রস্তুতকারী/উপস্থাপক: আবু মো. মনিরুজ্জামান, অতিরিক্ত উপপরিচালক (উদ্যান), কৃষি সম্প্রসারণ অধিদপ্তর, কুড়িগ্রাম</p>
-    </div>
-
-    <div class="header-meta">
-      <div><strong>স্মারক নম্বর:</strong> ডিএই/উদ্ভিদ/২০২৬/০৯-এমওএ</div>
-      <div><strong>তারিখ:</strong> সেপ্টেম্বর ২০২৬</div>
-      <div><strong>শ্রেণিবিভাগ:</strong> জরুরি নীতিনির্ধারণী সিদ্ধান্ত / ডিএই-এমওএ নির্দেশিকা</div>
-    </div>
+<noscript>
+  <div class="bg-wheat-100 border-b border-wheat-300 text-wheat-900 text-sm font-bold text-center px-4 py-3">
+    এই নথির ইন্টারঅ্যাক্টিভ ফিচারসমূহ (অ্যানালিটিক্স, TTS, ডাউনলোড, ভাষা পরিবর্তন) ব্যবহারের জন্য JavaScript সক্রিয় করুন। সম্পূর্ণ কনটেন্ট পড়তে কোনো বাধা নেই।
   </div>
+</noscript>
 
-  <!-- NAVIGATION BAR -->
-  <div class="nav-bar">
-    <a href="#memo" class="active">০১ নির্বাহী সিদ্ধান্ত প্রস্তাব</a>
-    <a href="#burden">০২ বিলম্বের অর্থনৈতিক ক্ষতি</a>
-    <a href="#paradox">০৩ মাঠপর্যায়ের বাস্তবতা</a>
-    <a href="#causes">০৪ কাঠামোগত দুর্বলতা</a>
-    <a href="#assets">০৫ বিদ্যমান আইনি ভিত্তি</a>
-    <a href="#regional">০৬ আন্তর্জাতিক দৃষ্টান্ত</a>
-    <a href="#architecture">০৭ ৪-স্তরীয় ব্যবস্থাপনা</a>
-    <a href="#roadmap">০৮ ১০০ দিনের রোডম্যাপ</a>
-    <a href="#coalition">০৯ অংশীজন কৌশল</a>
-    <a href="#scorecard">১০ মূল্যায়ন ও স্কোরকার্ড</a>
-    <a href="#signature">১১ কার্যনির্বাহী অনুমোদন</a>
-  </div>
+<div id="progressBar" class="no-print fixed top-0 left-0 h-1.5 bg-gradient-to-r from-leaf-600 to-wheat-400 z-[70]" style="width:0%"></div>
 
-  <div class="content">
-
-    <!-- MOVEMENT 1: DECISION MEMO -->
-    <section id="memo">
-      <div class="decision-memo">
-        <div class="stamp">মহাপরিচালক / শীর্ষ নীতিনির্ধারকের সিদ্ধান্তের জন্য</div>
-        
-        <div class="memo-header-grid">
-          <div><strong>প্রস্তাবনাটি কাদের জন্য:</strong> মহাপরিচালক, কৃষি সম্প্রসারণ অধিদপ্তর (DAE) এবং সচিব, কৃষি মন্ত্রণালয়</div>
-          <div><strong>প্রস্তুতকর্তা:</strong> আবু মো. মনিরুজ্জামান, অতিরিক্ত উপপরিচালক (উদ্যান), কৃষি সম্প্রসারণ অধিদপ্তর, কুড়িগ্রাম</div>
-          <div><strong>বিষয়:</strong> বালাইনাশক আইন ২০১৮-এর অধীনে IRAC/FRAC/HRAC MoA কোড ও ঘূর্ণায়মান (IRM) নির্দেশিকা বাধ্যতামূলককরণ</div>
-          <div><strong>আর্থিক সংস্থান:</strong> ৳ ০ (বিদ্যমান পরিচালন বাজেটের ভেতরে পুনর্বিন্যাসযোগ্য)</div>
-        </div>
-
-        <div class="memo-ask">
-          <strong>নির্বাহী সিদ্ধান্তের মূল দাবি (THE EXECUTIVE ASK):</strong> বালাইনাশক আইন, ২০১৮-এর ১৬(২) ধারার প্রদত্ত ক্ষমতাবলে কৃষি সম্প্রসারণ অধিদপ্তর এবং বালাইনাশক কারিগরি উপদেষ্টা কমিটির (PTAC) মাধ্যমে আগামী ৯০ দিনের মধ্যে বাজারে বাজারজাতকৃত সকল বাণিজ্যিক বালাইনাশকের লেবেলে সুনির্দিষ্ট কালো বাক্সে IRAC/FRAC/HRAC মোড অব অ্যাকশন (MoA) কোড, বালাই প্রতিরোধ ক্ষমতা সতর্কবার্তা এবং পর্যায়ক্রমিক ব্যবহার নির্দেশিকা বাধ্যতামূলক করার আদেশ জারি করা।
-        </div>
-
-        <div class="memo-directives">
-          <h4>প্রয়োজনীয় সুনির্দিষ্ট নির্বাহী নির্দেশনাবলী (অনুমোদনের জন্য টিক দিন):</h4>
-          
-          <label class="directive-checkbox">
-            <input type="checkbox" class="sync-dir" data-index="0" onchange="updateDirectives(this)">
-            <span><strong>নির্দেশনা ১:</strong> বালাইনাশক আইন ২০১৮-এর ১৬(২) ধারার অধীনে কৃষি সম্প্রসারণ অধিদপ্তর হতে পরিপত্র জারি করে সকল রিটেইল প্যাকেজিংয়ে দৃশ্যমান কালো বাক্সে IRAC/FRAC/HRAC কোড (`GROUP [CODE] [TYPE]`) মুদ্রণ বাধ্যতামূলক করা।</span>
-          </label>
-
-          <label class="directive-checkbox">
-            <input type="checkbox" class="sync-dir" data-index="1" onchange="updateDirectives(this)">
-            <span><strong>নির্দেশনা ২:</strong> বার্ক (BARC), বাড়ি (BARI), ব্রি (BRRI) ও কৃষি সম্প্রসারণ অধিদপ্তরের যৌথ টাস্কফোর্স গঠন করে ফসলভিত্তিক সহজ বাংলায় 'কীটপতঙ্গ প্রতিরোধ ক্ষমতা ব্যবস্থাপনা' (IRM) রোটেশন গাইডলাইন প্রকাশ করা।</span>
-          </label>
-
-          <label class="directive-checkbox">
-            <input type="checkbox" class="sync-dir" data-index="2" onchange="updateDirectives(this)">
-            <span><strong>নির্দেশনা ৩:</strong> বালাইনাশক নিবন্ধন ডাটাবেসে MoA শ্রেণিবিভাগ যুক্ত করা এবং মোবাইল অ্যাপ <i>AgriChem Guide</i>-এর সাথে সরাসরি বারকোড স্ক্যানিং ফিচার চালু করা।</span>
-          </label>
-
-          <label class="directive-checkbox">
-            <input type="checkbox" class="sync-dir" data-index="3" onchange="updateDirectives(this)">
-            <span><strong>নির্দেশনা ৪:</strong> প্ল্যান্টওয়াইজ প্লাস (PlantwisePlus) ফ্রেমওয়ার্কের অধীনে মাঠপর্যায়ের উপসহকারী কৃষি কর্মকর্তা (SAAO) ও পরিবেশকদের MoA রোটেশন ও লেবেল প্রয়োগ মনিটরিংয়ে প্রশিক্ষিত করা।</span>
-          </label>
-        </div>
-
-        <div class="memo-stats-grid">
-          <div class="memo-stat-card">
-            <div class="val">৳ ০</div>
-            <div class="lbl">নতুন অতিরিক্ত বাজেট</div>
-          </div>
-          <div class="memo-stat-card">
-            <div class="val">৪৯,০০০ মে.টন</div>
-            <div class="lbl">বার্ষিক স্প্রে ব্যবস্থাপনা লক্ষ্য</div>
-          </div>
-          <div class="memo-stat-card">
-            <div class="val">৳ ১,৫০০ কোটি</div>
-            <div class="lbl">বার্ষিক অপচয় রোধ সম্ভাবনা</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MOVEMENT 4: LIVE COST OF INACTION & BURDEN -->
-    <section id="burden">
-      <div class="section-title">
-        <div><span class="num">০২</span> বিলম্বের আর্থিক ও স্বাস্থ্যগত ঝুঁকি</div>
-      </div>
-
-      <div class="live-ticker-box">
-        <h3>অকার্যকর বালাইনাশক প্রয়োগ ও অপচয়ে রিয়েল-টাইম সঞ্চিত ক্ষতির পরিমাণ</h3>
-        <div class="ticker-amount" id="liveTicker">৳ 0.00</div>
-        <div class="ticker-desc">কীটপতঙ্গের অনিয়ন্ত্রিত প্রতিরোধ ক্ষমতা ও ফলন হানির ফলে বছরে প্রায় ১,৫০০ কোটি টাকার অপচয়ের ভিত্তিতে প্রস্তুতকৃত (প্রতি সেকেন্ডে প্রায় ৳ ৪৭৫.৬০)</div>
-      </div>
-
-      <div class="cost-grid">
-        <div class="cost-card">
-          <div class="num">২৫%</div>
-          <div class="lbl">৪৯,০০০ মে.টন বিষ ছিটানোর পরও পোকার আক্রমণে জাতীয় ফসল ক্ষতি</div>
-        </div>
-        <div class="cost-card">
-          <div class="num">২৯.২%</div>
-          <div class="lbl">সবজি নমুনায় পাওয়া অনাকাঙ্ক্ষিত রাসায়নিক অবশিষ্টাংশ</div>
-        </div>
-        <div class="cost-card">
-          <div class="num">৭৩%</div>
-          <div class="lbl">দূষিত নমুনার মধ্যে সর্বোচ্চ অবশিষ্টাংশ সীমা (MRL) অতিক্রমের হার</div>
-        </div>
-        <div class="cost-card">
-          <div class="num">HQ > ২৫৫</div>
-          <div class="lbl">কিশোরদের বেগুন খাওয়ার ক্ষেত্রে সাইপারমেথ্রিনের বিপদজনক সূচক</div>
-        </div>
-      </div>
-    </section>
-
-    <!-- MOVEMENT 2 & 3: HUMAN COST & THE PARADOX -->
-    <section id="paradox">
-      <div class="section-title">
-        <div><span class="num">০৩</span> মাঠপর্যায়ের বাস্তবতা ও তথ্যের অসমতা</div>
-      </div>
-
-      <p>বাংলাদেশে ৩৬৩টিরও বেশি অনুমোদিত সক্রিয় উপাদান এবং হাজার হাজার নিবন্ধিত বাণিজ্য নাম বা ব্র্যাণ্ড রয়েছে। কিন্তু দুর্ভাগ্যজনকভাবে, ভিন্ন ভিন্ন ব্র্যাণ্ড নামের অসংখ্য বালাইনাশকের ভেতরের কাজ করার পদ্ধতি বা মোড অব অ্যাকশন (MoA) হুবহু এক। বেগুন বা টমেটো চাষিরা একই মৌসুমে ১০-১৫ বার ভিন্ন ভিন্ন ব্র্যাণ্ড পরিবর্তন করে প্রকৃতপক্ষে একই গ্রুপের বিষ প্রয়োগ করছেন, যা দ্রুত পোকাদের প্রতিরোধ ক্ষমতা বাড়িয়ে দিচ্ছে এবং স্প্রে সম্পূর্ণরূপে ব্যর্থ করছে।</p>
-
-      <div class="testimonial-grid">
-        <div class="testimonial-card farmer">
-          <div class="testimonial-quote">
-            "ডিলারের পরামর্শে বেগুনের ডগা ও ফল ছিদ্রকারী পোকার জন্য প্রথমে 'ব্র্যাণ্ড ক', তারপর 'ব্র্যাণ্ড খ' আর শেষে 'ব্র্যাণ্ড গ' কিনে স্প্রে করেছি। কিন্তু বিষে পোকা মরে না! আমি জানতামই না যে তিনটা ব্র্যাণ্ডের ভেতরেই একই অর্গানোফসফেট বিষ ছিল। বোতলের গায়ে যদি স্পষ্ট 'গ্রুপ ১বি' লেখা থাকত, তবে আমি কষ্টার্জিত টাকা আর সময় নষ্ট করতাম না।"
-          </div>
-          <div class="testimonial-author">— আবুল হোসেন, <span>সবজি চাষি, যশোর</span></div>
-        </div>
-
-        <div class="testimonial-card officer">
-          <div class="testimonial-quote">
-            "কৃষকরা আমাদের কাছে এসে অভিযোগ করেন কেন বিষে কাজ হচ্ছে না। বোতল পরীক্ষা করে দেখি যে ভিন্ন ব্র্যাণ্ড মনে করে তারা পর পর চারবার পাইরেথ্রয়েড প্রয়োগ করেছেন। বোতলে স্পষ্ট MoA কোড থাকলে আমাদের উপসহকারী কৃষি কর্মকর্তারা (SAAO) এক নজর দেখিয়েই সঠিক রোটেশন পরামর্শ দিতে পারেন।"
-          </div>
-          <div class="testimonial-author">— মো. রফিকুল ইসলাম, উপসহকারী কৃষি কর্মকর্তা, <span>কুড়িগ্রাম</span></div>
-        </div>
-      </div>
-
-      <h4>জাতীয় বালাইনাশক নিবন্ধন ডাটাবেসে রাসায়নিক কেন্দ্রীভবন (তথ্য বৈষম্য):</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>MoA শ্রেণিবিভাগ গ্রুপ</th>
-            <th>লক্ষ্যমাত্রা প্রকার</th>
-            <th>নিবন্ধিত বাণিজ্যিক পণ্য</th>
-            <th>মাঠপর্যায়ে প্রতিরোধ ক্ষমতার ঝুঁকি</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>IRAC Group 1B (অর্গানোফসফেটস)</strong></td>
-            <td>কীটনাশক</td>
-            <td>৮৯০ টি ব্র্যাণ্ড</td>
-            <td>চরম সিলেকশন প্রেসার; কাণ্ড মাজরা পোকায় তীব্র প্রতিরোধ ক্ষমতা</td>
-          </tr>
-          <tr>
-            <td><strong>IRAC Group 3A (পাইরেথ্রয়েডস)</strong></td>
-            <td>কীটনাশক</td>
-            <td>৫৭৩ টি ব্র্যাণ্ড</td>
-            <td>সবজিতে অবশিষ্টাংশের ঝুঁকি (সাইপারমেথ্রিন HQ > ২৫৫)</td>
-          </tr>
-          <tr>
-            <td><strong>IRAC Group 1A (কার্বামেটস)</strong></td>
-            <td>কীটনাশক</td>
-            <td>৪৩৩ টি ব্র্যাণ্ড</td>
-            <td>উচ্চমাত্রার বিষাক্ততা; ব্র্যাণ্ড বিভ্রান্তিতে বারংবার প্রয়োগ</td>
-          </tr>
-          <tr>
-            <td><strong>FRAC Group M3 (মাল্টি-সাইট কন্টাক্ট)</strong></td>
-            <td>ছত্রাকনাশক</td>
-            <td>৪০৯ টি ব্র্যাণ্ড</td>
-            <td>রোটেশন ছাড়া ঢালাও প্রতিরক্ষামূলক স্প্রে</td>
-          </tr>
-          <tr>
-            <td><strong>FRAC Group 3 (DMI-ছত্রাকনাশক)</strong></td>
-            <td>ছত্রাকনাশক</td>
-            <td>২৭৭ টি ব্র্যাণ্ড</td>
-            <td>ধান ও সবজির ধসা রোগে দ্রুত অকার্যকারিতা</td>
-          </tr>
-          <tr>
-            <td><strong>HRAC Group K3 / B</strong></td>
-            <td>আগাছানাশক</td>
-            <td>৩৪৭ টি ব্র্যাণ্ড</td>
-            <td>সঘন ধান চাষে উদীয়মান আগাছা প্রতিরোধ ক্ষমতা</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- MOVEMENT 5: ROOT CAUSES -->
-    <section id="causes">
-      <div class="section-title">
-        <div><span class="num">০৪</span> বর্তমান ব্যবস্থার ৩টি মূল কাঠামোগত ত্রুটি</div>
-      </div>
-
-      <div class="cards-3-grid">
-        <div class="root-card">
-          <h4>১. বাণিজ্য নামভিত্তিক বিভ্রান্তি</h4>
-          <p>বাণিজ্যিক ব্র্যাণ্ডিং রাসায়নিক সত্যকে ঢেকে রাখে। শত শত ভিন্ন নাম বৈচিত্র্যের মিথ্যা আভাস তৈরি করে বাস্তবে ৮০% স্প্রে সাইকেলে পোকাকে একই জৈবনিক হুমকির মুখোমুখি করে।</p>
-        </div>
-        <div class="root-card">
-          <h4>২. লেবেলিং বিধিমালার আধুনিকায়নের অভাব</h4>
-          <p>বালাইনাশক আইন ২০১৮ কাগজে-কলমে শক্তিশালী হলেও, ১৬(২) ধারার অধীনস্থ লেবেলিং বিধিতে দৃশ্যমান আইকন বা MoA ভিত্তিক আবর্তন (Rotation) বাধ্যতামূলক করা হয়নি।</p>
-        </div>
-        <div class="root-card">
-          <h4>৩. গবেষণা ও প্রসার সংযোগে দূরত্ব</h4>
-          <p>গবেষণা প্রতিষ্ঠানের (BARI/BRRI) প্রতিরোধ ক্ষমতা সংক্রান্ত আবিষ্কারগুলো অ্যাকাডেমিক কাগজে আটকে থাকে, কারণ মাঠপর্যায়ে বারকোডযুক্ত ডিজিটাল সার্চ অ্যাপের অভাব রয়েছে।</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- MOVEMENT 6: ASSETS IN HAND -->
-    <section id="assets">
-      <div class="section-title">
-        <div><span class="num">০৫</span> প্রাতিষ্ঠানিক ও আইনি ভিত্তি (বিদ্যমান সক্ষমতা)</div>
-      </div>
-
-      <p>নতুন কোনো আইন পাশের প্রয়োজন নেই; কৃষি সম্প্রসারণ অধিদপ্তরের হাতে বিদ্যমান ৪টি আইনি ও প্রাতিষ্ঠানিক ভিত্তি ব্যবহার করেই এই সংস্কার তাৎক্ষণিকভাবে বাস্তবায়ন সম্ভব:</p>
-
-      <table>
-        <thead>
-          <tr>
-            <th>বিদ্যমান সম্পদ</th>
-            <th>বর্তমান প্রস্তুতি</th>
-            <th>সংস্কার বাস্তবায়নে আইনি/কার্যকরী ভূমিকা</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>বালাইনাশক আইন, ২০১৮ (ধারা ১৬)</strong></td>
-            <td>কার্যকর আইন</td>
-            <td>১৬(২) ধারা অনুযায়ী কোনো আইনি বিলম্ব ছাড়াই ডিজি পরিপত্রের মাধ্যমে লেবেল শর্ত নির্ধারণের পূর্ণ এখতিয়ার দেয়।</td>
-          </tr>
-          <tr>
-            <td><strong>বালাইনাশক কারিগরি উপদেষ্টা কমিটি (PTAC)</strong></td>
-            <td>২২-সদস্যের শীর্ষ কমিটি</td>
-            <td>বার্ক নির্বাহী চেয়ারম্যানের নেতৃত্বে পরিচালিত এই কমিটি অবিলম্বে MoA লেবেল প্রোটোকল অনুমোদন দিতে সক্ষম।</td>
-          </tr>
-          <tr>
-            <td><strong>প্ল্যান্টওয়াইজ প্লাস ও প্ল্যান্ট ডক্টর নেটওয়ার্ক</strong></td>
-            <td>৮০০ কৃষি সম্প্রসারণ কর্মকর্তা ও ৮,০০০ SAAO</td>
-            <td>মাঠপর্যায়ে সরাসরি MoA রোটেশন পরামর্শ ও রিটেইল লেবেল মনিটরিংয়ের জন্য প্রস্তুত জনবল।</td>
-          </tr>
-          <tr>
-            <td><strong>AgriChem Guide ও এফএও (FAO) সহযোগিতা</strong></td>
-            <td>ডিজিটাল প্ল্যাটফর্ম ও পলিসি সুপারিশ</td>
-            <td>এফএও কর্তৃক প্রস্তাবিত গাইডলাইন দ্রুত বাস্তবায়নে আন্তর্জাতিক মানদণ্ড প্রদান করে।</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- MOVEMENT 7: REGIONAL PROOF -->
-    <section id="regional">
-      <div class="section-title">
-        <div><span class="num">০৬</span> আন্তর্জাতিক ও আঞ্চলিক দৃষ্টান্ত</div>
-      </div>
-
-      <div class="cards-3-grid">
-        <div class="arch-card">
-          <h4>অস্ট্রেলিয়া (APVMA)</h4>
-          <p><strong>বাধ্যতামূলক গ্রুপ বক্স:</strong> মোড়কের সামনে স্পষ্ট কালো বক্সে `GROUP [X] INSECTICIDE` এবং সতর্কবার্তা: <i>"একই গ্রুপের বিষ ঘনঘন ব্যবহারে কার্যকারিতা কমে যায়।"</i></p>
-        </div>
-        <div class="arch-card">
-          <h4>ইউরোপীয় ইউনিয়ন / বেলজিয়াম</h4>
-          <p><strong>স্পষ্ট রোটেশন নির্দেশিকা:</strong> লেবেলে আইনি বাধ্যবাধকতা: <i>"প্রতিরোধ ক্ষমতা এড়াতে এই কীটনাশক প্রয়োগের পর অন্য গ্রুপের বালাইনাশক ব্যবহার করুন।"</i></p>
-        </div>
-        <div class="arch-card">
-          <h4>যুক্তরাষ্ট্র (EPA / FIFRA)</h4>
-          <p><strong>আইনসিদ্ধ FRAC/IRAC কোড:</strong> লেবেলে MoA কোড বাধ্যতামূলক এবং ট্যাঙ্ক-মিক্স অসামঞ্জস্যতা (Physical Incompatibility) এড়াতে 'জার টেস্ট' নির্দেশ প্রদান।</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- MOVEMENT 8: SYSTEM ARCHITECTURE -->
-    <section id="architecture">
-      <div class="section-title">
-        <div><span class="num">০৭</span> প্রস্তাবিত ৪-স্তরীয় সমন্বিত ব্যবস্থা</div>
-      </div>
-
-      <table>
-        <thead>
-          <tr>
-            <th>স্তর (Layer)</th>
-            <th>মূল উপাদান</th>
-            <th>কারিগরি ও প্রশাসনিক সুনির্দিষ্ট রূপরেখা</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td><strong>১. লেবেলিং স্তর</strong></td>
-            <td>বাধ্যতামূলক MoA বক্স ও রোটেশন নির্দেশ</td>
-            <td>মানসম্মত কালো বক্সে `GROUP [CODE] [TYPE]` এবং বেলজিয়াম স্টাইলের পর্যায়ক্রমিক ব্যবহার বার্তা মুদ্রণ।</td>
-          </tr>
-          <tr>
-            <td><strong>২. কারিগরি স্তর</strong></td>
-            <td>স্থানীয় IRM গাইডলাইন</td>
-            <td>বার্ক-বাড়ি-ব্রি-ডিএই যৌথ টাস্কফোর্স কর্তৃক ধান, বেগুন, টমেটো ও শসার জন্য সুনির্দিষ্ট স্প্রে উইন্ডো তৈরি।</td>
-          </tr>
-          <tr>
-            <td><strong>৩. ডিজিটাল স্তর</strong></td>
-            <td>AgriChem Guide মোবাইল স্ক্যান</td>
-            <td>বারকোড ভিত্তিক মোবাইল অ্যাপ্লিকেশন যেখানে স্ক্যান করলেই কেমিস্ট্রি, বিকল্প রোটেশন পার্টনার ও সতর্কতা দেখা যাবে।</td>
-          </tr>
-          <tr>
-            <td><strong>৪. সক্ষমতা স্তর</strong></td>
-            <td>SAAO ও ডিলার মনিটরিং</td>
-            <td>৮,৮০০ উপসহকারী কৃষি কর্মকর্তা (SAAO) কর্তৃক ডিলার দোকানে লেবেল যাচাই ও কৃষককে সচেতন করা।</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- MOVEMENT 9: ROADMAP -->
-    <section id="roadmap">
-      <div class="section-title">
-        <div><span class="num">০৮</span> ১০০ দিনের দ্রুত বাস্তবায়ন রোডম্যাপ</div>
-      </div>
-
-      <div class="timeline-100">
-        <h4 style="color:var(--gold); margin-bottom:12px;">ফেজ ০: প্রথম ১০০ দিন (জরুরি সমন্বিত পদক্ষেপ)</h4>
-        <div class="timeline-item">
-          <span class="timeline-day">১৫ দিন:</span> বালাইনাশক আইন ২০১৮-এর ১৬(২) ধারার অধীনে ডিএই কর্তৃক প্রাতিষ্ঠানিক গ্যাজেট/পরিপত্র জারি।
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-day">৪৫ দিন:</span> শীর্ষ ৫টি ফসলের (ধান, বেগুন, টমেটো, মরিচ, শসা) জন্য সহজ বাংলায় IRM গাইডলাইন প্রকাশ।
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-day">৭৫ দিন:</span> <i>AgriChem Guide</i> মোবাইল অ্যাপে মোড অব অ্যাকশন (MoA) বারকোড স্ক্যানার সক্রিয়করণ।
-        </div>
-        <div class="timeline-item">
-          <span class="timeline-day">১০০ দিন:</span> সারাদেশে রিটেইল দোকান অডিট এবং অ-সম্মতিযুক্ত পুরনো লেবেলের পুনঃআমদানি ও রিবোটলিং বন্ধকরণ।
-        </div>
-      </div>
-
-      <div class="phase-grid">
-        <div class="phase-card">
-          <h4>প্রথম পর্যায়: দেশব্যাপী পূর্ণ বাস্তবায়ন (১ম বছর)</h4>
-          <p>সকল নিবন্ধিত বাণিজ্য পণ্যের লেবেলে ১০০% MoA বক্স নিশ্চিতকরণ। ৮,০০০ SAAO এবং ১৫,০০০ লাইসেন্সপ্রাপ্ত ডিলারকে প্রশিক্ষণ দান।</p>
-        </div>
-        <div class="phase-card">
-          <h4>দ্বিতীয় পর্যায়: স্মার্ট কৃষি ও রপ্তানি অঞ্চল (২-৩ বছর)</h4>
-          <p>রপ্তানিমুখী অঞ্চলে অবশিষ্টাংশ পরীক্ষাগারের সাথে MoA মনিটরিং যুক্তকরণ। জৈব-বালাইনাশককে রোটেশনে অগ্রাধিকার প্রদান।</p>
-        </div>
-      </div>
-    </section>
-
-    <!-- MOVEMENT 10 & 11: COALITION & ECONOMICS -->
-    <section id="coalition">
-      <div class="section-title">
-        <div><span class="num">০৯</span> অংশীজন ব্যবস্থাপনা ও রাজনৈতিক কৌশল</div>
-      </div>
-
-      <h4>অংশীজন অবস্থান বিশ্লেষণ (Stakeholder Alignment):</h4>
-      <table class="coalition-table">
-        <thead>
-          <tr>
-            <th>অংশীজন গ্রুপ</th>
-            <th>মূল আগ্রহ / প্রতিক্রিয়া</th>
-            <th>কৌশলগত এনগেজমেন্ট ও সমাধান</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr class="champion">
-            <td><strong>সমর্থক (Champions)</strong></td>
-            <td>অগ্রগামী কৃষক, সবজি রপ্তানিকারক, FAO, CABI PlantwisePlus</td>
-            <td>প্রচারক হিসেবে নিযুক্তকরণ; খরচ হ্রাস ও নিরাপদ খাদ্য নিশ্চিতকরণ তুলে ধরা।</td>
-          </tr>
-          <tr class="opponent">
-            <td><strong>বাধা প্রদানকারী (Opponents)</strong></td>
-            <td>ব্র্যাণ্ড বিভ্রান্তিতে অভ্যস্ত কিছু জেনেরিক আমদানিকারক</td>
-            <td>নতুন লেবেল মুদ্রণে ৯০ দিনের ট্রানজিশন সময় প্রদান; পুনঃনিবন্ধনে MoA বাধ্যতামূলক করা।</td>
-          </tr>
-          <tr class="neutralizer">
-            <td><strong>নিরপেক্ষ/সহযোগী (Neutralizers)</strong></td>
-            <td>বালাইনাশক বিক্রেতা/ডিলার ও মাঠপর্যায়ের SAAO কর্মী</td>
-            <td>বিনামূল্যে MoA পোস্টার, ডিজিটাল অ্যাপ অ্যাক্সেস এবং সেরা ডিলারদের স্বীকৃতি প্রদান।</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- MOVEMENT 12 & 13: SCORECARD & ALIGNMENT -->
-    <section id="scorecard">
-      <div class="section-title">
-        <div><span class="num">১০</span> অর্থনৈতিক লাভ ও মনিটরিং স্কোরকার্ড</div>
-      </div>
-
-      <h4>অর্থনৈতিক বিনিয়োগের রিটার্ন (Cost-Benefit):</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>সূচক</th>
-            <th>সংস্কার পূর্ব অবস্থা</th>
-            <th>সংস্কার পরবর্তী লক্ষ্য (৩ বছর)</th>
-            <th>প্রত্যাশিত অর্থনৈতিক ও স্বাস্থ্যগত প্রভাব</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>বালাইনাশক অকার্যকারিতা</td>
-            <td>২৫% ফসলের ক্ষতি</td>
-            <td>&lt; ১০% ক্ষতির মাত্রা</td>
-            <td><strong>৳ ১,২০০–১,৫০০ কোটি টাকার ফসল রক্ষা</strong></td>
-          </tr>
-          <tr>
-            <td>সবজিতে ক্ষতিকর অবশিষ্টাংশ</td>
-            <td>২৯.২% নমুনায় বিষ (৭৩% MRL অতিক্রম)</td>
-            <td>&lt; ৫% নমুনায় অবশিষ্টাংশ</td>
-            <td>জনস্বাস্থ্য সুরক্ষা ও সবজি রপ্তানি বৃদ্ধি</td>
-          </tr>
-          <tr>
-            <td>কৃষকের স্প্রে নির্ভরতা</td>
-            <td>মৌসুমে ১০০-১৫০ বার স্প্রে (বেগুন)</td>
-            <td>৩৫-৪০ বার নিখুঁত রোটেশন স্প্রে</td>
-            <td><strong>কৃষকের বালাইনাশক খরচ ৬০% হ্রাস</strong></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <h4 style="margin-top:25px;">মনিটরিং, মূল্যায়ন ও শিক্ষা (MEL) স্কোরকার্ড:</h4>
-      <table>
-        <thead>
-          <tr>
-            <th>মূল কার্যকারিতা সূচক (KPI)</th>
-            <th>ভিত্তি (Baseline)</th>
-            <th>লক্ষ্য (১০০ দিন)</th>
-            <th>লক্ষ্য (১ বছর)</th>
-            <th>যাচাইয়ের মাধ্যম</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>MoA বক্সযুক্ত সঠিক বাজারজাত লেবেল</td>
-            <td>০%</td>
-            <td>৬০% নতুন ব্যাচ</td>
-            <td>১০৩% দেশব্যাপী</td>
-            <td>ডিএই মাঠপর্যায়ের অডিট রিপোর্ট</td>
-          </tr>
-          <tr>
-            <td>MoA বিষয়ে প্রশিক্ষিত SAAO</td>
-            <td>১৫%</td>
-            <td>৫০% (৪,০০০ জন)</td>
-            <td>১০০% (৮,০০০ জন)</td>
-            <td>প্ল্যান্টওয়াইজ প্লাস ট্রেনিং রেকর্ড</td>
-          </tr>
-          <tr>
-            <td>AgriChem Guide বারকোড স্ক্যান সংখ্যা</td>
-            <td>০</td>
-            <td>৫০,০০০ স্ক্যান</td>
-            <td>৫০০,০০০ স্ক্যান</td>
-            <td>সিস্টেম সার্ভার টেলিম্যাট্রি লগ</td>
-          </tr>
-        </tbody>
-      </table>
-    </section>
-
-    <!-- MOVEMENT 14 & 15: LEGACY & EXECUTIVE ACTION -->
-    <section id="legacy">
-      <div class="section-title">
-        <div><span class="num">১১</span> জাতীয় রূপকল্প ও দীর্ঘমেয়াদী অঙ্গীকার</div>
-      </div>
-
-      <div class="legacy-box">
-        <p>
-          আমাদের মাটির স্বাস্থ্য, খাদ্যের নিরাপত্তা এবং কোটি ক্ষুদ্র কৃষকের ঘামঝরা উপার্জনকে রক্ষা করা <strong>কৃষি সম্প্রসারণ অধিদপ্তরের</strong> সবচেয়ে পবিত্র দায়িত্ব।
-        </p>
-        <p style="margin-top:12px;">
-          অনিয়ন্ত্রিত বিষের ব্যবহার থেকে দেশের কৃষিকে মুক্ত করে বৈজ্ঞানিক 'মোড অব অ্যাকশন' (MoA) ভিত্তিক ব্যবস্থাপনায় উন্নীত করার মাধ্যমেই অর্জিত হবে টেকসই খাদ্য নিরাপত্তা ও কৃষকের প্রকৃত অর্থনৈতিক মুক্তি।
-        </p>
-        <p style="margin-top:12px; font-weight:bold; color:var(--bd-green-dark); font-style:normal;">
-          "করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ।" 🇧🇩
-        </p>
-      </div>
-    </section>
-
-    <!-- MOVEMENT 15: EXECUTIVE ACTION & SIGNATURE BLOCK -->
-    <section id="signature">
-      <div class="signature-container">
-        <div class="stamp-approval-overlay" id="approvalStamp">অনুমোদিত ও নির্দেশিত</div>
-
-        <h3>কৃষি সম্প্রসারণ অধিদপ্তর — নির্বাহী সিদ্ধান্ত ও অনুমোদন ফরম</h3>
-
-        <div class="approval-options">
-          <label class="approval-option">
-            <input type="radio" name="dg_decision" value="approved" onchange="checkApprovalState()">
-            <span>সকল প্রস্তাবিত নির্দেশনাবলী অনুমোদন করা হলো</span>
-          </label>
-          <label class="approval-option">
-            <input type="radio" name="dg_decision" value="modified" onchange="checkApprovalState()">
-            <span>আংশিক সংশোধনসহ অনুমোদন করা হলো</span>
-          </label>
-          <label class="approval-option">
-            <input type="radio" name="dg_decision" value="review" onchange="checkApprovalState()">
-            <span>পুনর্বিবেচনার জন্য ফেরৎ পাঠানো হলো</span>
-          </label>
-        </div>
-
-        <p style="font-size:13.5px; font-weight:bold; margin-bottom:12px; text-transform:uppercase;">অনুমোদিত নির্দেশনাসমূহ:</p>
-
-        <div class="memo-directives" style="margin-bottom:25px;">
-          <label class="directive-checkbox">
-            <input type="checkbox" class="sync-dir" data-index="0" onchange="updateDirectives(this)">
-            <span>১. বালাইনাশক আইন ২০১৮-এর ১৬(২) ধারা মতে MoA বক্স বাধ্যতামূলক করে পরিপত্র জারি।</span>
-          </label>
-          <label class="directive-checkbox">
-            <input type="checkbox" class="sync-dir" data-index="1" onchange="updateDirectives(this)">
-            <span>২. বার্ক-বাড়ি-ব্রি-ডিএই সমন্বিত টাস্কফোর্স গঠন ও সহজ বাংলা IRM গাইডলাইন অনুমোদন।</span>
-          </label>
-          <label class="directive-checkbox">
-            <input type="checkbox" class="sync-dir" data-index="2" onchange="updateDirectives(this)">
-            <span>৩. AgriChem Guide অ্যাপে MoA বারকোড ভিত্তিক রিয়েল-টাইম স্ক্যানার সংযোজন।</span>
-          </label>
-          <label class="directive-checkbox">
-            <input type="checkbox" class="sync-dir" data-index="3" onchange="updateDirectives(this)">
-            <span>৪. প্ল্যান্টওয়াইজ প্লাস কাঠামোর মাধ্যমে ৮,৮০০ SAAO ও ডিলারদের কার্যকর তদারকি নির্দেশ।</span>
-          </label>
-        </div>
-
-        <div class="sig-grid">
-          <div>
-            <div class="sig-line"></div>
-            <div class="sig-label">মহাপরিচালকের স্বাক্ষর, কৃষি সম্প্রসারণ অধিদপ্তর</div>
-          </div>
-          <div>
-            <div class="sig-line"></div>
-            <div class="sig-label">তারিখ ও সরকারি সীলাইট Seal</div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- FOOTER -->
-    <div class="doc-footer">
-      <p><strong>প্রস্তাবনাটি উপস্থাপিত কাদের জন্য: কৃষি সম্প্রসারণ অধিদপ্তর · উদ্ভিদ সংরক্ষণ উইং · কৃষি মন্ত্রণালয়</strong></p>
-      <p>প্রস্তুতকারী: আবু মো. মনিরুজ্জামান, অতিরিক্ত উপপরিচালক (উদ্যান), কৃষি সম্প্রসারণ অধিদপ্তর, কুড়িগ্রাম</p>
+<!-- ============ STICKY NAV ============ -->
+<header class="no-print fixed top-1.5 inset-x-0 z-[60] px-3 md:px-6">
+  <nav class="max-w-6xl mx-auto bg-white/90 backdrop-blur-md border border-leaf-100 rounded-2xl shadow-card px-4 py-2.5 flex items-center justify-between gap-3">
+    <a href="#top" class="flex items-center gap-2 shrink-0">
+      <span class="w-9 h-9 rounded-xl bg-leaf-700 text-white grid place-items-center font-serif font-bold text-sm">MoA</span>
+      <span class="hidden md:block leading-tight">
+        <span class="block text-sm font-bold text-leaf-900" data-en="Decision Package">সিদ্ধান্ত প্যাকেজ</span>
+        <span class="block text-[11px] text-slate-500" data-en="Section 16(2) Labelling Amendment">ধারা ১৬(২) লেবেলিং সংশোধনী</span>
+      </span>
+    </a>
+    <div class="hidden lg:flex items-center gap-1 text-sm font-semibold text-leaf-900 overflow-x-auto min-w-0">
+      <a class="nav-link px-3 py-1.5 rounded-full hover:bg-leaf-50 transition whitespace-nowrap" href="#sarsangkshep" data-en="Summary">সারসংক্ষেপ</a>
+      <a class="nav-link px-3 py-1.5 rounded-full hover:bg-leaf-50 transition whitespace-nowrap" href="#bikolpo" data-en="Options">বিকল্প</a>
+      <a class="nav-link px-3 py-1.5 rounded-full hover:bg-leaf-50 transition whitespace-nowrap" href="#jukti" data-en="Evidence">যুক্তি ও ডেটা</a>
+      <a class="nav-link px-3 py-1.5 rounded-full hover:bg-leaf-50 transition whitespace-nowrap" href="#aain" data-en="Legal Basis">আইন</a>
+      <a class="nav-link px-3 py-1.5 rounded-full hover:bg-leaf-50 transition whitespace-nowrap" href="#jatio" data-en="National Pledge">জাতীয় অঙ্গীকার</a>
+      <a class="nav-link px-3 py-1.5 rounded-full hover:bg-leaf-50 transition whitespace-nowrap" href="#roadmap" data-en="Roadmap">রোডম্যাপ</a>
+      <a class="nav-link px-3 py-1.5 rounded-full hover:bg-leaf-50 transition whitespace-nowrap" href="#jhuki" data-en="Risks">ঝুঁকি</a>
+      <a class="nav-link px-3 py-1.5 rounded-full hover:bg-leaf-50 transition whitespace-nowrap" href="#dash" data-en="Analytics">পরিসংখ্যান</a>
+      <a class="nav-link px-3 py-1.5 rounded-full hover:bg-leaf-50 transition whitespace-nowrap" href="#onepager" data-en="One-Pager">এক পাতা</a>
     </div>
+    <div class="flex items-center gap-2 shrink-0">
+      <button id="versionChip" type="button" class="inline-flex items-center gap-2 text-[11px] font-black px-3 py-2 rounded-xl bg-leaf-950 text-white hover:bg-leaf-800 transition" title="Changelog" aria-label="Version changelog">
+        <span class="live-dot"></span> LIVE · <span id="navVersion">v2.1.3</span>
+      </button>
+      <button onclick="window.print()" type="button" class="inline-flex items-center gap-1.5 text-sm font-semibold px-3 py-2 rounded-xl border border-leaf-200 text-leaf-800 hover:bg-leaf-50 transition" aria-label="Print">
+        <i data-lucide="printer" class="w-4 h-4"></i><span class="hidden xl:inline" data-en="Print">প্রিন্ট</span>
+      </button>
+      <a href="#anumodon" class="inline-flex items-center gap-1.5 text-sm font-bold px-4 py-2 rounded-xl bg-leaf-700 text-white hover:bg-leaf-800 shadow-md transition">
+        <i data-lucide="pen-line" class="w-4 h-4"></i><span class="hidden sm:inline" data-en="Approval">অনুমোদন</span>
+      </a>
+    </div>
+  </nav>
+</header>
 
+<main id="top">
+
+<!-- ============ NATIONAL TAGLINE RIBBON ============ -->
+<div class="marquee flag-ribbon text-white overflow-hidden pt-24 md:pt-28 -mb-10 md:-mb-12 no-print">
+  <div class="marquee-track py-2.5 text-sm font-bold whitespace-nowrap">
+    <span>🇧🇩 করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ।</span>
+    <span>· স্বনির্ভর বাংলাদেশ ২০৩০ · কৃষি মহাপরিকল্পনা ২০৫০ · জাতীয় কৃষিনীতি ২০১৮ · SDG ২ · ৩ · ১২ ·</span>
+    <span>🇧🇩 করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ।</span>
+    <span>· স্বনির্ভর বাংলাদেশ ২০৩০ · কৃষি মহাপরিকল্পনা ২০৫০ · জাতীয় কৃষিনীতি ২০১৮ · SDG ২ · ৩ · ১২ ·</span>
   </div>
 </div>
 
-<!-- FLOATING TOOLBAR -->
-<div class="toolbar-floating">
-  <button class="btn-tool" onclick="window.print()">🖨️ প্রিন্ট / পিডিএফে সেভ</button>
-  <button class="btn-tool" onclick="downloadWordDoc()">📄 ওওয়ার্ড ফাইলে এক্সপোর্ট (DOCX)</button>
+<!-- ============ COVER ============ -->
+<section class="pt-20 md:pt-24 pb-12">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="doc-sheet rounded-3xl overflow-hidden reveal">
+      <div class="gov-band h-2.5"></div>
+      <div class="p-8 md:p-12">
+        <div class="flex flex-col md:flex-row md:items-start gap-6">
+          <div class="flex-1">
+            <div class="flex items-center gap-3 mb-5">
+              <span class="w-14 h-14 rounded-2xl bg-leaf-700 text-white grid place-items-center font-serif font-bold text-xl shadow-md">🇧🇩</span>
+              <div>
+                <p class="font-serif font-bold text-lg text-leaf-950 leading-tight" data-en="People's Republic of Bangladesh">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
+                <p class="text-sm text-slate-600" data-en="Department of Agricultural Extension — Kurigram">কৃষি সম্প্রসারণ অধিদপ্তর — কুড়িগ্রাম</p>
+                <p class="text-[11px] text-slate-400">Department of Agricultural Extension, Kurigram</p>
+              </div>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2 mb-5">
+              <span class="inline-flex items-center gap-2 bg-wheat-50 border border-wheat-200 text-wheat-800 text-xs font-bold px-4 py-1.5 rounded-full">
+                <i data-lucide="scale" class="w-3.5 h-3.5"></i> <span data-en="Decision Package · September 2026">সিদ্ধান্ত প্যাকেজ · সেপ্টেম্বর ২০২৬</span>
+              </span>
+              <span class="no-print inline-flex items-center gap-1.5 bg-leaf-50 border border-leaf-200 text-leaf-800 text-xs font-bold px-3 py-1.5 rounded-full cursor-pointer" id="versionChip2" role="button" tabindex="0">
+                <span class="live-dot"></span> <span data-en="Document version">নথি সংস্করণ</span> <span id="chipVer">v2.1.3</span> · <span id="chipUpdated" data-en="updated today">আজ হালনাগাদ</span>
+              </span>
+            </div>
+
+            <h1 class="font-serif font-bold text-2xl md:text-4xl text-leaf-950 leading-snug" data-en="Mandatory Inclusion of &lt;span class='hl'&gt;IRAC/FRAC MoA Classification, Rotation Window &amp; Tank-Mix Compatibility&lt;/span&gt; Information on Pesticide Labels">
+              বালাইনাশক লেবেলে <span class="hl">IRAC/FRAC MoA শ্রেণি নম্বর, রোটেশন উইন্ডো ও মিশ্রণ-সামঞ্জস্যতা</span> তথ্য বাধ্যতামূলক অন্তর্ভুক্তি
+            </h1>
+            <p class="mt-3 text-sm md:text-base text-slate-500 font-semibold">
+              Decision Package for Mandatory Inclusion of IRAC/FRAC MoA Classification, Rotation Window &amp; Tank-Mix Compatibility on Pesticide Labels — under Section 16(2) labelling provision of the Pesticides Act, 2018
+            </p>
+
+            <div class="mt-6 grid sm:grid-cols-2 gap-3 text-sm">
+              <div class="bg-leaf-50 border border-leaf-100 rounded-xl px-4 py-3">
+                <p class="text-[11px] text-slate-500 font-bold" data-en="Memo No.">স্মারক নং</p>
+                <p class="font-semibold text-leaf-900">DAE/KRG/HORT/IRAC-2026/[]</p>
+              </div>
+              <div class="bg-leaf-50 border border-leaf-100 rounded-xl px-4 py-3">
+                <p class="text-[11px] text-slate-500 font-bold" data-en="Legal Basis">আইনি ভিত্তি</p>
+                <p class="font-semibold text-leaf-900" data-en="Section 16 · Amendment: Section 16(2) Labelling — no new law required">ধারা ১৬ · সংশোধনী: ধারা ১৬(২) লেবেলিং — নতুন আইন অপ্রয়োজনীয়</p>
+              </div>
+              <div class="bg-leaf-50 border border-leaf-100 rounded-xl px-4 py-3">
+                <p class="text-[11px] text-slate-500 font-bold" data-en="Recipient">প্রাপক</p>
+                <p class="font-semibold text-leaf-900" data-en="Deputy Director (Pesticide Administration & Quality Control), Plant Protection Wing, DAE, Khamarbari, Dhaka">উপপরিচালক (বালাইনাশক প্রশাসন ও মান নিয়ন্ত্রণ), উদ্ভিদ সংরক্ষণ উইং, ডিএই, খামারবাড়ি, ঢাকা</p>
+              </div>
+              <div class="bg-leaf-50 border border-leaf-100 rounded-xl px-4 py-3">
+                <p class="text-[11px] text-slate-500 font-bold" data-en="Through">মাধ্যম</p>
+                <p class="font-semibold text-leaf-900" data-en="Deputy Director, Department of Agricultural Extension, Kurigram">উপপরিচালক, কৃষি সম্প্রসারণ অধিদপ্তর, কুড়িগ্রাম</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="md:w-64 shrink-0 flex flex-col items-center gap-4">
+            <div class="stamp rounded-xl px-5 py-3 text-center bg-wheat-50/60">
+              <p class="text-[10px] font-black tracking-[0.2em]" data-en="PROPOSED">প্রস্তাবিত</p>
+              <p class="font-serif font-black text-lg" data-en="Decision Required">সিদ্ধান্ত প্রয়োজন</p>
+              <p class="text-[10px] font-bold">IRM · ধারা ১৬(২)</p>
+            </div>
+            <div class="w-full bg-white border border-slate-200 rounded-2xl p-5 text-center shadow-card">
+              <span class="w-16 h-16 mx-auto rounded-2xl bg-leaf-700 text-white font-serif font-black text-xl grid place-items-center" data-en="AM">আমি</span>
+              <p class="mt-3 font-serif font-bold text-leaf-950">আবু মোঃ মনিরুজ্জামান</p>
+              <p class="text-xs text-slate-500">Abu Md Moniruzjaman</p>
+              <p class="text-xs text-slate-600 mt-1" data-en="Additional Deputy Director (Horticulture)">অতিরিক্ত উপপরিচালক (উদ্যান)</p>
+              <p class="text-[11px] text-slate-400" data-en="DAE, Kurigram · 31st BCS (Agriculture) Cadre">ডিএই, কুড়িগ্রাম · ৩১তম বিসিএস (কৃষি)</p>
+              <div class="mt-3 pt-3 border-t border-dashed border-slate-200 text-[11px] text-slate-500 space-y-1">
+                <p>📱 ০১৭১২-৬৫৩৭৪০</p>
+                <p class="break-all">✉️ mithun.hstu@gmail.com</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 1. DECISION SUMMARY ============ -->
+<section id="sarsangkshep" class="py-12 md:py-16">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="doc-sheet rounded-3xl p-8 md:p-10 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-10 h-10 rounded-xl bg-leaf-700 text-white grid place-items-center font-serif font-bold">১</span>
+        <h2 class="font-serif font-bold text-2xl md:text-3xl text-leaf-950" data-en="Executive Decision Brief">সিদ্ধান্ত সারসংক্ষেপ · Executive Decision Brief</h2>
+      </div>
+
+      <div class="grid md:grid-cols-2 gap-6">
+        <div class="space-y-4 text-sm leading-relaxed">
+          <div class="flex gap-3">
+            <i data-lucide="target" class="w-5 h-5 text-leaf-700 shrink-0 mt-0.5"></i>
+            <p data-en="&lt;strong class='text-leaf-900'&gt;Decision sought:&lt;/strong&gt; Issue a directive amending the labelling rules under Section 16(2) of the Pesticides Act, 2018 to make IRAC/FRAC/HRAC MoA group number, rotation window and tank-mix compatibility information mandatory on the labels of all registered pesticides."><strong class="text-leaf-900">কী সিদ্ধান্ত চাওয়া হচ্ছে:</strong> বালাইনাশক আইন ২০১৮-এর ধারা ১৬(২)-এর লেবেলিং বিধি/নির্দেশিকা সংশোধন করে সকল নিবন্ধিত বালাইনাশকের লেবেলে IRAC/FRAC/HRAC MoA গ্রুপ নম্বর, রোটেশন উইন্ডো ও ট্যাংক-মিক্স সামঞ্জস্যতা তথ্য বাধ্যতামূলক করার নির্দেশনা জারি।</p>
+          </div>
+          <div class="flex gap-3">
+            <i data-lucide="clock-alert" class="w-5 h-5 text-wheat-600 shrink-0 mt-0.5"></i>
+            <p data-en="&lt;strong class='text-leaf-900'&gt;Why now:&lt;/strong&gt; Only 47 MoA groups host hundreds of products; up to 890 products share a single code. Resistance is accelerating — delay means risking the loss of effective chemistries."><strong class="text-leaf-900">কেন এখন:</strong> মাত্র ৪৭টি MoA গ্রুপে শত শত পণ্যের ভিড়; একই কোডে সর্বোচ্চ ৮৯০টি পণ্য নিবন্ধিত। প্রতিরোধক্ষমতা দ্রুত বাড়ছে — বিলম্ব মানে কার্যকর রাসায়নিক হারানোর ঝুঁকি।</p>
+          </div>
+          <div class="flex gap-3">
+            <i data-lucide="trending-down" class="w-5 h-5 text-red-500 shrink-0 mt-0.5"></i>
+            <p data-en="&lt;strong class='text-leaf-900'&gt;Cost of inaction:&lt;/strong&gt; Farmers' money will keep being wasted, resistance will accelerate, and the chemical-reduction targets of the National Agriculture Policy 2018 will be undermined."><strong class="text-leaf-900">সিদ্ধান্ত না নিলে:</strong> কৃষকের অর্থ অপচয় অব্যাহত থাকবে, প্রতিরোধক্ষমতা ত্বরান্বিত হবে, জাতীয় কৃষিনীতি ২০১৮-এর রাসায়নিক হ্রাস লক্ষ্যমাত্রা ব্যাহত হবে।</p>
+          </div>
+          <div class="flex gap-3">
+            <i data-lucide="file-badge" class="w-5 h-5 text-leaf-700 shrink-0 mt-0.5"></i>
+            <p data-en="&lt;strong class='text-leaf-900'&gt;Cost:&lt;/strong&gt; Negligible public expenditure — label printing cost is borne by manufacturers; existing legal framework and database can be used."><strong class="text-leaf-900">ব্যয়:</strong> সরকারি ব্যয় নগণ্য — লেবেল মুদ্রণ খরচ উৎপাদনকারী বহন করবে; বিদ্যমান আইনি কাঠামো ও ডেটাবেস ব্যবহারযোগ্য।</p>
+          </div>
+        </div>
+
+        <div class="bg-leaf-950 text-white rounded-2xl p-6 flex flex-col">
+          <p class="text-wheat-300 text-xs font-black tracking-[0.2em] mb-3" data-en="AT A GLANCE">এক নজরে সিদ্ধান্ত প্যাকেজ</p>
+          <ul class="space-y-3 text-sm">
+            <li class="flex items-start gap-2.5"><i data-lucide="check" class="w-4 h-4 text-wheat-300 mt-0.5 shrink-0"></i><span data-en="&lt;strong&gt;Legal path:&lt;/strong&gt; Section 16(2) — under the phrase “in the manner prescribed by rules”"><strong>আইনি পথ:</strong> ধারা ১৬(২) — “বিধি দ্বারা নির্ধারিত পদ্ধতিতে” বাক্যাংশের আওতায়</span></li>
+            <li class="flex items-start gap-2.5"><i data-lucide="check" class="w-4 h-4 text-wheat-300 mt-0.5 shrink-0"></i><span data-en="&lt;strong&gt;International support:&lt;/strong&gt; Already practiced in EU, USA, Australia and India"><strong>আন্তর্জাতিক সমর্থন:</strong> EU, USA, Australia ও ভারতে ইতিমধ্যে প্রচলিত</span></li>
+            <li class="flex items-start gap-2.5"><i data-lucide="check" class="w-4 h-4 text-wheat-300 mt-0.5 shrink-0"></i><span data-en="&lt;strong&gt;Enforcement:&lt;/strong&gt; Deadline + action under Section 29 for non-compliance"><strong>প্রয়োগ:</strong> সময়সীমা + অমান্যে ধারা ২৯ অনুযায়ী ব্যবস্থা</span></li>
+            <li class="flex items-start gap-2.5"><i data-lucide="check" class="w-4 h-4 text-wheat-300 mt-0.5 shrink-0"></i><span data-en="&lt;strong&gt;Coordination:&lt;/strong&gt; Technical subcommittee with BARC · BARI · BRRI · DAE"><strong>সমন্বয়:</strong> BARC · BARI · BRRI · DAE কারিগরি উপকমিটি</span></li>
+            <li class="flex items-start gap-2.5"><i data-lucide="check" class="w-4 h-4 text-wheat-300 mt-0.5 shrink-0"></i><span data-en="&lt;strong&gt;Digital:&lt;/strong&gt; Database integration with AgriChem Guide"><strong>ডিজিটাল:</strong> AgriChem Guide-এর সাথে ডেটাবেস সংযোগ</span></li>
+          </ul>
+          <div class="mt-auto pt-5 border-t border-white/10 text-xs text-leaf-200" data-en="Proposer: &lt;strong class='text-white'&gt;Abu Md Moniruzjaman&lt;/strong&gt;, Additional Deputy Director (Horticulture), DAE, Kurigram">
+            প্রস্তাবক: <strong class="text-white">আবু মোঃ মনিরুজ্জামান</strong>, অতিরিক্ত উপপরিচালক (উদ্যান), ডিএই, কুড়িগ্রাম
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 2. OPTIONS ANALYSIS ============ -->
+<section id="bikolpo" class="py-12 md:py-16 print-break">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="doc-sheet rounded-3xl p-8 md:p-10 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-10 h-10 rounded-xl bg-leaf-700 text-white grid place-items-center font-serif font-bold">২</span>
+        <h2 class="font-serif font-bold text-2xl md:text-3xl text-leaf-950" data-en="Options Analysis">বিকল্প বিশ্লেষণ · Options Analysis</h2>
+      </div>
+
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="rounded-2xl border-2 border-slate-200 bg-white p-6 hover:shadow-card transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-black text-slate-400 tracking-widest" data-en="OPTION A">বিকল্প ক</span>
+            <i data-lucide="ban" class="w-5 h-5 text-red-400"></i>
+          </div>
+          <h3 class="font-serif font-bold text-lg text-slate-800 mb-2" data-en="Do Nothing">কিছুই করা হবে না</h3>
+          <ul class="space-y-2 text-xs text-slate-500" data-en="&lt;li&gt;• Resistance will accelerate&lt;/li&gt;&lt;li&gt;• Farmers' money will keep being wasted&lt;/li&gt;&lt;li&gt;• Falling behind international harmonization&lt;/li&gt;">
+            <li>• প্রতিরোধক্ষমতা ত্বরান্বিত হবে</li>
+            <li>• কৃষকের অর্থ অপচয় চলবে</li>
+            <li>• আন্তর্জাতিক হারমোনাইজেশন থেকে পিছিয়ে পড়া</li>
+          </ul>
+          <p class="mt-4 text-[11px] font-bold text-red-500" data-en="Not Recommended ✕">সুপারিশকৃত নয় ✕</p>
+        </div>
+
+        <div class="rounded-2xl border-2 border-slate-200 bg-white p-6 hover:shadow-card transition">
+          <div class="flex items-center justify-between mb-3">
+            <span class="text-xs font-black text-slate-400 tracking-widest" data-en="OPTION B">বিকল্প খ</span>
+            <i data-lucide="megaphone" class="w-5 h-5 text-wheat-500"></i>
+          </div>
+          <h3 class="font-serif font-bold text-lg text-slate-800 mb-2" data-en="Voluntary Guideline">ঐচ্ছিক নির্দেশিকা</h3>
+          <ul class="space-y-2 text-xs text-slate-500" data-en="&lt;li&gt;• Awareness/advisory only — no obligation&lt;/li&gt;&lt;li&gt;• Industry participation uncertain&lt;/li&gt;&lt;li&gt;• Limited impact on market reality&lt;/li&gt;">
+            <li>• শুধু প্রচারণা/পরামর্শ — বাধ্যবাধকতা নেই</li>
+            <li>• শিল্প অংশগ্রহণ অনিশ্চিত</li>
+            <li>• বাজারের বাস্তবতায় প্রভাব সীমিত</li>
+          </ul>
+          <p class="mt-4 text-[11px] font-bold text-wheat-600" data-en="Partial — insufficient to meet the goal △">আংশিক — লক্ষ্য পূরণে অপর্যাপ্ত △</p>
+        </div>
+
+        <div class="rounded-2xl border-2 border-leaf-600 bg-leaf-50/70 p-6 shadow-lift relative">
+          <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-leaf-700 text-white text-[11px] font-black px-4 py-1 rounded-full shadow-md" data-en="RECOMMENDED ✓">সুপারিশকৃত ✓</span>
+          <div class="flex items-center justify-between mb-3 mt-2">
+            <span class="text-xs font-black text-leaf-600 tracking-widest" data-en="OPTION C">বিকল্প গ</span>
+            <i data-lucide="badge-check" class="w-5 h-5 text-leaf-700"></i>
+          </div>
+          <h3 class="font-serif font-bold text-lg text-leaf-950 mb-2" data-en="Section 16(2) Amendment — Mandatory MoA Labelling">ধারা ১৬(২) সংশোধনী — বাধ্যতামূলক MoA লেবেলিং</h3>
+          <ul class="space-y-2 text-xs text-slate-600" data-en="&lt;li&gt;• Enforceable under existing law — no new law needed&lt;/li&gt;&lt;li&gt;• Parity with best practices in EU/USA/Australia/India&lt;/li&gt;&lt;li&gt;• Measurable IRM outcomes and digital integration opportunity&lt;/li&gt;">
+            <li>• বিদ্যমান আইনেই প্রয়োগযোগ্য — নতুন আইন লাগবে না</li>
+            <li>• EU/USA/Australia/ভারতের সর্বোত্তম চর্চার সাথে সমতা</li>
+            <li>• পরিমাপযোগ্য IRM ফলাফল ও ডিজিটাল সংযোগের সুযোগ</li>
+          </ul>
+          <p class="mt-4 text-[11px] font-bold text-leaf-700" data-en="Highest benefit · Minimal cost ★">সর্বোচ্চ সুফল · ন্যূনতম ব্যয় ★</p>
+        </div>
+      </div>
+
+      <div class="mt-6 overflow-x-auto">
+        <table class="w-full text-sm border border-slate-200 rounded-xl overflow-hidden">
+          <thead class="bg-leaf-950 text-white">
+            <tr class="text-left">
+              <th class="px-4 py-3 font-semibold" data-en="Criterion">মানদণ্ড</th>
+              <th class="px-4 py-3 font-semibold" data-en="Do Nothing">কিছুই না</th>
+              <th class="px-4 py-3 font-semibold" data-en="Voluntary Guideline">ঐচ্ছিক নির্দেশিকা</th>
+              <th class="px-4 py-3 font-semibold bg-leaf-700" data-en="Mandatory MoA (Proposed)">MoA বাধ্যতামূলক (প্রস্তাবিত)</th>
+            </tr>
+          </thead>
+          <tbody class="divide-y divide-slate-100 bg-white">
+            <tr><td class="px-4 py-2.5 font-semibold text-slate-700" data-en="Resistance reduction">প্রতিরোধক্ষমতা হ্রাস</td><td class="px-4 py-2.5">✕</td><td class="px-4 py-2.5">△</td><td class="px-4 py-2.5 font-bold text-leaf-700">✓✓</td></tr>
+            <tr><td class="px-4 py-2.5 font-semibold text-slate-700" data-en="Legal basis">আইনি ভিত্তি</td><td class="px-4 py-2.5">—</td><td class="px-4 py-2.5">△</td><td class="px-4 py-2.5 font-bold text-leaf-700" data-en="Explicit under Section 16(2)">ধারা ১৬(২)-এ সুস্পষ্ট</td></tr>
+            <tr><td class="px-4 py-2.5 font-semibold text-slate-700" data-en="Implementation cost">বাস্তবায়ন ব্যয়</td><td class="px-4 py-2.5">—</td><td class="px-4 py-2.5" data-en="Low">কম</td><td class="px-4 py-2.5 font-bold text-leaf-700" data-en="Negligible (borne by industry)">নগণ্য (শিল্প বহন করবে)</td></tr>
+            <tr><td class="px-4 py-2.5 font-semibold text-slate-700" data-en="International parity">আন্তর্জাতিক সমতা</td><td class="px-4 py-2.5">✕</td><td class="px-4 py-2.5">△</td><td class="px-4 py-2.5 font-bold text-leaf-700" data-en="Codex/ASEAN aligned ✓">Codex/ASEAN সম্মত ✓</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 3. JUSTIFICATION & DATA ============ -->
+<section id="jukti" class="py-12 md:py-16">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="doc-sheet rounded-3xl p-8 md:p-10 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-10 h-10 rounded-xl bg-leaf-700 text-white grid place-items-center font-serif font-bold">৩</span>
+        <h2 class="font-serif font-bold text-2xl md:text-3xl text-leaf-950" data-en="Justification & Data-Driven Evidence">যুক্তি ও ডেটা-ভিত্তিক প্রমাণ</h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8 items-start">
+        <div>
+          <p class="text-sm text-slate-600 leading-relaxed mb-5" data-en="Hundreds of products are registered in Bangladesh's market — products with the same active ingredient or the same Mode of Action (MoA) are sold under different brand names. Farmers cannot tell that they are repeatedly using products from the same chemical group — the main driver of pesticide resistance.">
+            বাংলাদেশের বাজারে শত শত পণ্য নিবন্ধিত — একই সক্রিয় উপাদান বা একই ক্রিয়া-পদ্ধতির (MoA) পণ্য ভিন্ন ব্র্যান্ড নামে বিক্রি হচ্ছে। কৃষক জানতে পারছেন না যে তিনি একই রাসায়নিক গ্রুপের পণ্য বারবার ব্যবহার করছেন — যা কীটনাশক প্রতিরোধক্ষমতার প্রধান কারণ।
+          </p>
+
+          <div class="bg-wheat-50 border border-wheat-200 rounded-2xl p-5 mb-5">
+            <p class="text-xs font-black text-wheat-800 tracking-widest mb-2" data-en="REAL EXAMPLE · IRAC 3A">বাস্তব উদাহরণ · IRAC 3A</p>
+            <p class="text-sm text-slate-700 leading-relaxed" data-en="A farmer buys four differently-named products — &lt;strong&gt;Cypermethrin, Deltamethrin, Lambda-cyhalothrin and Permethrin&lt;/strong&gt; — believing he is rotating. But all four belong to the &lt;strong class='text-wheat-800'&gt;IRAC 3A&lt;/strong&gt; group — the same mode of action. Resistance grows, yet the farmer never realizes it.">
+              একজন কৃষক <strong>Cypermethrin, Deltamethrin, Lambda-cyhalothrin ও Permethrin</strong> — চারটি ভিন্ন নামের পণ্য কিনে মনে করছেন তিনি রোটেশন করছেন। কিন্তু সবগুলোই <strong class="text-wheat-800">IRAC 3A</strong> গ্রুপের পণ্য — একই ক্রিয়া-পদ্ধতি। ফলে প্রতিরোধক্ষমতা বাড়ছে, অথচ কৃষক বুঝতে পারছেন না।
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-leaf-50 border border-leaf-100 rounded-xl p-4 text-center">
+              <p class="font-serif font-black text-3xl text-leaf-800" data-count="890">৮৯০</p>
+              <p class="text-[11px] text-slate-500 mt-1" data-en="products under a single IRAC code (1B)">পণ্য একটি IRAC কোডে (1B)</p>
+            </div>
+            <div class="bg-leaf-50 border border-leaf-100 rounded-xl p-4 text-center">
+              <p class="font-serif font-black text-3xl text-leaf-800" data-count="573">৫৭৩</p>
+              <p class="text-[11px] text-slate-500 mt-1" data-en="products under IRAC 3A (pyrethroids)">পণ্য IRAC 3A-তে (পাইরেথ্রয়েড)</p>
+            </div>
+            <div class="bg-leaf-50 border border-leaf-100 rounded-xl p-4 text-center">
+              <p class="font-serif font-black text-3xl text-leaf-800" data-count="409">৪০৯</p>
+              <p class="text-[11px] text-slate-500 mt-1" data-en="fungicide products under FRAC M3">ছত্রাকনাশক পণ্য FRAC M3-এ</p>
+            </div>
+            <div class="bg-red-50 border border-red-100 rounded-xl p-4 text-center">
+              <p class="font-serif font-black text-3xl text-red-600" data-count="47">৪৭</p>
+              <p class="text-[11px] text-slate-500 mt-1" data-en="MoA groups only, in the whole database">মাত্র MoA গ্রুপ পুরো ডেটাবেসে</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-white rounded-2xl border border-slate-200 p-5 shadow-card">
+          <h3 class="font-bold text-leaf-900 text-sm mb-1" data-en="Registered products under the same MoA code">একই MoA কোডে নিবন্ধিত পণ্য</h3>
+          <p class="text-[11px] text-slate-400 mb-4" data-en="Source: Pesticide Field Guide Database — MoA_Groups, Products_Import">উৎস: Pesticide Field Guide Database — MoA_Groups, Products_Import</p>
+          <div class="h-72"><canvas id="moaChart" role="img" aria-label="MoA code chart"></canvas></div>
+          <noscript><p class="text-xs text-slate-500 mt-2">IRAC 1B — ৮৯০ · IRAC 3A — ৫৭৩ · IRAC 1A — ৪৩৩ · FRAC M3 — ৪০৯ · FRAC M1 — ২৯৫ · FRAC 3 — ২৭৭ · HRAC K3 — ২০৫ · HRAC B — ১৪২</p></noscript>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4. LEGAL BASIS ============ -->
+<section id="aain" class="py-12 md:py-16 print-break">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="doc-sheet rounded-3xl p-8 md:p-10 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-10 h-10 rounded-xl bg-leaf-700 text-white grid place-items-center font-serif font-bold">৪</span>
+        <h2 class="font-serif font-bold text-2xl md:text-3xl text-leaf-950" data-en="Legal Basis · Section 16, Pesticides Act 2018">আইনি ভিত্তি · ধারা ১৬, বালাইনাশক আইন ২০১৮</h2>
+      </div>
+
+      <div class="grid lg:grid-cols-2 gap-8">
+        <div>
+          <blockquote class="bg-leaf-50 border-l-4 border-leaf-600 rounded-r-2xl p-6 text-sm leading-relaxed text-slate-700" data-en="&lt;p&gt;“(1) No person shall sell, offer for sale, expose, advertise or store any pesticide for sale without attaching a tag or label to each container of the pesticide.&lt;/p&gt;&lt;p class='mt-3'&gt;(2) Each tag or label shall have the brand and other information of the pesticide printed in clear Bengali letters &lt;span class='hl font-bold'&gt;in the manner prescribed by rules&lt;/span&gt;.”&lt;/p&gt;&lt;footer class='mt-4 text-xs font-bold text-leaf-800'&gt;— Pesticides Act, 2018 · Section 16(1)–(2)&lt;/footer&gt;">
+            <p>“(১) কোনো ব্যক্তি বালাইনাশকের প্রতিটি কেইনের গায়ে ট্যাগ বা লেবেল সংযুক্তকরণ ব্যতীত বালাইনাশক বিক্রয় বা বিক্রয়ের জন্য প্রস্তাব, উন্মুক্তকরণ, বিজ্ঞাপন প্রদান বা বিক্রয়ের জন্য মজুত করতে পারিবেন না।</p>
+            <p class="mt-3">(২) প্রতিটি ট্যাগ বা লেবেল <span class="hl font-bold">বিধি দ্বারা নির্ধারিত পদ্ধতিতে</span> বালাইনাশকের ব্র্যান্ড ও অন্যান্য তথ্যাদি সুস্পষ্ট বাংলা অক্ষরে মুদ্রিত থাকিতে হইবে।”</p>
+            <footer class="mt-4 text-xs font-bold text-leaf-800">— বালাইনাশক আইন, ২০১৮ · ধারা ১৬(১)–(২)</footer>
+          </blockquote>
+
+          <div class="mt-5 bg-wheat-50 border border-wheat-200 rounded-2xl p-5">
+            <p class="text-sm text-slate-700 leading-relaxed" data-en="&lt;strong class='text-wheat-800'&gt;Analysis:&lt;/strong&gt; The phrase “in the manner prescribed by rules” means that by amending the labelling rules/directives under Section 16(2), IRAC/FRAC MoA numbers can be made mandatory on labels — &lt;strong&gt;without any new law&lt;/strong&gt;. A provision for legal action under Section 29 will be kept for non-compliance.">
+              <strong class="text-wheat-800">বিশ্লেষণ:</strong> “বিধি দ্বারা নির্ধারিত পদ্ধতিতে” বাক্যাংশটির অর্থ — ধারা ১৬(২)-এর লেবেলিং বিধি/নির্দেশিকা সংশোধন করেই লেবেলে IRAC/FRAC MoA নম্বর অন্তর্ভুক্তি বাধ্যতামূলক করা যাবে, <strong>নতুন কোনো আইন ছাড়াই</strong>। লঙ্ঘনে ধারা ২৯ অনুযায়ী আইনানুগ ব্যবস্থা গ্রহণের বিধান রাখা হবে।
+            </p>
+          </div>
+        </div>
+
+        <div>
+          <p class="text-xs font-black tracking-widest text-slate-400 mb-3" data-en="INTERNATIONAL PRECEDENTS">আন্তর্জাতিক দৃষ্টান্ত · একই পথে হাঁটা দেশ</p>
+          <div class="grid grid-cols-2 gap-3">
+            <div class="bg-white border border-slate-200 rounded-2xl p-4 hover:shadow-card transition"><p class="text-2xl">🇪🇺</p><p class="font-bold text-sm text-leaf-950 mt-1" data-en="European Union">ইউরোপীয় ইউনিয়ন</p><p class="text-[11px] text-slate-500" data-en="MoA code mandatory via amended rules">বিধিমালা সংশোধনে MoA কোড বাধ্যতামূলক</p></div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-4 hover:shadow-card transition"><p class="text-2xl">🇺🇸</p><p class="font-bold text-sm text-leaf-950 mt-1" data-en="United States">যুক্তরাষ্ট্র</p><p class="text-[11px] text-slate-500" data-en="FRAC code on labels">লেবেলে FRAC কোড প্রচলিত</p></div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-4 hover:shadow-card transition"><p class="text-2xl">🇦🇺</p><p class="font-bold text-sm text-leaf-950 mt-1" data-en="Australia">অস্ট্রেলিয়া</p><p class="text-[11px] text-slate-500" data-en="APVMA GROUP-code format">APVMA GROUP-কোড ফরম্যাট</p></div>
+            <div class="bg-white border border-slate-200 rounded-2xl p-4 hover:shadow-card transition"><p class="text-2xl">🇮🇳</p><p class="font-bold text-sm text-leaf-950 mt-1" data-en="India">ভারত</p><p class="text-[11px] text-slate-500" data-en="MoA number in labelling rules">লেবেলিং বিধিতে MoA নম্বর</p></div>
+          </div>
+
+          <div class="mt-5 rounded-2xl bg-white border border-slate-200 p-5">
+            <p class="text-xs font-black tracking-widest text-slate-400 mb-3" data-en="PROPOSED LABEL ADDITION · SAMPLE">প্রস্তাবিত লেবেল সংযোজন · নমুনা</p>
+            <div class="rounded-xl border-2 border-slate-900 overflow-hidden max-w-xs mx-auto">
+              <div class="bg-leaf-700 text-white text-center py-1.5 text-xs font-bold" data-en="INSECTICIDE · কীটনাশক">কীটনাশক · INSECTICIDE</div>
+              <div class="p-4 space-y-2.5">
+                <div class="border-2 border-slate-900 rounded-md text-center py-2 bg-wheat-50">
+                  <p class="font-serif font-black text-lg text-slate-900">IRAC · GROUP 3A</p>
+                  <p class="text-[10px] font-bold text-leaf-700" data-en="Mode-of-Action group number">ক্রিয়া-পদ্ধতির শ্রেণি নম্বর</p>
+                </div>
+                <div class="flex gap-2 text-[11px]">
+                  <span class="flex-1 bg-leaf-50 border border-leaf-200 rounded-md px-2 py-1.5" data-en="&lt;strong&gt;Rotation:&lt;/strong&gt; same group max 2 times"><strong>রোটেশন:</strong> একই গ্রুপ সর্বোচ্চ ২ বার</span>
+                  <span class="flex-1 bg-wheat-50 border border-wheat-200 rounded-md px-2 py-1.5" data-en="&lt;strong&gt;Mix:&lt;/strong&gt; not with OP products"><strong>মিশ্রণ:</strong> OP-র সাথে নয়</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 4B. NATIONAL LEGACY & INITIATIVES ============ -->
+<section id="jatio" class="py-12 md:py-16">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="doc-sheet rounded-3xl overflow-hidden reveal">
+      <div class="flag-ribbon px-8 md:px-10 py-8 text-white text-center relative">
+        <p class="text-3xl mb-2">🇧🇩</p>
+        <h2 class="font-serif font-black text-2xl md:text-3xl leading-snug" data-en="“We shall work, we shall build the nation; Bangladesh first of all.”">“করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ।”</h2>
+        <p class="mt-2 text-sm text-leaf-100" data-en="National Pledge · Legacy & Alignment with Implementation Initiatives">জাতীয় অঙ্গীকার · উত্তরাধিকার ও বাস্তবায়ন উদ্যোগের সাথে সংশ্লিষ্টতা</p>
+      </div>
+
+      <div class="p-8 md:p-10">
+        <div class="grid md:grid-cols-2 gap-6 mb-10">
+          <div class="bg-leaf-50/70 border border-leaf-100 rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <i data-lucide="flag" class="w-5 h-5 text-leaf-700"></i>
+              <h3 class="font-serif font-bold text-lg text-leaf-950" data-en="Legacy of Nationalism & National Inspiration">জাতীয়তাবাদের উত্তরাধিকার ও প্রেরণা</h3>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed" data-en="Inspired by the ideals of &lt;strong&gt;Shaheed President Ziaur Rahman&lt;/strong&gt;, the father of Bangladeshi nationalism; answering the call of &lt;strong&gt;“Save the nation, save the people”&lt;/strong&gt; from &lt;strong&gt;Shaheed Deshnetri Begum Khaleda Zia&lt;/strong&gt;, the pioneer of farmer and women's empowerment in Bangladesh; and driven by the &lt;strong&gt;“Bangladesh before vegetables”&lt;/strong&gt; pledge of the current statesman and pride of the youth, &lt;strong&gt;Tarique Rahman&lt;/strong&gt; — this proposal is a national duty for the farmer, agriculture and food security. All label instructions will remain in &lt;strong&gt;clear Bengali&lt;/strong&gt; while harmonizing with international standards — protecting the farmer, the mother tongue and the nation's food security together.">
+              বাংলাদেশি জাতীয়তাবাদের জনক <strong>শহীদ রাষ্ট্রপতি জিয়াউর রহমান</strong>-এর আদর্শে অনুপ্রাণিত হয়ে; বাংলাদেশের কৃষক ও নারী ক্ষমতায়নের অগ্রদূত <strong>শহীদ দেশনেত্রী বেগম খালেদা জিয়া</strong>-র <strong>“দেশ বাঁচাও মানুষ বাঁচাও”</strong> ডাকে সাড়া দিয়ে; এবং বর্তমান রাষ্ট্রনায়ক, তারুণ্যের অহংকার <strong>তারেক রহমান</strong>-এর <strong>“সবজির আগে বাংলাদেশ”</strong> অঙ্গীকারে উদ্বুদ্ধ হয়ে — এই প্রস্তাবনা দেশের কৃষক, কৃষি ও খাদ্য নিরাপত্তার পক্ষে একটি জাতীয় দায়িত্ব পালনের লক্ষ্যে উপস্থাপিত। লেবেলের সকল নির্দেশনা থাকবে <strong>সুস্পষ্ট বাংলায়</strong>, অথচ আন্তর্জাতিক মানের সাথে সামঞ্জস্যপূর্ণ — কৃষক, মাতৃভাষা ও জাতির খাদ্য নিরাপত্তা একসাথে সুরক্ষিত হবে।
+            </p>
+          </div>
+          <div class="bg-wheat-50/70 border border-wheat-100 rounded-2xl p-6">
+            <div class="flex items-center gap-3 mb-3">
+              <i data-lucide="heart-handshake" class="w-5 h-5 text-wheat-700"></i>
+              <h3 class="font-serif font-bold text-lg text-leaf-950" data-en="“Save the Nation, Save the People” — Pledge of Safe Food">“দেশ বাঁচাও মানুষ বাঁচাও” — নিরাপদ খাদ্যের অঙ্গীকার</h3>
+            </div>
+            <p class="text-sm text-slate-600 leading-relaxed" data-en="Every farmer, every child at the dining table deserves safe food. Reducing wrong pesticide applications through MoA-based rotation directly supports the implementation of the &lt;strong&gt;Safe Food Act 2013&lt;/strong&gt; and the government's pesticide-residue reduction commitment — this proposal is a patriotic responsibility for safe food.">
+              প্রতিটি কৃষক, প্রতিটি শিশুর থালায় নিরাপদ খাদ্য প্রাপ্য। ভুল বালাইনাশক প্রয়োগ কমানো মানেই <strong>নিরাপদ খাদ্য আইন ২০১৩</strong> ও সরকারের অবশিষ্টাংশ হ্রাস অঙ্গীকার বাস্তবায়ন — এই প্রস্তাব নিরাপদ খাদ্যের পক্ষে একটি দেশপ্রেমিক দায়িত্ব পালন।
+            </p>
+          </div>
+        </div>
+
+        <h3 class="font-serif font-bold text-xl text-leaf-950 mb-5 flex items-center gap-2">
+          <i data-lucide="map" class="w-5 h-5 text-leaf-700"></i>
+          <span data-en="Prime Minister's Plan & National Initiatives — Mapping with This Proposal">প্রধানমন্ত্রীর পরিকল্পনা ও জাতীয় উদ্যোগ — এই প্রস্তাবের সাথে ম্যাপিং</span>
+        </h3>
+
+        <div class="grid md:grid-cols-2 gap-4 mb-8">
+          <div class="flex items-center gap-4 bg-white border border-leaf-100 rounded-2xl p-4 hover:shadow-card transition">
+            <span class="w-11 h-11 shrink-0 rounded-xl bg-leaf-100 grid place-items-center text-xl">🌾</span>
+            <div>
+              <p class="font-bold text-sm text-leaf-950" data-en="Self-Reliant Bangladesh 2030 — Agricultural Self-Reliance">স্বনির্ভর বাংলাদেশ ২০৩০ — কৃষিতে স্বনির্ভরতা</p>
+              <p class="text-xs text-slate-500" data-en="Linked to Step D: MoA database + digital tool integration">সংশ্লিষ্ট পদক্ষেপ ঘ: MoA ডেটাবেস + ডিজিটাল টুল সংযোগ</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 bg-white border border-leaf-100 rounded-2xl p-4 hover:shadow-card transition">
+            <span class="w-11 h-11 shrink-0 rounded-xl bg-sky-100 grid place-items-center text-xl">🌱</span>
+            <div>
+              <p class="font-bold text-sm text-leaf-950" data-en="Agriculture Grand Plan 2050 — Long-term Agricultural Vision">কৃষি মহাপরিকল্পনা ২০৫০ — দীর্ঘমেয়াদি কৃষি রূপকল্প</p>
+              <p class="text-xs text-slate-500" data-en="Linked to Step C: Climate-crop adapted rotation guidelines">সংশ্লিষ্ট পদক্ষেপ গ: আবহাওয়া-ফসল উপযোগী রোটেশন গাইডলাইন</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 bg-white border border-leaf-100 rounded-2xl p-4 hover:shadow-card transition">
+            <span class="w-11 h-11 shrink-0 rounded-xl bg-wheat-100 grid place-items-center text-xl">🏡</span>
+            <div>
+              <p class="font-bold text-sm text-leaf-950" data-en="One House One Farm & Block Farming Programme">এক বাড়ি এক খামার ও ব্লক খামার কর্মসূচি</p>
+              <p class="text-xs text-slate-500" data-en="Linked to Steps C–D: Guideline dissemination to farmer level">সংশ্লিষ্ট পদক্ষেপ গ–ঘ: গাইডলাইন কৃষক পর্যায়ে পৌঁছানো</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 bg-white border border-leaf-100 rounded-2xl p-4 hover:shadow-card transition">
+            <span class="w-11 h-11 shrink-0 rounded-xl bg-red-100 grid place-items-center text-xl">🍚</span>
+            <div>
+              <p class="font-bold text-sm text-leaf-950" data-en="Agricultural Incentives, Farmer Cards & Input Subsidies">কৃষি প্রণোদনা, কৃষক কার্ড ও উপকরণ ভর্তুকি</p>
+              <p class="text-xs text-slate-500" data-en="Linked to Step B: Compliance in subsidized input distribution">সংশ্লিষ্ট পদক্ষেপ খ: ভর্তুকি উপকরণ বিতরণে সম্মতি নিশ্চিতকরণ</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 bg-white border border-leaf-100 rounded-2xl p-4 hover:shadow-card transition">
+            <span class="w-11 h-11 shrink-0 rounded-xl bg-leaf-100 grid place-items-center text-xl">📞</span>
+            <div>
+              <p class="font-bold text-sm text-leaf-950" data-en="Digital Agricultural Information Service (AIS / AgriCall)">ডিজিটাল কৃষি তথ্য সেবা (এআইএস / কৃষি কল সেন্টার)</p>
+              <p class="text-xs text-slate-500" data-en="Linked to Step D: Real-time IRM advice via AgriChem Guide">সংশ্লিষ্ট পদক্ষেপ ঘ: AgriChem Guide-এ রিয়েল-টাইম IRM পরামর্শ</p>
+            </div>
+          </div>
+          <div class="flex items-center gap-4 bg-white border border-leaf-100 rounded-2xl p-4 hover:shadow-card transition">
+            <span class="w-11 h-11 shrink-0 rounded-xl bg-sky-100 grid place-items-center text-xl">🎓</span>
+            <div>
+              <p class="font-bold text-sm text-leaf-950" data-en="Farmer Training & SAAO Extension Expansion">কৃষক প্রশিক্ষণ ও SAAO সম্প্রসারণ কার্যক্রম</p>
+              <p class="text-xs text-slate-500" data-en="Linked to Steps A–C: MoA-based training curriculum">সংশ্লিষ্ট পদক্ষেপ ক–গ: MoA-ভিত্তিক প্রশিক্ষণ পাঠ্যসূচি</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="bg-leaf-950 text-white rounded-2xl p-6 text-center">
+          <p class="font-serif font-bold text-lg md:text-xl" data-en="“Sustainable agriculture, farmer welfare and food security — this proposal stands with the nation's pledge.”">“টেকসই কৃষি, কৃষকের কল্যাণ ও খাদ্য নিরাপত্তা — জাতির অঙ্গীকারের সাথেই দাঁড়িয়ে আছে এই প্রস্তাব।”</p>
+          <p class="mt-2 text-wheat-300 font-black text-sm tracking-wide">করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 5. BENEFITS ============ -->
+<section class="py-12 md:py-16">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="doc-sheet rounded-3xl p-8 md:p-10 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-10 h-10 rounded-xl bg-leaf-700 text-white grid place-items-center font-serif font-bold">৫</span>
+        <h2 class="font-serif font-bold text-2xl md:text-3xl text-leaf-950" data-en="Benefit Analysis · Impact at Three Levels">সুফল বিশ্লেষণ · তিন স্তরে প্রভাব</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="rounded-2xl border border-leaf-100 bg-white p-6 hover:shadow-card transition">
+          <div class="w-12 h-12 rounded-xl bg-leaf-100 grid place-items-center mb-4"><i data-lucide="sprout" class="w-6 h-6 text-leaf-700"></i></div>
+          <h3 class="font-serif font-bold text-lg text-leaf-950 mb-3" data-en="Benefits for Farmers">কৃষকের লাভ</h3>
+          <ul class="space-y-2 text-sm text-slate-600" data-en="&lt;li&gt;✓ One code reveals the right rotation&lt;/li&gt;&lt;li&gt;✓ Stops wasting money on same-group products&lt;/li&gt;&lt;li&gt;✓ Understands why an application failed&lt;/li&gt;&lt;li&gt;✓ Fewer tank-mix errors, less crop damage&lt;/li&gt;">
+            <li>✓ একটি কোড দেখেই সঠিক রোটেশন নির্ধারণ</li>
+            <li>✓ একই গ্রুপের পণ্য কিনে অর্থ অপচয় বন্ধ</li>
+            <li>✓ প্রয়োগ কার্যকর না হওয়ার কারণ বোঝা</li>
+            <li>✓ ট্যাংক-মিক্স ভুল কমে ফসলের ক্ষতি হ্রাস</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-leaf-100 bg-white p-6 hover:shadow-card transition">
+          <div class="w-12 h-12 rounded-xl bg-wheat-100 grid place-items-center mb-4"><i data-lucide="store" class="w-6 h-6 text-wheat-700"></i></div>
+          <h3 class="font-serif font-bold text-lg text-leaf-950 mb-3" data-en="Benefits for Sellers & Extension Workers">বিক্রেতা ও সম্প্রসারণ কর্মীর লাভ</h3>
+          <ul class="space-y-2 text-sm text-slate-600" data-en="&lt;li&gt;✓ A scientific tool for giving advice&lt;/li&gt;&lt;li&gt;✓ Easier IRM implementation for SAAO/UAS workers&lt;/li&gt;&lt;li&gt;✓ Easy to propose products from different groups&lt;/li&gt;&lt;li&gt;✓ Better alignment with DAE/CABI protocols&lt;/li&gt;">
+            <li>✓ বৈজ্ঞানিক ভিত্তিতে পরামর্শ দেওয়ার হাতিয়ার</li>
+            <li>✓ SAAO/UAS কর্মীদের সহজ IRM বাস্তবায়ন</li>
+            <li>✓ ভিন্ন গ্রুপের পণ্য প্রস্তাব করা সহজ</li>
+            <li>✓ DAE/CABI প্রোটোকলের সাথে সঙ্গতি</li>
+          </ul>
+        </div>
+        <div class="rounded-2xl border border-leaf-100 bg-white p-6 hover:shadow-card transition">
+          <div class="w-12 h-12 rounded-xl bg-sky-100 grid place-items-center mb-4"><i data-lucide="landmark" class="w-6 h-6 text-sky-700"></i></div>
+          <h3 class="font-serif font-bold text-lg text-leaf-950 mb-3" data-en="Benefits for Regulators">নিয়ন্ত্রণ সংস্থার লাভ</h3>
+          <ul class="space-y-2 text-sm text-slate-600" data-en="&lt;li&gt;✓ Parity with Codex and ASEAN label harmonization&lt;/li&gt;&lt;li&gt;✓ Easier control of duplicate registrations of the same MoA&lt;/li&gt;&lt;li&gt;✓ Scientific basis for resistance monitoring&lt;/li&gt;&lt;li&gt;✓ Supports chemical-reduction targets of National Agriculture Policy 2018&lt;/li&gt;">
+            <li>✓ Codex ও ASEAN লেবেল হারমোনাইজেশনের সমতা</li>
+            <li>✓ একই MoA-এর অতিরিক্ত নিবন্ধন নিয়ন্ত্রণ সহজ</li>
+            <li>✓ প্রতিরোধক্ষমতা পর্যবেক্ষণে বৈজ্ঞানিক ভিত্তি</li>
+            <li>✓ জাতীয় কৃষিনীতি ২০১৮-এর রাসায়নিক হ্রাস লক্ষ্যে সহায়ক</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 6. ROADMAP ============ -->
+<section id="roadmap" class="py-12 md:py-16 print-break">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="doc-sheet rounded-3xl p-8 md:p-10 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-10 h-10 rounded-xl bg-leaf-700 text-white grid place-items-center font-serif font-bold">৬</span>
+        <h2 class="font-serif font-bold text-2xl md:text-3xl text-leaf-950" data-en="Implementation Roadmap · Proposed Actions A–D">বাস্তবায়ন রোডম্যাপ · প্রস্তাবিত পদক্ষেপ ক–ঘ</h2>
+      </div>
+
+      <div class="space-y-4">
+        <div class="flex gap-4 items-start bg-leaf-50/60 border border-leaf-100 rounded-2xl p-5 hover:bg-leaf-50 transition">
+          <span class="w-11 h-11 shrink-0 rounded-xl bg-leaf-700 text-white font-serif font-black grid place-items-center shadow-md">ক</span>
+          <div>
+            <h3 class="font-bold text-leaf-950" data-en="Issue Directive">নির্দেশনা জারি</h3>
+            <p class="text-sm text-slate-600 mt-1 leading-relaxed" data-en="As per Section 16 of the Pesticides Act, 2018, amend the labelling rules/directives under Section 16(2) to issue a directive making IRAC/FRAC/HRAC MoA group number, rotation window and tank-mix compatibility information mandatory on the labels of all registered pesticides. &lt;em class='text-xs text-slate-400'&gt;(No new law required.)&lt;/em&gt;">ধারা ১৬-অনুযায়ী ধারা ১৬(২)-এর লেবেলিং বিধি/নির্দেশিকা সংশোধন আনার মাধ্যমে সকল নিবন্ধিত বালাইনাশকের লেবেলে IRAC/FRAC/HRAC MoA গ্রুপ নম্বর, রোটেশন উইন্ডো এবং ট্যাংক-মিক্স সামঞ্জস্যতা তথ্য বাধ্যতামূলক অন্তর্ভুক্তির নির্দেশনা জারি। <em class="text-xs text-slate-400">(As per law 16; amendment will be in Section 16(2) in the labelling section — no new law required.)</em></p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start bg-leaf-50/60 border border-leaf-100 rounded-2xl p-5 hover:bg-leaf-50 transition">
+          <span class="w-11 h-11 shrink-0 rounded-xl bg-leaf-700 text-white font-serif font-black grid place-items-center shadow-md">খ</span>
+          <div>
+            <h3 class="font-bold text-leaf-950" data-en="Deadline & Enforcement">সময়সীমা ও প্রয়োগ</h3>
+            <p class="text-sm text-slate-600 mt-1 leading-relaxed" data-en="DAE shall oblige all registered pesticide manufacturers and marketing companies to print labels with MoA numbers within a specified timeframe, with a provision for legal action under &lt;strong&gt;Section 29&lt;/strong&gt; for non-compliance.">DAE নিবন্ধিত সকল বালাইনাশক উৎপাদন ও বিপণন প্রতিষ্ঠানকে নির্দিষ্ট সময়সীমার মধ্যে MoA নম্বর-সহ লেবেল মুদ্রণে বাধ্য করা এবং না মানলে <strong>ধারা ২৯</strong> অনুযায়ী আইনানুগ ব্যবস্থা গ্রহণের বিধান রাখা।</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start bg-leaf-50/60 border border-leaf-100 rounded-2xl p-5 hover:bg-leaf-50 transition">
+          <span class="w-11 h-11 shrink-0 rounded-xl bg-leaf-700 text-white font-serif font-black grid place-items-center shadow-md">গ</span>
+          <div>
+            <h3 class="font-bold text-leaf-950" data-en="Form Technical Subcommittee">কারিগরি উপকমিটি গঠন</h3>
+            <p class="text-sm text-slate-600 mt-1 leading-relaxed" data-en="Form a technical subcommittee with experts from BARC, BARI, BRRI and DAE to develop MoA rotation guidelines adapted to Bangladesh's climate and cropping environment.">BARC, BARI, BRRI ও DAE বিশেষজ্ঞদের সমন্বয়ে একটি কারিগরি উপকমিটি গঠন করে বাংলাদেশের আবহাওয়া ও ফসল পরিবেশ অনুযায়ী <strong>স্থানীয়ভাবে অভিযোজিত MoA রোটেশন গাইডলাইন</strong> প্রণয়ন করা।</p>
+          </div>
+        </div>
+        <div class="flex gap-4 items-start bg-leaf-50/60 border border-leaf-100 rounded-2xl p-5 hover:bg-leaf-50 transition">
+          <span class="w-11 h-11 shrink-0 rounded-xl bg-leaf-700 text-white font-serif font-black grid place-items-center shadow-md">ঘ</span>
+          <div>
+            <h3 class="font-bold text-leaf-950" data-en="Digital Integration">ডিজিটাল সংযোগ</h3>
+            <p class="text-sm text-slate-600 mt-1 leading-relaxed" data-en="Include an MoA code field in the national pesticide registration database and integrate it with digital tools such as &lt;strong&gt;AgriChem Guide&lt;/strong&gt;, so field workers can provide real-time IRM advice.">জাতীয় বালাইনাশক নিবন্ধন ডেটাবেসে MoA কোড ক্ষেত্র অন্তর্ভুক্ত করে <strong>AgriChem Guide</strong>-এর মতো ডিজিটাল সরঞ্জামের সাথে সংযোগ স্থাপন করা, যেন মাঠকর্মীরা রিয়েল-টাইমে IRM পরামর্শ দিতে পারেন।</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="mt-6 grid sm:grid-cols-2 gap-3">
+        <a href="https://agrichem-guide.vercel.app" target="_blank" rel="noopener" class="flex items-center gap-3 bg-white border border-leaf-200 rounded-xl px-4 py-3 hover:shadow-card transition text-sm font-semibold text-leaf-900">
+          <i data-lucide="smartphone" class="w-4 h-4 text-leaf-700"></i> <span data-en="AgriChem Guide — MoA Rotation Planner">AgriChem Guide — MoA Rotation Planner</span> <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400 ml-auto"></i>
+        </a>
+        <a href="https://pesticideact2018.vercel.app" target="_blank" rel="noopener" class="flex items-center gap-3 bg-white border border-leaf-200 rounded-xl px-4 py-3 hover:shadow-card transition text-sm font-semibold text-leaf-900">
+          <i data-lucide="book-open" class="w-4 h-4 text-leaf-700"></i> <span data-en="Pesticide Act 2018 Field Guide">বালাইনাশক আইন ২০১৮ ফিল্ড গাইড</span> <i data-lucide="external-link" class="w-3.5 h-3.5 text-slate-400 ml-auto"></i>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 7. RISKS ============ -->
+<section id="jhuki" class="py-12 md:py-16">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="doc-sheet rounded-3xl p-8 md:p-10 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-10 h-10 rounded-xl bg-leaf-700 text-white grid place-items-center font-serif font-bold">৭</span>
+        <h2 class="font-serif font-bold text-2xl md:text-3xl text-leaf-950" data-en="Risks & Mitigation">ঝুঁকি ও প্রতিকার</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-4">
+        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+          <p class="text-xs font-black text-red-500 tracking-widest mb-2" data-en="RISK 1">ঝুঁকি ১</p>
+          <p class="font-bold text-sm text-slate-800 mb-1" data-en="Initial industry objection (label redesign cost)">শিল্প প্রতিষ্ঠানের প্রাথমিক আপত্তি (লেবেল রিডিজাইন খরচ)</p>
+          <p class="text-xs text-slate-500 leading-relaxed" data-en="&lt;strong class='text-leaf-700'&gt;Mitigation:&lt;/strong&gt; phased timeframe — implementation at the next printing cycle; per-product cost is negligible."><strong class="text-leaf-700">প্রতিকার:</strong> পর্যায়ক্রমিক সময়সীমা — পরবর্তী মুদ্রণ চক্রে বাস্তবায়ন; খরচ পণ্যপ্রতি নগণ্য।</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+          <p class="text-xs font-black text-red-500 tracking-widest mb-2" data-en="RISK 2">ঝুঁকি ২</p>
+          <p class="font-bold text-sm text-slate-800 mb-1" data-en="Farmers' limited understanding of codes">কৃষক পর্যায়ে কোড বোঝার সীমাবদ্ধতা</p>
+          <p class="text-xs text-slate-500 leading-relaxed" data-en="&lt;strong class='text-leaf-700'&gt;Mitigation:&lt;/strong&gt; simple Bengali instructions on labels + SAAO/UAS training + AgriChem Guide digital support."><strong class="text-leaf-700">প্রতিকার:</strong> সহজ বাংলা নির্দেশনা লেবেলে + SAAO/UAS প্রশিক্ষণ + AgriChem Guide ডিজিটাল সহায়তা।</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+          <p class="text-xs font-black text-red-500 tracking-widest mb-2" data-en="RISK 3">ঝুঁকি ৩</p>
+          <p class="font-bold text-sm text-slate-800 mb-1" data-en="Code-mapping errors in the registration database">নিবন্ধন ডেটাবেসে কোড ম্যাপিং ত্রুটি</p>
+          <p class="text-xs text-slate-500 leading-relaxed" data-en="&lt;strong class='text-leaf-700'&gt;Mitigation:&lt;/strong&gt; verification by the technical subcommittee (BARC/BARI/BRRI/DAE) per IRAC v10.4 and FRAC 2024."><strong class="text-leaf-700">প্রতিকার:</strong> কারিগরি উপকমিটি (BARC/BARI/BRRI/DAE) কর্তৃক IRAC v10.4 ও FRAC 2024 অনুসারে যাচাই।</p>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+          <p class="text-xs font-black text-red-500 tracking-widest mb-2" data-en="RISK 4">ঝুঁকি ৪</p>
+          <p class="font-bold text-sm text-slate-800 mb-1" data-en="Weak enforcement/monitoring">প্রয়োগ/মনিটরিং দুর্বলতা</p>
+          <p class="text-xs text-slate-500 leading-relaxed" data-en="&lt;strong class='text-leaf-700'&gt;Mitigation:&lt;/strong&gt; keep Section 29 provisions active; link registration renewal to label compliance."><strong class="text-leaf-700">প্রতিকার:</strong> ধারা ২৯-এর বিধান সক্রিয় রাখা; নিবন্ধন নবায়নকে লেবেল-সম্মতির সাথে যুক্ত করা।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 8. LIVE ANALYTICS DASHBOARD ============ -->
+<section id="dash" class="py-12 md:py-16">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="doc-sheet rounded-3xl p-8 md:p-10 reveal">
+      <div class="flex flex-wrap items-center justify-between gap-3 mb-6">
+        <div class="flex items-center gap-3">
+          <span class="w-10 h-10 rounded-xl bg-leaf-700 text-white grid place-items-center font-serif font-bold">৮</span>
+          <h2 class="font-serif font-bold text-2xl md:text-3xl text-leaf-950" data-en="Live Analytics · This Document Is Alive">লাইভ পরিসংখ্যান · এই নথি জীবন্ত</h2>
+        </div>
+        <span class="no-print inline-flex items-center gap-2 bg-leaf-50 border border-leaf-200 text-leaf-800 text-xs font-bold px-3 py-1.5 rounded-full">
+          <span class="live-dot"></span> <span data-en="real-time tracking">রিয়েল-টাইম ট্র্যাকিং</span>
+        </span>
+      </div>
+
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-leaf-950 text-white rounded-2xl p-5 text-center">
+          <i data-lucide="globe" class="w-5 h-5 text-wheat-300 mx-auto mb-2"></i>
+          <p class="font-serif font-black text-3xl" id="dRemote">০</p>
+          <p class="text-[11px] text-leaf-200 mt-1" data-en="Global visitors (live)">বৈশ্বিক পরিদর্শক (লাইভ)</p>
+        </div>
+        <div class="bg-white border border-leaf-100 rounded-2xl p-5 text-center">
+          <i data-lucide="eye" class="w-5 h-5 text-leaf-600 mx-auto mb-2"></i>
+          <p class="font-serif font-black text-3xl text-leaf-800" id="dVisits">০</p>
+          <p class="text-[11px] text-slate-500 mt-1" data-en="Views on this device">এই ডিভাইসে পরিদর্শন</p>
+        </div>
+        <div class="bg-white border border-leaf-100 rounded-2xl p-5 text-center">
+          <i data-lucide="file-down" class="w-5 h-5 text-leaf-600 mx-auto mb-2"></i>
+          <p class="font-serif font-black text-3xl text-leaf-800" id="dPdf">০</p>
+          <p class="text-[11px] text-slate-500 mt-1" data-en="PDF downloads">PDF ডাউনলোড</p>
+        </div>
+        <div class="bg-white border border-leaf-100 rounded-2xl p-5 text-center">
+          <i data-lucide="file-text" class="w-5 h-5 text-sky-600 mx-auto mb-2"></i>
+          <p class="font-serif font-black text-3xl text-leaf-800" id="dDocx">০</p>
+          <p class="text-[11px] text-slate-500 mt-1" data-en="Word (DOCX) downloads">Word (DOCX) ডাউনলোড</p>
+        </div>
+        <div class="bg-white border border-leaf-100 rounded-2xl p-5 text-center">
+          <i data-lucide="volume-2" class="w-5 h-5 text-wheat-600 mx-auto mb-2"></i>
+          <p class="font-serif font-black text-3xl text-leaf-800" id="dTts">০</p>
+          <p class="text-[11px] text-slate-500 mt-1" data-en="TTS playbacks">TTS শোনা হয়েছে</p>
+        </div>
+        <div class="bg-white border border-leaf-100 rounded-2xl p-5 text-center">
+          <i data-lucide="share-2" class="w-5 h-5 text-sky-600 mx-auto mb-2"></i>
+          <p class="font-serif font-black text-3xl text-leaf-800" id="dShare">০</p>
+          <p class="text-[11px] text-slate-500 mt-1" data-en="Shares">শেয়ার</p>
+        </div>
+        <div class="bg-white border border-leaf-100 rounded-2xl p-5 text-center">
+          <i data-lucide="languages" class="w-5 h-5 text-leaf-600 mx-auto mb-2"></i>
+          <p class="font-serif font-black text-3xl text-leaf-800" id="dLang">০</p>
+          <p class="text-[11px] text-slate-500 mt-1" data-en="Language switches">ভাষা পরিবর্তন</p>
+        </div>
+        <div class="bg-white border border-leaf-100 rounded-2xl p-5 text-center">
+          <i data-lucide="heart-handshake" class="w-5 h-5 text-red-500 mx-auto mb-2"></i>
+          <p class="font-serif font-black text-3xl text-leaf-800" id="dSupport">০</p>
+          <p class="text-[11px] text-slate-500 mt-1" data-en="Endorsements received">সমর্থন পাওয়া গেছে</p>
+        </div>
+      </div>
+
+      <div class="mt-6 grid md:grid-cols-2 gap-5">
+        <div class="bg-leaf-50/70 border border-leaf-100 rounded-2xl p-5">
+          <p class="text-xs font-black tracking-widest text-slate-400 mb-3" data-en="RECENT ACTIVITY">সাম্প্রতিক কার্যকলাপ</p>
+          <ul id="activityLog" class="space-y-2 text-sm text-slate-600 max-h-44 overflow-y-auto">
+            <li class="text-xs text-slate-400">—</li>
+          </ul>
+        </div>
+        <div class="bg-white border border-slate-200 rounded-2xl p-5">
+          <p class="text-xs font-black tracking-widest text-slate-400 mb-3" data-en="DOCUMENT STATUS">নথির অবস্থা</p>
+          <div class="space-y-2.5 text-sm text-slate-600">
+            <p class="flex justify-between"><span data-en="Version">সংস্করণ</span> <strong class="text-leaf-800" id="metaVersion">v2.1.3</strong></p>
+            <p class="flex justify-between"><span data-en="Build date">বিল্ড তারিখ</span> <strong class="text-leaf-800" id="metaBuild">২৯ সেপ্টেম্বর ২০২৬</strong></p>
+            <p class="flex justify-between"><span data-en="First view on this device">এই ডিভাইসে প্রথম দেখা</span> <strong class="text-leaf-800" id="metaFirst">—</strong></p>
+            <p class="flex justify-between"><span data-en="Last view">সর্বশেষ পরিদর্শন</span> <strong class="text-leaf-800" id="metaLast">—</strong></p>
+            <p class="flex justify-between"><span data-en="Status">অবস্থা</span> <strong class="text-leaf-700" data-en="Under decision ⏳">সিদ্ধান্তাধীন ⏳</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <p class="no-print mt-4 text-[11px] text-slate-400 text-center" data-en="Note: The global counter uses a free anonymous hit service; if unavailable, only local (browser) statistics are shown. No personal data is collected.">নোট: বৈশ্বিক কাউন্টারটি একটি ফ্রি অ্যানোনিমাস হিট-সার্ভিস ব্যবহার করে; সার্ভিস অনুপলব্ধ থাকলে শুধু লোকাল (ব্রাউজার) পরিসংখ্যান দেখানো হয়। কোনো ব্যক্তিগত তথ্য সংগ্রহ করা হয় না।</p>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 9. DECISION & APPROVAL ============ -->
+<section id="anumodon" class="py-12 md:py-20 print-break">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="doc-sheet rounded-3xl overflow-hidden reveal">
+      <div class="gov-band px-8 md:px-10 py-5 text-white">
+        <div class="flex items-center gap-3">
+          <i data-lucide="pen-line" class="w-6 h-6"></i>
+          <h2 class="font-serif font-bold text-xl md:text-2xl" data-en="9 · Decision & Approval">৯ · সিদ্ধান্ত গ্রহণ ও অনুমোদন</h2>
+        </div>
+      </div>
+
+      <div class="p-8 md:p-10">
+        <p class="text-sm text-slate-600 mb-6" data-en="The authority shall sign the applicable box to record the decision. &lt;span class='no-print text-xs text-slate-400'&gt;(Click on screen to mark; checkboxes remain visible in print)&lt;/span&gt;">কর্তৃপক্ষ প্রযোজ্য ঘরে স্বাক্ষর করে সিদ্ধান্ত লিপিবদ্ধ করবেন। <span class="no-print text-xs text-slate-400">(স্ক্রিনে ক্লিক করে চিহ্নিত করা যাবে; প্রিন্টে চেকবাক্স দৃশ্যমান থাকবে)</span></p>
+
+        <div class="space-y-3" id="decisionList">
+          <label class="decision-row flex items-start gap-4 border-2 border-slate-200 rounded-2xl p-5 cursor-pointer transition">
+            <input type="checkbox" class="d-input sr-only">
+            <span class="d-box w-6 h-6 mt-0.5 shrink-0 rounded-md border-2 border-slate-300 grid place-items-center transition"><i data-lucide="check" class="w-4 h-4 hidden"></i></span>
+            <span>
+              <span class="block font-bold text-leaf-950" data-en="Decision 1:">সিদ্ধান্ত ১:</span>
+              <span class="block text-sm text-slate-600" data-en="A directive is issued to amend the labelling rules under Section 16(2) — making IRAC/FRAC/HRAC MoA group number, rotation window and tank-mix compatibility information mandatory on the labels of all registered pesticides.">ধারা ১৬(২)-এর লেবেলিং বিধি/নির্দেশিকা সংশোধনের নির্দেশনা জারি করা হলো — সকল নিবন্ধিত বালাইনাশকের লেবেলে IRAC/FRAC/HRAC MoA গ্রুপ নম্বর, রোটেশন উইন্ডো ও ট্যাংক-মিক্স সামঞ্জস্যতা তথ্য বাধ্যতামূলক।</span>
+            </span>
+          </label>
+          <label class="decision-row flex items-start gap-4 border-2 border-slate-200 rounded-2xl p-5 cursor-pointer transition">
+            <input type="checkbox" class="d-input sr-only">
+            <span class="d-box w-6 h-6 mt-0.5 shrink-0 rounded-md border-2 border-slate-300 grid place-items-center transition"><i data-lucide="check" class="w-4 h-4 hidden"></i></span>
+            <span>
+              <span class="block font-bold text-leaf-950" data-en="Decision 2:">সিদ্ধান্ত ২:</span>
+              <span class="block text-sm text-slate-600" data-en="Manufacturers and marketing companies are obliged to print labels with MoA numbers within a specified timeframe; approval of the provision for action under Section 29 in case of non-compliance.">উৎপাদন ও বিপণন প্রতিষ্ঠানকে নির্দিষ্ট সময়সীমার মধ্যে MoA নম্বর-সহ লেবেল মুদ্রণে বাধ্য করা এবং অমান্যে ধারা ২৯ অনুযায়ী ব্যবস্থা গ্রহণের বিধান অনুমোদন।</span>
+            </span>
+          </label>
+          <label class="decision-row flex items-start gap-4 border-2 border-slate-200 rounded-2xl p-5 cursor-pointer transition">
+            <input type="checkbox" class="d-input sr-only">
+            <span class="d-box w-6 h-6 mt-0.5 shrink-0 rounded-md border-2 border-slate-300 grid place-items-center transition"><i data-lucide="check" class="w-4 h-4 hidden"></i></span>
+            <span>
+              <span class="block font-bold text-leaf-950" data-en="Decision 3:">সিদ্ধান্ত ৩:</span>
+              <span class="block text-sm text-slate-600" data-en="Approval to form a technical subcommittee with BARC, BARI, BRRI and DAE and to develop MoA rotation guidelines suited to the country's climate and crops.">BARC, BARI, BRRI ও DAE সমন্বয়ে কারিগরি উপকমিটি গঠন এবং দেশের আবহাওয়া ও ফসল উপযোগী MoA রোটেশন গাইডলাইন প্রণয়নের অনুমোদন।</span>
+            </span>
+          </label>
+          <label class="decision-row flex items-start gap-4 border-2 border-slate-200 rounded-2xl p-5 cursor-pointer transition">
+            <input type="checkbox" class="d-input sr-only">
+            <span class="d-box w-6 h-6 mt-0.5 shrink-0 rounded-md border-2 border-slate-300 grid place-items-center transition"><i data-lucide="check" class="w-4 h-4 hidden"></i></span>
+            <span>
+              <span class="block font-bold text-leaf-950" data-en="Decision 4:">সিদ্ধান্ত ৪:</span>
+              <span class="block text-sm text-slate-600" data-en="Approval to include an MoA code field in the national registration database and integrate it with digital tools such as AgriChem Guide.">জাতীয় নিবন্ধন ডেটাবেসে MoA কোড ফিল্ড অন্তর্ভুক্ত করে AgriChem Guide-এর মতো ডিজিটাল সরঞ্জামের সাথে সংযোগ স্থাপনের অনুমোদন।</span>
+            </span>
+          </label>
+        </div>
+
+        <div id="approvalStatus" class="no-print mt-5 rounded-xl border-2 border-dashed border-slate-200 px-5 py-3 text-sm font-semibold text-slate-500 text-center">
+          অনুমোদিত সিদ্ধান্ত: <strong>০</strong> / ৪
+        </div>
+
+        <div class="no-print mt-6 flex flex-col sm:flex-row items-center justify-center gap-4 bg-wheat-50 border border-wheat-200 rounded-2xl p-5">
+          <p class="text-sm font-semibold text-wheat-900 text-center" data-en="Do you support this proposal? Record your endorsement —">আপনি কি এই প্রস্তাব সমর্থন করেন? আপনার সমর্থন লিপিবদ্ধ করুন —</p>
+          <button id="btnSupport" type="button" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-wheat-600 text-white font-bold hover:bg-wheat-700 shadow-md transition">
+            <i data-lucide="thumbs-up" class="w-4 h-4"></i> <span id="supportLabel" data-en="I support this">আমি সমর্থন করি</span> (<span id="supportCount">০</span>)
+          </button>
+        </div>
+
+        <div class="mt-10 grid md:grid-cols-2 gap-10">
+          <div class="text-center">
+            <div class="sig-line"></div>
+            <p class="font-bold text-sm text-leaf-950" data-en="Deputy Director (Pesticide Administration & Quality Control)">উপপরিচালক (বালাইনাশক প্রশাসন ও মান নিয়ন্ত্রণ)</p>
+            <p class="text-xs text-slate-500" data-en="Pesticide Administration, Plant Protection Wing, DAE, Khamarbari, Dhaka">বালাইনাশক প্রশাসন, উদ্ভিদ সংরক্ষণ উইং, ডিএই, খামারবাড়ি, ঢাকা</p>
+            <p class="text-[11px] text-slate-400 mt-2" data-en="Date: ____________">তারিখ: ____________</p>
+          </div>
+          <div class="text-center">
+            <div class="sig-line"></div>
+            <p class="font-bold text-sm text-leaf-950" data-en="Abu Md Moniruzjaman (Proposer)">আবু মোঃ মনিরুজ্জামান (প্রস্তাবক)</p>
+            <p class="text-xs text-slate-500" data-en="Additional Deputy Director (Horticulture), DAE, Kurigram · 31st BCS (Agriculture)">অতিরিক্ত উপপরিচালক (উদ্যান), ডিএই, কুড়িগ্রাম · ৩১তম বিসিএস (কৃষি)</p>
+            <p class="text-[11px] text-slate-400 mt-2" data-en="Date: September 2026">তারিখ: সেপ্টেম্বর ২০২৬</p>
+          </div>
+        </div>
+
+        <div class="mt-10 bg-leaf-950 text-white rounded-2xl p-6 text-center">
+          <i data-lucide="quote" class="w-7 h-7 text-wheat-300 mx-auto mb-3"></i>
+          <p class="font-serif font-bold text-lg md:text-xl leading-relaxed" data-en="“A conscious farmer, equipped with the right label information, is the strongest defense against pesticide resistance.”">“সঠিক লেবেলের তথ্য দিয়ে সচেতন কৃষকই বালাইনাশক প্রতিরোধক্ষমতার বিরুদ্ধে সবচেয়ে শক্তিশালী প্রতিরক্ষা ব্যবস্থা।”</p>
+          <p class="mt-3 text-xs text-leaf-300" data-en="Implementing this policy is fully consistent with the commitments to sustainable agriculture, farmer welfare and food security. The proposer is available at all times for any technical discussion or presentation.">এই নীতি বাস্তবায়ন টেকসই কৃষি, কৃষকের কল্যাণ ও খাদ্য নিরাপত্তার প্রতিশ্রুতির সাথে সরাসরি সঙ্গতিপূর্ণ। প্রয়োজনে যেকোনো কারিগরি আলোচনা বা উপস্থাপনার জন্য প্রস্তাবক সর্বক্ষণ প্রস্তুত।</p>
+          <p class="mt-4 text-wheat-300 font-black text-sm tracking-wide">করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ।</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 10. ANNEXURE ============ -->
+<section class="py-12 md:py-16">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="doc-sheet rounded-3xl p-8 md:p-10 reveal">
+      <div class="flex items-center gap-3 mb-6">
+        <span class="w-10 h-10 rounded-xl bg-leaf-700 text-white grid place-items-center font-serif font-bold">১০</span>
+        <h2 class="font-serif font-bold text-2xl text-leaf-950" data-en="Annexure · References & Copies">সংযুক্তি · তথ্যসূত্র ও অনুলিপি</h2>
+      </div>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div>
+          <p class="text-xs font-black tracking-widest text-slate-400 mb-3" data-en="REFERENCES">তথ্যসূত্র</p>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li class="flex gap-2"><i data-lucide="file-text" class="w-4 h-4 text-leaf-600 mt-0.5 shrink-0"></i><span>IRAC MoA Classification Chart v10.4 — irac-online.org</span></li>
+            <li class="flex gap-2"><i data-lucide="file-text" class="w-4 h-4 text-leaf-600 mt-0.5 shrink-0"></i><span>FRAC Code List 2024 — frac.info</span></li>
+            <li class="flex gap-2"><i data-lucide="file-text" class="w-4 h-4 text-leaf-600 mt-0.5 shrink-0"></i><span>FAO Guidelines on Good Labelling Practice for Pesticides (Revised, 2015)</span></li>
+            <li class="flex gap-2"><i data-lucide="file-text" class="w-4 h-4 text-leaf-600 mt-0.5 shrink-0"></i><span data-en="Pesticides Act, 2018 — Bangladesh Gazette, 29 July 2018">বালাইনাশক (পেস্টিসাইডস) আইন, ২০১৮ — বাংলাদেশ গেজেট, ২৯ জুলাই ২০১৮</span></li>
+            <li class="flex gap-2"><i data-lucide="file-text" class="w-4 h-4 text-leaf-600 mt-0.5 shrink-0"></i><span>Pesticide Field Guide Database — MoA_Groups, Products_Import</span></li>
+          </ul>
+        </div>
+        <div>
+          <p class="text-xs font-black tracking-widest text-slate-400 mb-3" data-en="COPIES (FOR INFORMATION)">অনুলিপি (সদয় অবগতি)</p>
+          <ul class="space-y-2 text-sm text-slate-600">
+            <li class="flex gap-2"><i data-lucide="copy" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i><span data-en="Additional Director, Department of Agricultural Extension, Dhaka">অতিরিক্ত পরিচালক, কৃষি সম্প্রসারণ অধিদপ্তর, ঢাকা</span></li>
+            <li class="flex gap-2"><i data-lucide="copy" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i><span data-en="Deputy Director, Department of Agricultural Extension, Kurigram">উপপরিচালক, কৃষি সম্প্রসারণ অধিদপ্তর, কুড়িগ্রাম</span></li>
+            <li class="flex gap-2"><i data-lucide="archive" class="w-4 h-4 text-slate-400 mt-0.5 shrink-0"></i><span data-en="Relevant office file">সংশ্লিষ্ট দপ্তর নথি</span></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 11. ONE-PAGER ============ -->
+<section id="onepager" class="py-12 md:py-16">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="flex flex-wrap items-center justify-between gap-3 mb-5 reveal">
+      <div class="flex items-center gap-3">
+        <span class="w-10 h-10 rounded-xl bg-wheat-600 text-white grid place-items-center"><i data-lucide="file-badge" class="w-5 h-5"></i></span>
+        <h2 class="font-serif font-bold text-2xl md:text-3xl text-leaf-950" data-en="One-Page Executive Summary &lt;span class='text-sm font-semibold text-slate-400'&gt;(auto-attached to Print / Download)&lt;/span&gt;">এক পাতার নির্বাহী সারসংক্ষেপ <span class="text-sm font-semibold text-slate-400">(প্রিন্ট ও ডাউনলোডে স্বয়ংক্রিয়ভাবে সংযুক্ত)</span></h2>
+      </div>
+      <button id="btnOnePrint" type="button" class="no-print inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-wheat-600 text-white font-bold text-sm hover:bg-wheat-700 shadow-md transition">
+        <i data-lucide="printer" class="w-4 h-4"></i> <span data-en="Print only one-pager">শুধু এক পাতা প্রিন্ট করুন</span>
+      </button>
+    </div>
+
+    <div class="a4-sheet reveal">
+      <div class="gov-band h-2"></div>
+      <div class="p-7 md:p-9 text-[13px] leading-relaxed">
+        <div class="flex items-start justify-between gap-4 border-b-2 border-slate-200 pb-4">
+          <div class="flex items-center gap-3">
+            <span class="text-3xl">🇧🇩</span>
+            <div>
+              <p class="font-serif font-bold text-leaf-950" data-en="People's Republic of Bangladesh">গণপ্রজাতন্ত্রী বাংলাদেশ সরকার</p>
+              <p class="text-xs text-slate-500" data-en="Department of Agricultural Extension, Kurigram">কৃষি সম্প্রসারণ অধিদপ্তর, কুড়িগ্রাম</p>
+            </div>
+          </div>
+          <div class="text-right text-[11px] text-slate-500">
+            <p data-en="Memo: DAE/KRG/HORT/IRAC-2026/[]">স্মারক: DAE/KRG/HORT/IRAC-2026/[]</p>
+            <p data-en="Date: September 2026 · Version v2.1.3">তারিখ: সেপ্টেম্বর ২০২৬ · সংস্করণ v2.1.3</p>
+          </div>
+        </div>
+
+        <h3 class="font-serif font-black text-lg md:text-xl text-leaf-950 mt-4 mb-1" data-en="Mandatory Inclusion of IRAC/FRAC MoA Classification, Rotation Window & Tank-Mix Compatibility on Pesticide Labels — One-Page Executive Summary">বালাইনাশক লেবেলে IRAC/FRAC MoA শ্রেণি নম্বর, রোটেশন উইন্ডো ও মিশ্রণ-সামঞ্জস্যতা বাধ্যতামূলক অন্তর্ভুক্তি — এক পাতার নির্বাহী সারসংক্ষেপ</h3>
+        <p class="text-xs text-slate-400 mb-4 font-semibold">Under Section 16(2) labelling provision of the Pesticides Act, 2018</p>
+
+        <div class="grid md:grid-cols-2 gap-x-8 gap-y-3">
+          <p><strong class="text-leaf-800" data-en="Proposal:">প্রস্তাব:</strong> <span data-en="Amend labelling rules under Section 16(2) to make IRAC/FRAC/HRAC MoA group number, rotation window and tank-mix compatibility mandatory on all registered pesticide labels — no new law required.">ধারা ১৬(২)-এর লেবেলিং বিধি সংশোধন করে সকল নিবন্ধিত বালাইনাশকের লেবেলে MoA শ্রেণি নম্বর, রোটেশন উইন্ডো ও ট্যাংক-মিক্স সামঞ্জস্যতা বাধ্যতামূলক করা — নতুন আইন অপ্রয়োজনীয়।</span></p>
+          <p><strong class="text-leaf-800" data-en="Problem:">সমস্যা:</strong> <span data-en="Same MoA products are sold under different brand names; farmers unknowingly spray the same chemical group repeatedly → pesticide resistance, wasted money, crop damage.">একই MoA-এর পণ্য ভিন্ন ব্র্যান্ডে বিক্রি হওয়ায় কৃষক অজান্তে একই গ্রুপের পণ্য বারবার প্রয়োগ করছেন → প্রতিরোধক্ষমতা, অর্থ অপচয়, ফসলের ক্ষতি।</span></p>
+          <p><strong class="text-leaf-800" data-en="Data:">ডেটা:</strong> <span data-en="IRAC 1B — 890 products; IRAC 3A — 573; FRAC M3 — 409; only 47 MoA groups in the entire database.">IRAC 1B — ৮৯০ পণ্য; IRAC 3A — ৫৭৩; FRAC M3 — ৪০৯; পুরো ডেটাবেসে মাত্র ৪৭টি MoA গ্রুপ।</span></p>
+          <p><strong class="text-leaf-800" data-en="Legal basis:">আইন:</strong> <span data-en="Section 16(2) — “in the manner prescribed by rules”; precedents in EU, USA, Australia and India.">ধারা ১৬(২) — “বিধি দ্বারা নির্ধারিত পদ্ধতিতে”; EU, USA, Australia, ভারতে দৃষ্টান্ত বিদ্যমান।</span></p>
+          <p class="md:col-span-2"><strong class="text-leaf-800" data-en="Actions:">পদক্ষেপ:</strong> <span data-en="A. Issue the labelling-amendment directive · B. Fixed deadline for MoA-printed labels; Section 29 action for non-compliance · C. Technical subcommittee (BARC/BARI/BRRI/DAE) for locally adapted MoA rotation guidelines · D. MoA code field in the national database linked with AgriChem Guide for real-time IRM advice.">ক. লেবেলিং সংশোধনী নির্দেশনা জারি · খ. নির্দিষ্ট সময়সীমায় MoA-লেবেল মুদ্রণ; অমান্যে ধারা ২৯-এ ব্যবস্থা · গ. BARC/BARI/BRRI/DAE কারিগরি উপকমিটির স্থানীয়ভাবে অভিযোজিত রোটেশন গাইডলাইন · ঘ. জাতীয় ডেটাবেসে MoA ফিল্ড + AgriChem Guide সংযোগে রিয়েল-টাইম IRM পরামর্শ।</span></p>
+          <p class="md:col-span-2"><strong class="text-leaf-800" data-en="National alignment:">জাতীয় সংশ্লিষ্টতা:</strong> <span data-en="Self-Reliant Bangladesh 2030, Agriculture Grand Plan 2050, National Agriculture Policy 2018 (chemical reduction), Safe Food Act 2013, SDG 2·3·12 — fully consistent with the government's implementation initiatives.">স্বনির্ভর বাংলাদেশ ২০৩০, কৃষি মহাপরিকল্পনা ২০৫০, জাতীয় কৃষিনীতি ২০১৮ (রাসায়নিক হ্রাস), নিরাপদ খাদ্য আইন ২০১৩, SDG ২·৩·১২ — সরকারের বাস্তবায়ন উদ্যোগের সাথে সম্পূর্ণ সঙ্গতিপূর্ণ।</span></p>
+        </div>
+
+        <div class="mt-4 bg-leaf-50 border border-leaf-200 rounded-xl px-4 py-3 text-center">
+          <p class="font-serif font-bold text-leaf-900">করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ। 🇧🇩</p>
+        </div>
+
+        <div class="mt-6 grid md:grid-cols-3 gap-6 items-end">
+          <div class="text-center">
+            <div class="sig-line"></div>
+            <p class="text-[11px] font-bold text-slate-600" data-en="Deputy Director (Pesticide Admin & QC), DAE Dhaka">উপপরিচালক (বালাইনাশক প্রশাসন ও মান নিয়ন্ত্রণ), ডিএই ঢাকা</p>
+          </div>
+          <div class="text-center">
+            <div class="sig-line"></div>
+            <p class="text-[11px] font-bold text-slate-600" data-en="Deputy Director, DAE Kurigram (Through)">উপপরিচালক, ডিএই কুড়িগ্রাম (মাধ্যম)</p>
+          </div>
+          <div class="text-center">
+            <p class="text-[11px] text-slate-500" data-en="Proposer">প্রস্তাবক</p>
+            <p class="font-serif font-bold text-sm text-leaf-950">আবু মোঃ মনিরুজ্জামান</p>
+            <p class="text-[11px] text-slate-500" data-en="Additional Deputy Director (Horticulture), DAE Kurigram">অতিরিক্ত উপপরিচালক (উদ্যান), ডিএই কুড়িগ্রাম</p>
+            <p class="text-[11px] text-slate-400">📱 01712653740 · ✉️ mithun.hstu@gmail.com</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============ FOOTER ============ -->
+<footer class="bg-leaf-950 text-leaf-200 py-10">
+  <div class="max-w-5xl mx-auto px-5">
+    <div class="flex flex-col md:flex-row items-center justify-between gap-4 text-center md:text-left">
+      <div>
+        <p class="font-serif font-bold text-white" data-en="MoA Label Inclusion · Decision Package">MoA লেবেল অন্তর্ভুক্তি · সিদ্ধান্ত প্যাকেজ</p>
+        <p class="text-xs text-leaf-300 mt-1">বালাইনাশক আইন ২০১৮ · ধারা ১৬ · সংশোধনী: ধারা ১৬(২) লেবেলিং · DAE Kurigram · IRM Policy Proposal · September 2026</p>
+      </div>
+      <div class="text-xs text-leaf-300 space-y-1">
+        <p data-en="Proposer: &lt;strong class='text-white'&gt;Abu Md Moniruzjaman&lt;/strong&gt;">প্রস্তাবক: <strong class="text-white">আবু মোঃ মনিরুজ্জামান (Abu Md Moniruzjaman)</strong></p>
+        <p data-en="Additional Deputy Director (Horticulture), DAE, Kurigram · 📱 01712653740">অতিরিক্ত উপপরিচালক (উদ্যান), ডিএই, কুড়িগ্রাম · 📱 ০১৭১২-৬৫৩৭৪০</p>
+      </div>
+    </div>
+    <div class="mt-6 pt-5 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-3 text-[11px] text-leaf-400">
+      <p class="no-print flex items-center gap-2">
+        <span class="live-dot"></span>
+        <span data-en="Document version">নথি সংস্করণ</span>
+        <button type="button" class="font-bold text-wheat-300 hover:underline" id="footerVersion">v2.1.3</button>
+        · <span data-en="Build">বিল্ড</span> <span id="footerBuild">2026-09-29</span>
+      </p>
+      <p data-en="🇧🇩 We shall work, we shall build the nation; Bangladesh first of all.">🇧🇩 করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ।</p>
+    </div>
+  </div>
+</footer>
+
+<!-- ============ FLOATING ACTION DOCK ============ -->
+<div class="dock no-print" id="actionDock">
+  <button class="dock-btn" id="btnPdf" type="button" aria-label="Download PDF">
+    <span class="tip" data-en="Download PDF">PDF ডাউনলোড</span>
+    <i data-lucide="file-down" class="w-5 h-5"></i>
+  </button>
+  <button class="dock-btn" id="btnDocx" type="button" aria-label="Download DOCX">
+    <span class="tip" data-en="Download Word (DOCX)">Word (DOCX) ডাউনলোড</span>
+    <i data-lucide="file-text" class="w-5 h-5"></i>
+  </button>
+  <button class="dock-btn" id="btnTts" type="button" aria-label="Text to speech">
+    <span class="tip" id="ttsTip" data-en="Listen (TTS) — Play">শুনুন (TTS) — চালান</span>
+    <i data-lucide="volume-2" class="w-5 h-5" id="ttsIconPlay"></i>
+    <i data-lucide="square" class="w-5 h-5 hidden" id="ttsIconStop"></i>
+  </button>
+  <button class="dock-btn" id="btnShare" type="button" aria-label="Share">
+    <span class="tip" data-en="Share">শেয়ার করুন</span>
+    <i data-lucide="share-2" class="w-5 h-5"></i>
+  </button>
+  <button class="dock-btn" id="btnLang" type="button" aria-label="Switch language">
+    <span class="tip" id="langTip" data-en="Switch to English">English-এ পরিবর্তন</span>
+    <i data-lucide="languages" class="w-5 h-5"></i>
+    <span class="absolute -bottom-1 -right-1 bg-leaf-950 text-white text-[9px] font-black px-1.5 py-0.5 rounded-md" id="langBadge">EN</span>
+  </button>
+  <button class="dock-btn" id="btnOnePage" type="button" aria-label="Print one-pager only">
+    <span class="tip" data-en="Print only the one-pager">শুধু এক পাতা প্রিন্ট</span>
+    <i data-lucide="file-badge" class="w-5 h-5"></i>
+  </button>
 </div>
 
-<!-- JAVASCRIPT FOR PERSUASION PRIMITIVES -->
+<!-- ============ CHANGELOG MODAL ============ -->
+<div class="modal-back no-print" id="modalChangelog" role="dialog" aria-modal="true">
+  <div class="modal-card p-7">
+    <div class="flex items-center justify-between mb-5">
+      <h3 class="font-serif font-bold text-xl text-leaf-950" data-en="Document Version History">নথির সংস্করণ ইতিহাস</h3>
+      <button id="modalClose" type="button" class="w-9 h-9 rounded-xl bg-leaf-50 text-leaf-700 grid place-items-center hover:bg-leaf-100 transition" aria-label="Close"><i data-lucide="x" class="w-5 h-5"></i></button>
+    </div>
+    <div class="space-y-4">
+      <div class="flex gap-4">
+        <span class="shrink-0 w-16 text-center"><span class="inline-block bg-leaf-700 text-white text-[11px] font-black px-2.5 py-1 rounded-full">v2.1.3</span><span class="block text-[10px] text-slate-400 mt-1">29.09.2026</span></span>
+        <div class="text-sm text-slate-600 border-l-2 border-leaf-200 pl-4 pb-1" data-en="&lt;strong&gt;National Pledge update:&lt;/strong&gt; replaced “Smart Bangladesh 2041” and “Delta Plan 2100” with &lt;strong&gt;“Self-Reliant Bangladesh 2030”&lt;/strong&gt; and &lt;strong&gt;“Agriculture Grand Plan 2050”&lt;/strong&gt;; legacy paragraph rewritten honouring Shaheed President Ziaur Rahman, Shaheed Deshnetri Begum Khaleda Zia (“Save the nation, save the people”) and the current statesman Tarique Rahman (“Bangladesh before vegetables”).">&lt;strong&gt;জাতীয় অঙ্গীকার হালনাগাদ:&lt;/strong&gt; “স্মার্ট বাংলাদেশ ২০৪১” ও “ডেল্টা প্ল্যান ২১০০”-এর স্থলে যুক্ত হয়েছে &lt;strong&gt;“স্বনির্ভর বাংলাদেশ ২০৩০”&lt;/strong&gt; ও &lt;strong&gt;“কৃষি মহাপরিকল্পনা ২০৫০”&lt;/strong&gt;; জাতীয়তাবাদের উত্তরাধিকার অনুচ্ছেদ পুনর্লিখিত — শহীদ রাষ্ট্রপতি জিয়াউর রহমান, শহীদ দেশনেত্রী বেগম খালেদা জিয়া (“দেশ বাঁচাও মানুষ বাঁচাও”) ও বর্তমান রাষ্ট্রনায়ক তারেক রহমানের (“সবজির আগে বাংলাদেশ”) প্রতি শ্রদ্ধা জানিয়ে।</div>
+      </div>
+      <div class="flex gap-4">
+        <span class="shrink-0 w-16 text-center"><span class="inline-block bg-slate-200 text-slate-600 text-[11px] font-black px-2.5 py-1 rounded-full">v2.1.2</span><span class="block text-[10px] text-slate-400 mt-1">29.09.2026</span></span>
+        <div class="text-sm text-slate-600 border-l-2 border-slate-100 pl-4 pb-1" data-en="Resilience patch (critical fix): content visibility no longer depends on JavaScript success; every module individually protected (try/catch); CDN libraries (icons, chart, DOCX) guarded with automatic fallback.">রেজিলিয়েন্স প্যাচ (ক্রিটিক্যাল ফিক্স): কনটেন্টের দৃশ্যমানতা আর JavaScript-এর সাফল্যের ওপর নির্ভরশীল নয়; প্রতিটি মডিউল পৃথকভাবে সুরক্ষিত (try/catch); CDN লাইব্রেরি (আইকন, চার্ট, DOCX) অটো-ফলব্যাকসহ গার্ডেড।</div>
+      </div>
+      <div class="flex gap-4">
+        <span class="shrink-0 w-16 text-center"><span class="inline-block bg-slate-200 text-slate-600 text-[11px] font-black px-2.5 py-1 rounded-full">v2.1.1</span><span class="block text-[10px] text-slate-400 mt-1">29.09.2026</span></span>
+        <div class="text-sm text-slate-600 border-l-2 border-slate-100 pl-4 pb-1" data-en="Stability release: analytics init order fixed, Safari-safe TTS splitting, Chrome TTS keep-alive, DOCX generator fallback, noscript support, Esc-to-close modal, ARIA labels.">স্ট্যাবিলিটি রিলিজ: অ্যানালিটিক্স ইনিশিয়ালইজেশন ক্রম সংশোধন, Safari-নিরাপদ TTS বিভাজন, Chrome TTS keep-alive, DOCX ফলব্যাক, noscript সাপোর্ট, Esc-এ মোডাল বন্ধ, ARIA লেবেল।</div>
+      </div>
+      <div class="flex gap-4">
+        <span class="shrink-0 w-16 text-center"><span class="inline-block bg-slate-200 text-slate-600 text-[11px] font-black px-2.5 py-1 rounded-full">v2.1.0</span><span class="block text-[10px] text-slate-400 mt-1">29.09.2026</span></span>
+        <div class="text-sm text-slate-600 border-l-2 border-slate-100 pl-4 pb-1" data-en="Live analytics dashboard (visitors, downloads, TTS, shares), version banner &amp; changelog, National Pledge section with the tagline “We shall work, we shall build the nation; Bangladesh first of all.”, national initiative mapping, one-page executive summary attached to print/DOCX, endorsement button.">লাইভ অ্যানালিটিক্স ড্যাশবোর্ড (পরিদর্শক, ডাউনলোড, TTS, শেয়ার), ভার্সন ব্যানার ও চেঞ্জলগ, “করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ।” ট্যাগলাইনসহ জাতীয় অঙ্গীকার অংশ, জাতীয় উদ্যোগ ম্যাপিং, প্রিন্ট ও DOCX-এ সংযুক্ত এক পাতার নির্বাহী সারসংক্ষেপ, সমর্থন বোতাম।</div>
+      </div>
+      <div class="flex gap-4">
+        <span class="shrink-0 w-16 text-center"><span class="inline-block bg-slate-200 text-slate-600 text-[11px] font-black px-2.5 py-1 rounded-full">v2.0.0</span><span class="block text-[10px] text-slate-400 mt-1">09.2026</span></span>
+        <div class="text-sm text-slate-600 border-l-2 border-slate-100 pl-4 pb-1" data-en="Decision Package format: executive brief, options analysis, risk matrix, approval checkboxes with signature blocks, PDF/DOCX download, TTS (play/stop), share, bilingual (English) switch.">সিদ্ধান্ত প্যাকেজ ফরম্যাট: নির্বাহী সারসংক্ষেপ, বিকল্প বিশ্লেষণ, ঝুঁকি ম্যাট্রিক্স, স্বাক্ষর ব্লকসহ অনুমোদন চেকবাক্স, PDF/DOCX ডাউনলোড, TTS (চালান/থামান), শেয়ার, দ্বিভাষিক (English) সুইচ।</div>
+      </div>
+      <div class="flex gap-4">
+        <span class="shrink-0 w-16 text-center"><span class="inline-block bg-slate-200 text-slate-600 text-[11px] font-black px-2.5 py-1 rounded-full">v1.0.0</span><span class="block text-[10px] text-slate-400 mt-1">09.2026</span></span>
+        <div class="text-sm text-slate-600 border-l-2 border-slate-100 pl-4" data-en="Original policy proposal (moa-application.pdf) — application for mandatory MoA labelling under Section 16(2) of the Pesticides Act, 2018.">মূল নীতি প্রস্তাবনা (moa-application.pdf) — বালাইনাশক আইন ২০১৮-এর ধারা ১৬(২)-এ বাধ্যতামূলক MoA লেবেলিং আবেদন।</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
 <script>
-  // 1. Live Ticking Cost of Delay Counter
-  let startTime = Date.now();
-  const costPerSecond = 475.65; // Based on Tk 1,500 Cr annual loss / 31,536,000 seconds
+/* =========================================================================
+   v2.1.3 — every module isolated in safe(); nothing can cascade-fail.
+   ========================================================================= */
+(function () {
+  'use strict';
 
-  function updateTicker() {
-    let elapsedSeconds = (Date.now() - startTime) / 1000;
-    let accumulatedLoss = elapsedSeconds * costPerSecond;
-    document.getElementById('liveTicker').textContent = '৳ ' + accumulatedLoss.toLocaleString('bn-BD', {
-      minimumFractionDigits: 2,
-      maximumFractionDigits: 2
-    });
+  function safe(name, fn) {
+    try { fn(); }
+    catch (err) { if (window.console) console.error('[MoA DP] module failed:', name, err); }
   }
-  setInterval(updateTicker, 100);
+  function $(id) { return document.getElementById(id); }
+  function on(id, ev, fn) { var el = $(id); if (el) el.addEventListener(ev, fn); }
 
-  // 2. Directive Synchronization & Approval Stamp Logic
-  function updateDirectives(source) {
-    const index = source.getAttribute('data-index');
-    const checked = source.checked;
-    const allMatching = document.querySelectorAll(`.sync-dir[data-index="${index}"]`);
-    allMatching.forEach(cb => cb.checked = checked);
-    checkApprovalState();
-  }
+  /* ---------- shared state ---------- */
+  var APP_VERSION = 'v2.1.3';
+  var BUILD_DATE  = '2026-09-29';
+  var REMOTE_SLUG_VISIT   = 'moa-decision-package-dae-kurigram-v21';
+  var REMOTE_SLUG_SUPPORT = 'moa-support-dae-kurigram-v21';
 
-  function checkApprovalState() {
-    const allCheckboxes = document.querySelectorAll('.directive-checkbox input[type="checkbox"]');
-    const allChecked = Array.from(allCheckboxes).every(cb => cb.checked);
-    const radioDecision = document.querySelector('input[name="dg_decision"]:checked');
-    const stamp = document.getElementById('approvalStamp');
+  var currentLang = 'bn';
+  var moaChartInstance = null;
+  var countedEls = [];
+  var ttsState = { speaking:false, chunkIndex:0, chunks:[] };
+  var ttsKeepAlive = null;
+  var revealObserverOK = false;
 
-    if (allChecked || (radioDecision && radioDecision.value === 'approved')) {
-      stamp.style.display = 'block';
-    } else {
-      stamp.style.display = 'none';
+  var bnDigits = ['০','১','২','৩','৪','৫','৬','৭','৮','৯'];
+  function toBn(v){ return String(v).replace(/\d/g, function(d){ return bnDigits[parseInt(d,10)]; }); }
+  function fmtNum(v){ return currentLang === 'en' ? String(v) : toBn(v); }
+
+  var EV_NAMES = { pdf:'PDF download', docx:'DOCX download', tts:'TTS play', share:'Share', lang:'Language switch', support:'Endorsement', approve:'Decision marked', visit:'Document viewed' };
+  var evBn = { 'PDF download':'PDF ডাউনলোড','DOCX download':'DOCX ডাউনলোড','TTS play':'TTS শোনা','Share':'শেয়ার','Language switch':'ভাষা পরিবর্তন','Endorsement':'সমর্থন','Decision marked':'সিদ্ধান্ত চিহ্নিত','Document viewed':'নথি দেখা' };
+
+  document.addEventListener('DOMContentLoaded', function () {
+
+    /* ---------- toast ---------- */
+    var toastEl = $('toast');
+    var toastTimer = null;
+    function showToast(msgBn, msgEn){
+      if (!toastEl) return;
+      toastEl.textContent = currentLang === 'en' ? msgEn : msgBn;
+      toastEl.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(function(){ toastEl.classList.remove('show'); }, 2800);
     }
-  }
+    function relTime(ts){
+      var diff = Math.max(0, Math.floor((Date.now() - ts) / 1000));
+      if (currentLang === 'en'){
+        if (diff < 60) return 'just now';
+        if (diff < 3600) return Math.floor(diff/60) + ' min ago';
+        if (diff < 86400) return Math.floor(diff/3600) + ' hr ago';
+        return Math.floor(diff/86400) + ' day(s) ago';
+      }
+      if (diff < 60) return 'এইমাত্র';
+      if (diff < 3600) return toBn(Math.floor(diff/60)) + ' মিনিট আগে';
+      if (diff < 86400) return toBn(Math.floor(diff/3600)) + ' ঘণ্টা আগে';
+      return toBn(Math.floor(diff/86400)) + ' দিন আগে';
+    }
 
-  // 3. Export to Word Function
-  function downloadWordDoc() {
-    const head = '<meta charset="utf-8"><title>Ministerial Decision Package - Pesticide Management</title><style>table{border-collapse:collapse;width:100%;}td,th{border:1px solid #ccc;padding:6px;}</style>';
-    const bodyContent = document.querySelector('.container').innerHTML;
-    const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40"><head>${head}</head><body>${bodyContent}</body></html>`;
-    
-    const blob = new Blob(['\ufeff' + html], { type: 'application/msword' });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement('a');
-    a.href = url;
-    a.download = 'DAE_Ministerial_Decision_Package_Pesticide_Reform.doc';
-    document.body.appendChild(a);
-    a.click();
-    document.body.removeChild(a);
-  }
+    /* ---------- icons (guarded) ---------- */
+    safe('icons', function(){ if (window.lucide && lucide.createIcons) lucide.createIcons(); });
+
+    /* ---------- analytics storage ---------- */
+    var Analytics = {
+      KEY: 'moa_dp_analytics_v21',
+      fresh: function(){
+        return { visitorId:'v'+Math.random().toString(36).slice(2,10), firstVisit:Date.now(), lastVisit:Date.now(),
+                 visits:0, pdf:0, docx:0, tts:0, share:0, lang:0, support:0, supported:false,
+                 remoteVisit:null, remoteSupport:null, log:[] };
+      },
+      load: function(){
+        try {
+          var d = JSON.parse(localStorage.getItem(this.KEY));
+          if (d && typeof d === 'object'){ if (!Array.isArray(d.log)) d.log = []; return d; }
+          return this.fresh();
+        } catch(e){ return this.fresh(); }
+      },
+      save: function(d){ try { localStorage.setItem(this.KEY, JSON.stringify(d)); } catch(e){} },
+      track: function(ev){
+        var d = this.load();
+        if (typeof d[ev] === 'number') d[ev]++;
+        d.log.unshift({ t: Date.now(), k: EV_NAMES[ev] || ev });
+        d.log = d.log.slice(0, 8);
+        d.lastVisit = Date.now();
+        this.save(d);
+        safe('updateDash-track', updateDash);
+      }
+    };
+
+    /* ---------- dashboard ---------- */
+    var dashEls = {
+      remote: $('dRemote'), visits: $('dVisits'), pdf: $('dPdf'), docx: $('dDocx'),
+      tts: $('dTts'), share: $('dShare'), lang: $('dLang'), support: $('dSupport'),
+      log: $('activityLog'), metaFirst: $('metaFirst'), metaLast: $('metaLast'),
+      supportCount: $('supportCount'), supportLabel: $('supportLabel'), btnSupport: $('btnSupport')
+    };
+
+    function updateDash(){
+      var d = Analytics.load();
+      var remoteVisit = (d.remoteVisit !== null && d.remoteVisit !== undefined) ? d.remoteVisit : d.visits;
+      var remoteSupport = (d.remoteSupport !== null && d.remoteSupport !== undefined) ? d.remoteSupport : d.support;
+      function set(el, v){ if (el) el.textContent = fmtNum(v); }
+      set(dashEls.remote, remoteVisit);
+      set(dashEls.visits, d.visits);
+      set(dashEls.pdf, d.pdf);
+      set(dashEls.docx, d.docx);
+      set(dashEls.tts, d.tts);
+      set(dashEls.share, d.share);
+      set(dashEls.lang, d.lang);
+      set(dashEls.support, remoteSupport);
+      set(dashEls.supportCount, remoteSupport);
+
+      if (dashEls.metaFirst && dashEls.metaLast){
+        try {
+          var loc = currentLang === 'en' ? 'en-GB' : 'bn-BD';
+          dashEls.metaFirst.textContent = new Date(d.firstVisit).toLocaleDateString(loc, { day:'numeric', month:'short', year:'numeric' });
+          dashEls.metaLast.textContent = relTime(d.lastVisit);
+        } catch(e){}
+      }
+
+      if (dashEls.log){
+        if (d.log && d.log.length){
+          dashEls.log.innerHTML = d.log.map(function(item){
+            var label = currentLang === 'en' ? item.k : (evBn[item.k] || item.k);
+            return '<li class="flex items-center justify-between gap-2 bg-white border border-leaf-100 rounded-lg px-3 py-2">' +
+                   '<span class="font-semibold text-leaf-800">' + label + '</span>' +
+                   '<span class="text-[11px] text-slate-400">' + relTime(item.t) + '</span></li>';
+          }).join('');
+        } else {
+          dashEls.log.innerHTML = '<li class="text-xs text-slate-400">' + (currentLang === 'en' ? 'No activity yet.' : 'এখনো কোনো কার্যকলাপ নেই।') + '</li>';
+        }
+      }
+
+      if (dashEls.btnSupport && dashEls.supportLabel){
+        if (d.supported){
+          dashEls.btnSupport.disabled = true;
+          dashEls.btnSupport.classList.add('opacity-60','cursor-not-allowed');
+          dashEls.supportLabel.textContent = currentLang === 'en' ? 'You have endorsed' : 'আপনি সমর্থন করেছেন';
+        } else {
+          dashEls.btnSupport.disabled = false;
+          dashEls.btnSupport.classList.remove('opacity-60','cursor-not-allowed');
+        }
+      }
+    }
+
+    /* ---------- approval status ---------- */
+    var approvalStatusEl = $('approvalStatus');
+    function updateApprovalStatus(){
+      if (!approvalStatusEl) return;
+      var count = document.querySelectorAll('.d-input:checked').length;
+      approvalStatusEl.innerHTML = currentLang === 'en'
+        ? 'Approved decisions: <strong>' + count + '</strong> / 4'
+        : 'অনুমোদিত সিদ্ধান্ত: <strong>' + toBn(count) + '</strong> / ৪';
+    }
+
+    /* ---------- TTS ---------- */
+    function collectSpeechText(){
+      var clone = document.querySelector('main').cloneNode(true);
+      clone.querySelectorAll('script,style,canvas,button,.no-print,svg,i[data-lucide],noscript').forEach(function(e){ e.remove(); });
+      var dash = clone.querySelector('#dash'); if (dash) dash.remove();
+      var one  = clone.querySelector('#onepager'); if (one) one.remove();
+      var raw = clone.textContent.replace(/\s+/g,' ').trim();
+      var sentences = raw.match(/[^।.!?]+[।.!?]*/g) || [raw];
+      var chunks = [], buffer = '';
+      sentences.forEach(function(s){
+        s = s.trim(); if (!s) return;
+        if ((buffer + ' ' + s).length > 200){ if (buffer) chunks.push(buffer.trim()); buffer = s; }
+        else { buffer = buffer ? buffer + ' ' + s : s; }
+      });
+      if (buffer) chunks.push(buffer.trim());
+      return chunks;
+    }
+    function speakChunk(idx){
+      if (!ttsState.speaking) return;
+      if (idx >= ttsState.chunks.length){ stopTts(); return; }
+      var utter = new SpeechSynthesisUtterance(ttsState.chunks[idx]);
+      utter.lang = currentLang === 'en' ? 'en-US' : 'bn-BD';
+      utter.rate = 0.95;
+      utter.onend = function(){ if (ttsState.speaking){ speakChunk(idx + 1); } };
+      utter.onerror = function(){ stopTts(); };
+      window.speechSynthesis.speak(utter);
+    }
+    function setTtsUi(active){
+      var ip = $('ttsIconPlay'), is = $('ttsIconStop'), bt = $('btnTts'), tp = $('ttsTip');
+      if (ip) ip.classList.toggle('hidden', active);
+      if (is) is.classList.toggle('hidden', !active);
+      if (bt) bt.classList.toggle('tts-active', active);
+      if (tp) tp.textContent = active
+        ? (currentLang === 'en' ? 'Stop' : 'থামান')
+        : (currentLang === 'en' ? 'Listen (TTS) — Play' : 'শুনুন (TTS) — চালান');
+    }
+    function startTts(){
+      if (!('speechSynthesis' in window)){ showToast('এই ব্রাউজারে TTS সমর্থিত নয়', 'TTS is not supported in this browser'); return; }
+      ttsState.chunks = collectSpeechText();
+      if (!ttsState.chunks.length){ showToast('পড়ার মতো টেক্সট পাওয়া যায়নি', 'No readable text found'); return; }
+      ttsState.speaking = true;
+      setTtsUi(true);
+      Analytics.track('tts');
+      speakChunk(0);
+      ttsKeepAlive = setInterval(function(){
+        if (ttsState.speaking && window.speechSynthesis.speaking) window.speechSynthesis.resume();
+      }, 10000);
+    }
+    function stopTts(){
+      ttsState.speaking = false;
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      if (ttsKeepAlive){ clearInterval(ttsKeepAlive); ttsKeepAlive = null; }
+      setTtsUi(false);
+    }
+    on('btnTts', 'click', function(){ if (ttsState.speaking) stopTts(); else startTts(); });
+
+    /* ---------- counters ---------- */
+    function animateCount(el){
+      var target = parseInt(el.getAttribute('data-count'), 10);
+      if (isNaN(target)) return;
+      var start = performance.now();
+      (function tick(now){
+        var p = Math.min((now - start) / 1500, 1);
+        var eased = 1 - Math.pow(1 - p, 3);
+        var val = Math.round(target * eased);
+        el.textContent = currentLang === 'en' ? String(val) : toBn(val);
+        if (p < 1) requestAnimationFrame(tick);
+      })(start);
+    }
+
+    /* ---------- language ---------- */
+    safe('lang-capture', function(){
+      document.querySelectorAll('[data-en]').forEach(function(el){ el.setAttribute('data-bn', el.innerHTML); });
+    });
+    function setLang(target){
+      currentLang = target;
+      document.documentElement.lang = target;
+      document.querySelectorAll('[data-en]').forEach(function(el){
+        el.innerHTML = target === 'en' ? el.getAttribute('data-en') : el.getAttribute('data-bn');
+      });
+      var lb = $('langBadge'), lt = $('langTip'), mb = $('metaBuild');
+      if (lb) lb.textContent = target === 'en' ? 'বাং' : 'EN';
+      if (lt) lt.textContent = target === 'en' ? 'Switch to Bengali' : 'English-এ পরিবর্তন';
+      if (mb) mb.textContent = target === 'en' ? BUILD_DATE : '২৯ সেপ্টেম্বর ২০২৬';
+      if (ttsState.speaking) stopTts();
+      updateApprovalStatus();
+      updateDash();
+      countedEls.forEach(function(el){ animateCount(el); });
+      if (moaChartInstance) { try { moaChartInstance.update(); } catch(e){} }
+    }
+    on('btnLang', 'click', function(){
+      setLang(currentLang === 'bn' ? 'en' : 'bn');
+      Analytics.track('lang');
+    });
+
+    /* ---------- version meta & modal ---------- */
+    safe('version', function(){
+      ['navVersion','chipVer','metaVersion','footerVersion'].forEach(function(id){
+        var el = $(id); if (el) el.textContent = APP_VERSION;
+      });
+      var fb = $('footerBuild'); if (fb) fb.textContent = BUILD_DATE;
+      var modal = $('modalChangelog');
+      function openModal(){ if (modal) modal.classList.add('open'); }
+      function closeModal(){ if (modal) modal.classList.remove('open'); }
+      on('versionChip','click',openModal);
+      on('versionChip2','click',openModal);
+      on('versionChip2','keydown',function(e){ if (e.key === 'Enter' || e.key === ' '){ e.preventDefault(); openModal(); } });
+      on('footerVersion','click',openModal);
+      on('modalClose','click',closeModal);
+      if (modal) modal.addEventListener('click', function(e){ if (e.target === modal) closeModal(); });
+      document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+    });
+
+    /* ---------- decision checkboxes ---------- */
+    safe('decisions', function(){
+      document.querySelectorAll('.decision-row').forEach(function(row){
+        var input = row.querySelector('.d-input');
+        var tickIcon = row.querySelector('.d-box i');
+        if (!input) return;
+        function sync(){
+          row.classList.toggle('checked', input.checked);
+          if (tickIcon) tickIcon.classList.toggle('hidden', !input.checked);
+          updateApprovalStatus();
+          Analytics.track('approve');
+        }
+        row.addEventListener('click', function(ev){
+          if (ev.target !== input){ ev.preventDefault(); input.checked = !input.checked; }
+          sync();
+        });
+      });
+    });
+
+    /* ---------- endorsement ---------- */
+    safe('support', function(){
+      on('btnSupport','click', function(){
+        var d = Analytics.load();
+        if (d.supported){ showToast('আপনি ইতিমধ্যে সমর্থন করেছেন', 'You have already endorsed'); return; }
+        d.supported = true; d.support++;
+        d.log.unshift({ t: Date.now(), k: EV_NAMES.support });
+        d.log = d.log.slice(0, 8);
+        Analytics.save(d);
+        updateDash();
+        showToast('ধন্যবাদ! আপনার সমর্থন লিপিবদ্ধ হয়েছে 🇧🇩', 'Thank you! Your endorsement is recorded 🇧🇩');
+        try {
+          fetch('https://hits.seeyoufarm.com/api/count/incrs/?url=' + encodeURIComponent(REMOTE_SLUG_SUPPORT) + '&title=supporters&count_bg=%23a35d1c&title_bg=%23154832&edge_flat=true')
+            .then(function(r){ return r.ok ? r.json() : null; })
+            .then(function(j){ if (j && j.totalviews){ var dd = Analytics.load(); dd.remoteSupport = j.totalviews; Analytics.save(dd); updateDash(); } })
+            .catch(function(){});
+        } catch(e){}
+      });
+    });
+
+    /* ---------- PDF / one-pager print ---------- */
+    on('btnPdf','click', function(){
+      Analytics.track('pdf');
+      showToast('প্রিন্ট ডায়ালগ থেকে “Save as PDF” নির্বাচন করুন — এক পাতার সারসংক্ষেপ স্বয়ংক্রিয়ভাবে সংযুক্ত হবে', 'Choose “Save as PDF” in the print dialog — the one-pager is attached automatically');
+      setTimeout(function(){ window.print(); }, 500);
+    });
+    function printOnePager(){
+      document.body.classList.add('one-only');
+      Analytics.track('pdf');
+      setTimeout(function(){ window.print(); }, 60);
+    }
+    on('btnOnePage','click', printOnePager);
+    on('btnOnePrint','click', printOnePager);
+    window.addEventListener('afterprint', function(){ document.body.classList.remove('one-only'); });
+
+    /* ---------- DOCX ---------- */
+    function buildDocHtml(){
+      var clone = document.querySelector('main').cloneNode(true);
+      clone.querySelectorAll('script,style,canvas,button,.no-print,svg,i[data-lucide],noscript').forEach(function(e){ e.remove(); });
+      clone.querySelectorAll('[class]').forEach(function(e){ e.removeAttribute('class'); });
+      clone.querySelectorAll('[style]').forEach(function(e){ e.removeAttribute('style'); });
+      return '<!DOCTYPE html><html><head><meta charset="utf-8"><style>'
+        + 'body{font-family:"Hind Siliguri","Noto Serif Bengali",sans-serif;line-height:1.7;color:#1f2937;}'
+        + 'h1{font-size:20pt;color:#154832;} h2{font-size:16pt;color:#154832;border-bottom:1px solid #c2ecd4;padding-bottom:4px;} h3{font-size:13pt;color:#1c6e47;}'
+        + 'table{border-collapse:collapse;width:100%;} td,th{border:1px solid #999;padding:6px 8px;font-size:10pt;}'
+        + 'blockquote{border-left:4px solid #228a56;margin:8px 0;padding:8px 14px;background:#f2fbf6;}'
+        + 'li{margin:3px 0;}'
+        + '</style></head><body>' + clone.innerHTML + '</body></html>';
+    }
+    function triggerDownload(blob, filename){
+      var url = URL.createObjectURL(blob);
+      var a = document.createElement('a');
+      a.href = url; a.download = filename;
+      document.body.appendChild(a); a.click();
+      setTimeout(function(){ URL.revokeObjectURL(url); a.remove(); }, 600);
+    }
+    on('btnDocx','click', function(){
+      Analytics.track('docx');
+      var html = buildDocHtml();
+      var fname = currentLang === 'en' ? 'MoA-Decision-Package.docx' : 'MoA-সিদ্ধান্ত-প্যাকেজ.docx';
+      var ok = false;
+      try {
+        if (window.htmlDocx && typeof window.htmlDocx.asBlob === 'function'){
+          triggerDownload(window.htmlDocx.asBlob(html), fname);
+          ok = true;
+        }
+      } catch (err) { ok = false; }
+      if (!ok){
+        triggerDownload(new Blob(['\ufeff', html], { type: 'application/msword' }), fname.replace('.docx', '.doc'));
+        showToast('Word (.doc) ডাউনলোড শুরু হয়েছে', 'Word (.doc) download started');
+      } else {
+        showToast('DOCX ডাউনলোড শুরু হয়েছে (এক পাতার সারসংক্ষেপসহ)', 'DOCX download started (one-pager included)');
+      }
+    });
+
+    /* ---------- share ---------- */
+    on('btnShare','click', function(){
+      Analytics.track('share');
+      var shareData = {
+        title: 'MoA Label Inclusion — Decision Package ' + APP_VERSION,
+        text: currentLang === 'en'
+          ? 'Decision Package: Mandatory IRAC/FRAC MoA classification, rotation window & tank-mix compatibility on pesticide labels — Section 16(2), Pesticides Act 2018. “We shall work, we shall build the nation; Bangladesh first of all.” Proposer: Abu Md Moniruzjaman, DAE Kurigram.'
+          : 'সিদ্ধান্ত প্যাকেজ: বালাইনাশক লেবেলে IRAC/FRAC MoA শ্রেণি নম্বর, রোটেশন উইন্ডো ও মিশ্রণ-সামঞ্জস্যতা বাধ্যতামূলক — ধারা ১৬(২), বালাইনাশক আইন ২০১৮। “করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ।” প্রস্তাবক: আবু মোঃ মনিরুজ্জামান, ডিএই কুড়িগ্রাম।',
+        url: window.location.href
+      };
+      function fallbackCopy(){
+        if (navigator.clipboard && navigator.clipboard.writeText){
+          navigator.clipboard.writeText(shareData.text + '\n' + shareData.url)
+            .then(function(){ showToast('লিংক ও সারসংক্ষেপ কপি হয়েছে!', 'Link & summary copied!'); })
+            .catch(function(){ showToast('শেয়ার করা যায়নি', 'Could not share'); });
+        } else { showToast('শেয়ার করা যায়নি', 'Could not share'); }
+      }
+      if (navigator.share){ navigator.share(shareData).catch(fallbackCopy); }
+      else { fallbackCopy(); }
+    });
+
+    /* ---------- progress bar ---------- */
+    safe('progress', function(){
+      var progressBar = $('progressBar');
+      window.addEventListener('scroll', function(){
+        if (!progressBar) return;
+        var docH = document.body.scrollHeight - window.innerHeight;
+        progressBar.style.width = (docH > 0 ? (window.pageYOffset / docH) * 100 : 0) + '%';
+      }, { passive: true });
+    });
+
+    /* ---------- reveal (with failsafe) ---------- */
+    safe('reveal', function(){
+      if ('IntersectionObserver' in window){
+        var revealObs = new IntersectionObserver(function(entries){
+          entries.forEach(function(e){
+            if (e.isIntersecting){ e.target.classList.add('visible'); revealObs.unobserve(e.target); }
+          });
+        }, { threshold: .08, rootMargin: '0px 0px -40px 0px' });
+        document.querySelectorAll('.reveal').forEach(function(el){ revealObs.observe(el); });
+        revealObserverOK = true;
+      }
+    });
+    window.addEventListener('load', function(){
+      setTimeout(function(){
+        if (!revealObserverOK){
+          document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('visible'); });
+        }
+      }, 600);
+    });
+
+    /* ---------- scrollspy ---------- */
+    safe('scrollspy', function(){
+      var navLinks = document.querySelectorAll('.nav-link');
+      if (!('IntersectionObserver' in window) || !navLinks.length) return;
+      var spy = new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if (!e.isIntersecting) return;
+          navLinks.forEach(function(l){
+            var isOn = l.getAttribute('href') === '#' + e.target.id;
+            l.classList.toggle('bg-leaf-700', isOn);
+            l.classList.toggle('text-white', isOn);
+          });
+        });
+      }, { rootMargin: '-40% 0px -55% 0px' });
+      ['sarsangkshep','bikolpo','jukti','aain','jatio','roadmap','jhuki','dash','onepager'].forEach(function(id){
+        var sec = $(id); if (sec) spy.observe(sec);
+      });
+    });
+
+    /* ---------- count-up observers ---------- */
+    safe('counters', function(){
+      if (!('IntersectionObserver' in window)) return;
+      var counterObs = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (!entry.isIntersecting) return;
+          counterObs.unobserve(entry.target);
+          countedEls.push(entry.target);
+          animateCount(entry.target);
+        });
+      }, { threshold: .4 });
+      document.querySelectorAll('[data-count]').forEach(function(el){ counterObs.observe(el); });
+    });
+
+    /* ---------- chart (guarded) ---------- */
+    safe('chart', function(){
+      var chartCtx = $('moaChart');
+      if (window.Chart && chartCtx){
+        moaChartInstance = new Chart(chartCtx, {
+          type: 'bar',
+          data: {
+            labels: ['IRAC 1B','IRAC 3A','IRAC 1A','FRAC M3','FRAC M1','FRAC 3','HRAC K3','HRAC B'],
+            datasets: [{
+              data: [890,573,433,409,295,277,205,142],
+              backgroundColor: ['#1c6e47','#228a56','#33a96d','#0ea5e9','#38bdf8','#7dd3fc','#dd9a28','#edc96b'],
+              borderRadius: 7, borderSkipped: false, barThickness: 18
+            }]
+          },
+          options: {
+            indexAxis: 'y', responsive: true, maintainAspectRatio: false,
+            plugins: {
+              legend: { display: false },
+              tooltip: {
+                backgroundColor: '#154832', padding: 10,
+                callbacks: {
+                  label: function(ctx){
+                    return currentLang === 'en' ? ctx.parsed.x + ' registered products' : toBn(ctx.parsed.x) + ' টি নিবন্ধিত পণ্য';
+                  }
+                }
+              }
+            },
+            scales: {
+              x: { grid: { color: 'rgba(0,0,0,.05)' }, ticks: { callback: function(v){ return currentLang === 'en' ? v : toBn(v); } } },
+              y: { grid: { display: false } }
+            },
+            animation: { duration: 1200 }
+          }
+        });
+      }
+    });
+
+    /* ---------- BOOTSTRAP (runs last, fully guarded) ---------- */
+    safe('bootstrap', function(){
+      var d = Analytics.load();
+      d.visits++;
+      d.lastVisit = Date.now();
+      d.log.unshift({ t: Date.now(), k: EV_NAMES.visit });
+      d.log = d.log.slice(0, 8);
+      Analytics.save(d);
+      updateDash();
+      updateApprovalStatus();
+
+      try {
+        fetch('https://hits.seeyoufarm.com/api/count/incrs/?url=' + encodeURIComponent(REMOTE_SLUG_VISIT) + '&title=visitors&count_bg=%231c6e47&title_bg=%23154832&edge_flat=true')
+          .then(function(r){ return r.ok ? r.json() : null; })
+          .then(function(j){
+            if (j && j.totalviews){
+              var dd = Analytics.load();
+              dd.remoteVisit = j.totalviews;
+              Analytics.save(dd);
+              updateDash();
+            }
+          })
+          .catch(function(){});
+      } catch(e){}
+
+      setInterval(function(){ safe('heartbeat', updateDash); }, 60000);
+    });
+  });
+
+  /* ---------- outer failsafe: even if DOMContentLoaded itself throws ---------- */
+  window.addEventListener('error', function(){
+    document.querySelectorAll('.reveal:not(.visible)').forEach(function(el){ el.classList.add('visible'); });
+  });
+})();
 </script>
-
 </body>
 </html>
