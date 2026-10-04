@@ -87,8 +87,19 @@
   /* header */
   .official-header{background:linear-gradient(135deg,var(--bd-green-dark) 0%,var(--bd-green) 100%);color:#fff;padding:40px 40px 30px;text-align:center;position:relative;border-bottom:5px solid var(--gold)}
   .official-header::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--bd-green) 0%,var(--bd-red) 50%,var(--gold) 100%)}
+  .header-visuals{display:flex;align-items:center;justify-content:center;gap:22px;margin:0 auto 15px;flex-wrap:wrap}
+  .header-visuals .crest{margin:0}
+  .header-bottle{height:96px;width:auto;display:flex;align-items:center;justify-content:center;filter:drop-shadow(0 8px 18px rgba(0,0,0,.35))}
+  .header-bottle img{height:96px;width:auto;display:block}
   .crest{width:90px;height:90px;margin:0 auto 15px;display:flex;align-items:center;justify-content:center;border-radius:50%;overflow:hidden;border:3px solid var(--gold);box-shadow:0 4px 15px rgba(0,0,0,.2);background:#fff}
   .crest img{width:100%;height:100%;object-fit:cover;display:block}
+  .header-chips{display:flex;align-items:center;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .header-chips .version-chip{margin-top:0}
+  .header-chips .version-chip.moa-link{background:rgba(218,20,24,0.85);border-color:var(--bd-red);color:#fff;text-decoration:none;display:inline-flex}
+  .header-chips .version-chip.moa-link:hover{background:rgba(218,20,24,1);color:#fff}
+  .ref-link{color:var(--gold-light);text-decoration:underline dotted rgba(244,180,26,0.55);text-underline-offset:2px;transition:color .15s}
+  .ref-link:hover{color:#fff;text-decoration:underline}
+  .ref-link-external::after{content:" \2197";font-size:9px;opacity:0.7}
   .target-authority-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid var(--gold);color:var(--gold-light);font-size:12px;padding:4px 14px;border-radius:20px;letter-spacing:.5px;margin-bottom:12px;font-weight:700}
   .official-header h1{font-size:23px;letter-spacing:.5px;margin-bottom:6px}
   .official-header h2{font-size:14px;font-weight:400;color:#cbd5e1;letter-spacing:.3px}
@@ -278,6 +289,9 @@
     .official-header h1{font-size:17px;line-height:1.45}
     .official-header h2{font-size:12.5px}
     .crest{width:72px;height:72px}
+    .header-visuals{gap:14px}
+    .header-bottle,.header-bottle img{height:74px}
+    .header-chips{gap:8px}
     .target-authority-badge{font-size:10.5px;padding:3px 10px;letter-spacing:.3px}
     .report-title-box h3{font-size:15px}
     .report-title-box p{font-size:12px}
@@ -329,6 +343,9 @@
     .official-header h1{font-size:15px;letter-spacing:.2px}
     .official-header h2{font-size:11.5px}
     .crest{width:62px;height:62px;border-width:2px}
+    .header-visuals{gap:10px}
+    .header-bottle,.header-bottle img{height:62px}
+    .header-chips{gap:6px}
     .target-authority-badge{font-size:9.5px;padding:3px 8px}
     .report-title-box h3{font-size:13.5px}
     .report-title-box p{font-size:11px}
@@ -355,13 +372,16 @@
   @media print{
     body{background:#fff;padding-bottom:0}
     .container{box-shadow:none;max-width:100%;margin:0;border-radius:0}
-    .nav-bar,.toolbar-floating,.modal-back,#toast,.no-print,.version-chip,.frame-box .kick{display:none!important}
+    .nav-bar,.toolbar-floating,.modal-back,#toast,.no-print,.version-chip,.header-bottle,.frame-box .kick{display:none!important}
     section{break-inside:avoid}
     .print-break{break-before:page}
     body.letter-only .content>section:not(#part1),
     body.letter-only .frame-box,body.letter-only .official-header,body.letter-only .nav-bar,body.letter-only .doc-footer{display:none!important}
     body.letter-only .content{padding:0}
     .letter-sheet,.decision-sheet{box-shadow:none}
+    /* Show source URLs in print so readers can see where links point */
+    .ref-link[href]::after{content:" (" attr(href) ")";font-size:9px;color:#475569;word-break:break-all}
+    .ref-link[href]{text-decoration:underline;color:#006A4E}
   }
 </style>
 </head>
@@ -377,25 +397,35 @@
 
   <!-- OFFICIAL HEADER -->
   <div class="official-header">
-    <div class="crest"><img src="pesticide-reform.jpeg" alt="Pesticide Reform Logo" onerror="this.style.display='none';this.parentElement.textContent='🇧🇩'"></div>
+    <div class="header-visuals">
+      <div class="crest"><img src="pesticide-reform.jpeg" alt="Pesticide Reform Logo" onerror="this.style.display='none';this.parentElement.textContent='🇧🇩'"></div>
+      <div class="header-bottle">
+        <img src="pesticide-bottle-moa.svg" alt="Sample pesticide bottle showing the proposed MoA Group IRAC 1B tag — illustrative draft" loading="lazy">
+      </div>
+    </div>
     <div class="target-authority-badge" data-en="Submitted to: Director General, DAE — through proper channel · Plant Protection Wing · PTAC">বরাবর: মহাপরিচালক, কৃষি সম্প্রসারণ অধিদপ্তর — মাধ্যম: যথাযথ কর্তৃপক্ষ · উদ্ভিদ সংরক্ষণ উইং · PTAC</div>
     <h1 data-en="OFFICIAL SUBMISSION DOSSIER">অফিসিয়াল সাবমিশন ডসিয়ে (SUBMISSION DOSSIER)</h1>
     <h2 data-en="Addition of International Mode of Action (MoA) Group/Code to Labels of Registered Pesticides & Strengthening Resistance Management">নিবন্ধিত বালাইনাশকের লেবেলে আন্তর্জাতিক Mode of Action (MoA) Group/Code সংযোজন এবং বালাই প্রতিরোধ ক্ষমতা ব্যবস্থাপনা জোরদারকরণ</h2>
 
     <div class="report-title-box">
-      <h3 data-en="A technical examination and pilot proposal — within the existing registration and labelling framework of the Pesticides Act, 2018; making no claim of new statutory authority">বিদ্যমান বালাইনাশক আইন, ২০১৮-এর নিবন্ধন ও লেবেলিং কাঠামোর আওতায় কারিগরি পরীক্ষা ও পাইলট প্রস্তাব — কোনো নতুন আইনগত ক্ষমতা দাবি করে না</h3>
-      <p data-en="Prepared & presented by: Abu Md Moniruzjaman, Additional Deputy Director (Horticulture), Department of Agricultural Extension, Kurigram">প্রস্তুতকারী/উপস্থাপক: আবু মোঃ মনিরুজ্জামান, অতিরিক্ত উপপরিচালক (উদ্যান), কৃষি সম্প্রসারণ অধিদপ্তর, কুড়িগ্রাম</p>
+      <h3 data-en="A technical examination and pilot proposal — under Section 16(2) of the Pesticides Act, 2018, designating the Director, Plant Protection Wing as the registration authority; within the existing registration and labelling framework">বালাইনাশক আইন, ২০১৮-এর ধারা ১৬(২) অনুযায়ী — উদ্ভিদ সংরক্ষণ উইং-এর পরিচালক নিবন্ধন কর্তৃপক্ষ; বিদ্যমান নিবন্ধন ও লেবেলিং কাঠামোর আওতায় কারিগরি পরীক্ষা ও পাইলট প্রস্তাব</h3>
+      <p data-en="Prepared &amp; presented by: Abu Md Moniruzjaman, Additional Deputy Director (Horticulture), Department of Agricultural Extension, Kurigram">প্রস্তুতকারী/উপস্থাপক: আবু মোঃ মনিরুজ্জামান, অতিরিক্ত উপপরিচালক (উদ্যান), কৃষি সম্প্রসারণ অধিদপ্তর, কুড়িগ্রাম</p>
     </div>
 
     <div class="header-meta">
       <div data-en="&lt;strong&gt;Memo No.:&lt;/strong&gt; ____________________"><strong>স্মারক নং:</strong> ____________________</div>
       <div data-en="&lt;strong&gt;Date:&lt;/strong&gt; ____ / ____ / 2026"><strong>তারিখ:</strong> ____ / ____ / ২০২৬ খ্রি.</div>
-      <div data-en="&lt;strong&gt;Reference:&lt;/strong&gt; IRAC v11.5 (Feb 2026) · FRAC Code List 2026 · HRAC 2026"><strong>কারিগরি রেফারেন্স:</strong> IRAC v11.5 (ফেব্রুয়ারি ২০২৬) · FRAC Code List 2026 · HRAC 2026</div>
+      <div data-en="&lt;strong&gt;Reference:&lt;/strong&gt; &lt;a class='ref-link ref-link-external' href='https://www.irac-online.org/pesticide-mode-of-action-classification/' target='_blank' rel='noopener'&gt;IRAC v11.5&lt;/a&gt; (Feb 2026) · &lt;a class='ref-link ref-link-external' href='https://www.frac.info/frac-codes' target='_blank' rel='noopener'&gt;FRAC Code List 2026&lt;/a&gt; · &lt;a class='ref-link ref-link-external' href='https://www.hracglobal.com/herbicide-classification' target='_blank' rel='noopener'&gt;HRAC 2026&lt;/a&gt;"><strong>কারিগরি রেফারেন্স:</strong> <a class="ref-link ref-link-external" href="https://www.irac-online.org/pesticide-mode-of-action-classification/" target="_blank" rel="noopener">IRAC v11.5</a> (ফেব্রুয়ারি ২০২৬) · <a class="ref-link ref-link-external" href="https://www.frac.info/frac-codes" target="_blank" rel="noopener">FRAC Code List 2026</a> · <a class="ref-link ref-link-external" href="https://www.hracglobal.com/herbicide-classification" target="_blank" rel="noopener">HRAC 2026</a></div>
     </div>
 
-    <button type="button" class="version-chip" id="versionChip" title="Changelog">
-      <span class="live-dot"></span> LIVE · <span id="navVersion">v4.0.0</span> · <span data-en="version history">সংস্করণ ইতিহাস</span>
-    </button>
+    <div class="header-chips">
+      <a href="MoA_Mapping_PTAC_Bangladesh.html" class="version-chip moa-link" title="Open the National MoA Mapping of registered pesticides (PTAC submission)">
+        🗂️ <span data-en="MoA Mapping →">MoA Mapping →</span>
+      </a>
+      <button type="button" class="version-chip" id="versionChip" title="Changelog">
+        <span class="live-dot"></span> LIVE · <span id="navVersion">v4.0.0</span> · <span data-en="version history">সংস্করণ ইতিহাস</span>
+      </button>
+    </div>
   </div>
 
   <!-- NAV -->
@@ -616,9 +646,9 @@
           </tbody>
         </table>
         <ul>
-          <li data-en="IRAC's currently published MoA Classification Scheme is Version 11.5, February 2026.">IRAC-এর বর্তমান প্রকাশিত MoA Classification Scheme — <strong>Version 11.5, February 2026</strong>।</li>
-          <li data-en="FRAC's 2026 Code List is used as reference for fungicide MoA classification and the resistance-management framework.">FRAC-এর <strong>2026 Code List</strong> fungicide-এর MoA classification ও resistance-management framework-এর reference হিসেবে ব্যবহৃত হচ্ছে।</li>
-          <li data-en="HRAC Global's 2026 classification contains the updated MoA Group classification of herbicide active ingredients.">HRAC Global-এর <strong>2026 classification</strong>-এ herbicide active ingredients-এর updated MoA Group classification রয়েছে।</li>
+          <li data-en="IRAC's currently published MoA Classification Scheme is Version 11.5, February 2026. Source: &lt;a href='https://www.irac-online.org/pesticide-mode-of-action-classification/' target='_blank' rel='noopener'&gt;irac-online.org&lt;/a&gt;">IRAC-এর বর্তমান প্রকাশিত MoA Classification Scheme — <a href="https://www.irac-online.org/pesticide-mode-of-action-classification/" target="_blank" rel="noopener"><strong>Version 11.5, February 2026 ↗</strong></a></li>
+          <li data-en="FRAC's 2026 Code List is used as reference for fungicide MoA classification and the resistance-management framework. Source: &lt;a href='https://www.frac.info/frac-codes' target='_blank' rel='noopener'&gt;frac.info&lt;/a&gt;">FRAC-এর <a href="https://www.frac.info/frac-codes" target="_blank" rel="noopener"><strong>2026 Code List ↗</strong></a> fungicide-এর MoA classification ও resistance-management framework-এর reference হিসেবে ব্যবহৃত হচ্ছে।</li>
+          <li data-en="HRAC Global's 2026 classification contains the updated MoA Group classification of herbicide active ingredients. Source: &lt;a href='https://www.hracglobal.com/herbicide-classification' target='_blank' rel='noopener'&gt;hracglobal.com&lt;/a&gt;">HRAC Global-এর <a href="https://www.hracglobal.com/herbicide-classification" target="_blank" rel="noopener"><strong>2026 classification ↗</strong></a>-এ herbicide active ingredients-এর updated MoA Group classification রয়েছে।</li>
         </ul>
       </div>
 
@@ -836,7 +866,7 @@
     <div class="doc-footer">
       <p data-en="&lt;strong&gt;Official Submission Dossier — MoA Label Integration (Technical Examination & Pilot Proposal)&lt;/strong&gt;"><strong>অফিসিয়াল সাবমিশন ডসিয়ে — MoA লেবেল সংযোজন (কারিগরি পরীক্ষা ও পাইলট প্রস্তাব)</strong></p>
       <p data-en="Prepared by: Abu Md Moniruzjaman, Additional Deputy Director (Horticulture), DAE Kurigram · 📱 01712653740 · ✉️ mithun.hstu@gmail.com">প্রস্তুতকারী: আবু মোঃ মনিরুজ্জামান, অতিরিক্ত উপপরিচালক (উদ্যান), ডিএই কুড়িগ্রাম · 📱 ০১৭১২-৬৫৩৭৪০ · ✉️ mithun.hstu@gmail.com</p>
-      <p style="margin-top:6px;" data-en="Technical references: IRAC MoA Classification Scheme v11.5 (February 2026) — irac-online.org · FRAC Code List 2026 — frac.info · HRAC Global 2026 classification · FAO Guidelines on Good Labelling Practice for Pesticides (Revised, 2015) · Pesticides Act, 2018 — Bangladesh Gazette, 29 July 2018">কারিগরি তথ্যসূত্র: IRAC MoA Classification Scheme v11.5 (ফেব্রুয়ারি ২০২৬) — irac-online.org · FRAC Code List 2026 — frac.info · HRAC Global 2026 classification · FAO Good Labelling Practice Guidelines (Revised, 2015) · বালাইনাশক আইন, ২০১৮ — বাংলাদেশ গেজেট, ২৯ জুলাই ২০১৮</p>
+      <p style="margin-top:6px;" data-en="Technical references: &lt;a href='https://www.irac-online.org/pesticide-mode-of-action-classification/' target='_blank' rel='noopener'&gt;IRAC MoA Classification Scheme v11.5 (February 2026)&lt;/a&gt; — irac-online.org · &lt;a href='https://www.frac.info/frac-codes' target='_blank' rel='noopener'&gt;FRAC Code List 2026&lt;/a&gt; — frac.info · &lt;a href='https://www.hracglobal.com/herbicide-classification' target='_blank' rel='noopener'&gt;HRAC Global 2026 classification&lt;/a&gt; · FAO Guidelines on Good Labelling Practice for Pesticides (Revised, 2015) · &lt;a href='http://www.ppw.gov.bd/' target='_blank' rel='noopener'&gt;DAE 81st PTAC Approval List — Plant Protection Wing&lt;/a&gt; · &lt;a href='http://bdlaws.minlaw.gov.bd/' target='_blank' rel='noopener'&gt;Pesticides Act, 2018 — Bangladesh Gazette, 29 July 2018&lt;/a&gt;">কারিগরি তথ্যসূত্র: <a href="https://www.irac-online.org/pesticide-mode-of-action-classification/" target="_blank" rel="noopener">IRAC MoA Classification Scheme v11.5 (ফেব্রুয়ারি ২০২৬) ↗</a> — irac-online.org · <a href="https://www.frac.info/frac-codes" target="_blank" rel="noopener">FRAC Code List 2026 ↗</a> — frac.info · <a href="https://www.hracglobal.com/herbicide-classification" target="_blank" rel="noopener">HRAC Global 2026 classification ↗</a> · FAO Good Labelling Practice Guidelines (Revised, 2015) · <a href="http://www.ppw.gov.bd/" target="_blank" rel="noopener">DAE ৮১তম PTAC অনুমোদন তালিকা — উদ্ভিদ সংরক্ষণ উইং ↗</a> · <a href="http://bdlaws.minlaw.gov.bd/" target="_blank" rel="noopener">বালাইনাশক আইন, ২০১৮ — বাংলাদেশ গেজেট, ২৯ জুলাই ২০১৮ ↗</a></p>
       <p class="no-export" style="margin-top:8px;"><span class="live-dot" style="display:inline-block;vertical-align:middle;margin-right:6px;"></span><span data-en="Document version">নথি সংস্করণ</span> <button type="button" id="footerVersion" style="background:none;border:none;color:var(--gold);font-weight:800;cursor:pointer;font-family:inherit;font-size:12px;">v4.0.0</button> · <span data-en="Build">বিল্ড</span> <span id="footerBuild">2026-09-29</span></p>
       <p class="tagline">করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ। 🇧🇩</p>
     </div>
