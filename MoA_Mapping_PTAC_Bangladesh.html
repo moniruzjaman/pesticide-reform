@@ -339,12 +339,104 @@ ol.insights strong { color: var(--bd-green-dk); }
   table { page-break-inside: auto; }
   tr { page-break-inside: avoid; }
 }
+
+/* === Logo (replaces flag in top banner + cover header) === */
+.banner-logo, .cover-logo {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 2px solid var(--bd-gold, #F4B41A);
+  background: #fff;
+  flex-shrink: 0;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.25);
+}
+.banner-logo img, .cover-logo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+.cover-logo {
+  width: 110px;
+  height: 110px;
+  border-width: 3px;
+  margin: 0 auto 18px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.15);
+}
+
+/* === Back-to-Dossier button === */
+.back-to-dossier {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid var(--bd-gold, #F4B41A);
+  color: var(--bd-gold, #F4B41A);
+  font-size: 12px;
+  font-weight: 700;
+  padding: 6px 14px;
+  border-radius: 20px;
+  text-decoration: none;
+  transition: all 0.2s;
+  white-space: nowrap;
+}
+.back-to-dossier:hover {
+  background: rgba(255,255,255,0.25);
+  transform: translateX(-2px);
+}
+.sidebar .back-to-dossier {
+  margin: 16px 24px 8px;
+  width: calc(100% - 48px);
+  justify-content: center;
+  background: var(--bd-red, #DA1418);
+  color: #fff;
+  border-color: var(--bd-red, #DA1418);
+}
+.sidebar .back-to-dossier:hover {
+  background: #B00F12;
+  border-color: #B00F12;
+}
+
+/* === Align top banner with dossier === */
+.top-banner {
+  background: linear-gradient(135deg, #004A36 0%, #006A4E 100%) !important;
+  padding: 12px 24px !important;
+}
+.top-banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, #006A4E 0%, #DA1418 50%, #F4B41A 100%);
+}
+.top-banner { position: relative; }
+
+/* === Sidebar dossier link at top === */
+.sidebar .sidebar-dossier-link {
+  display: block;
+  padding: 10px 24px;
+  background: var(--bd-green-lighter, #F4F9F6);
+  border-left: 3px solid var(--bd-red, #DA1418);
+  color: var(--bd-green-dk, #004A36);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.sidebar .sidebar-dossier-link:hover {
+  background: var(--bd-green-light, #E8F2EE);
+}
+
 </style>
 </head>
 <body>
   <header class="top-banner">
     <div class="banner-left">
-      <div class="banner-flag"><div class="green"></div><div class="red"></div></div>
+      <a href="index.html" class="back-to-dossier" title="Back to Submission Dossier">← Dossier</a>
+      <div class="banner-logo">
+        <img src="pesticide-reform.jpeg" alt="Pesticide Reform Logo" onerror="this.style.display='none'">
+      </div>
       <h1>MoA Mapping of Registered Pesticides — Official Submission to PTAC, Bangladesh</h1>
     </div>
     <div class="banner-right">Generated 04 October 2026</div>
@@ -352,6 +444,7 @@ ol.insights strong { color: var(--bd-green-dk); }
 
   <div class="app-shell">
     <nav class="sidebar">
+      <a href="index.html" class="sidebar-dossier-link">← Back to Submission Dossier</a>
       <div class="nav-title">Contents</div>
       <a href="#overview" class="active">Overview</a>
       <div class="nav-count">Cover &amp; Executive Summary</div>
@@ -369,9 +462,8 @@ ol.insights strong { color: var(--bd-green-dk); }
       
 <section id="overview" class="sheet active">
   <div class="cover-header">
-    <div class="cover-flag">
-      <div class="flag-green"></div>
-      <div class="flag-red"></div>
+    <div class="cover-logo">
+      <img src="pesticide-reform.jpeg" alt="Pesticide Reform Logo" onerror="this.parentElement.style.display='none'">
     </div>
     <h1 class="doc-title">Mode of Action (MoA) Mapping of Registered Pesticides in Bangladesh</h1>
     <p class="doc-subtitle">Official Submission to the Pesticide Technical Appraisal Committee (PTAC), Bangladesh</p>
@@ -8237,8 +8329,8 @@ ol.insights strong { color: var(--bd-green-dk); }
   </div>
 
   <script>
-// Tab navigation
-const tabs = document.querySelectorAll('.sidebar a');
+// Tab navigation — exclude the "Back to Dossier" link (which navigates to index.html)
+const tabs = document.querySelectorAll('.sidebar a:not(.sidebar-dossier-link)');
 const sheets = document.querySelectorAll('.sheet');
 tabs.forEach(tab => {
   tab.addEventListener('click', (e) => {

@@ -59,7 +59,8 @@
   /* header */
   .official-header{background:linear-gradient(135deg,var(--bd-green-dark) 0%,var(--bd-green) 100%);color:#fff;padding:40px 40px 30px;text-align:center;position:relative;border-bottom:5px solid var(--gold)}
   .official-header::before{content:'';position:absolute;top:0;left:0;right:0;height:6px;background:linear-gradient(90deg,var(--bd-green) 0%,var(--bd-red) 50%,var(--gold) 100%)}
-  .crest{width:80px;height:80px;background:#fff;border-radius:50%;margin:0 auto 15px;display:flex;align-items:center;justify-content:center;font-size:34px;border:3px solid var(--gold);box-shadow:0 4px 15px rgba(0,0,0,.2)}
+  .crest{width:90px;height:90px;margin:0 auto 15px;display:flex;align-items:center;justify-content:center;border-radius:50%;overflow:hidden;border:3px solid var(--gold);box-shadow:0 4px 15px rgba(0,0,0,.2);background:#fff}
+  .crest img{width:100%;height:100%;object-fit:cover;display:block}
   .target-authority-badge{display:inline-block;background:rgba(255,255,255,.15);border:1px solid var(--gold);color:var(--gold-light);font-size:12px;padding:4px 14px;border-radius:20px;letter-spacing:.5px;margin-bottom:12px;font-weight:700}
   .official-header h1{font-size:23px;letter-spacing:.5px;margin-bottom:6px}
   .official-header h2{font-size:14px;font-weight:400;color:#cbd5e1;letter-spacing:.3px}
@@ -247,7 +248,7 @@
 
   <!-- OFFICIAL HEADER -->
   <div class="official-header">
-    <div class="crest">🇧🇩</div>
+    <div class="crest"><img src="pesticide-reform.jpeg" alt="Pesticide Reform Logo" onerror="this.style.display='none';this.parentElement.textContent='🇧🇩'"></div>
     <div class="target-authority-badge" data-en="Submitted to: Director General, DAE — through proper channel · Plant Protection Wing · PTAC">বরাবর: মহাপরিচালক, কৃষি সম্প্রসারণ অধিদপ্তর — মাধ্যম: যথাযথ কর্তৃপক্ষ · উদ্ভিদ সংরক্ষণ উইং · PTAC</div>
     <h1 data-en="OFFICIAL SUBMISSION DOSSIER">অফিসিয়াল সাবমিশন ডসিয়ে (SUBMISSION DOSSIER)</h1>
     <h2 data-en="Addition of International Mode of Action (MoA) Group/Code to Labels of Registered Pesticides & Strengthening Resistance Management">নিবন্ধিত বালাইনাশকের লেবেলে আন্তর্জাতিক Mode of Action (MoA) Group/Code সংযোজন এবং বালাই প্রতিরোধ ক্ষমতা ব্যবস্থাপনা জোরদারকরণ</h2>
@@ -276,6 +277,7 @@
     <a href="#part3" data-en="03 Technical Annex">০৩ টেকনিক্যাল অ্যানেক্স</a>
     <a href="#part4" data-en="04 Proposed DG Decision">০৪ প্রস্তাবিত DG সিদ্ধান্ত</a>
     <a href="#dash" data-en="05 Analytics">০৫ পরিসংখ্যান</a>
+    <a href="MoA_Mapping_PTAC_Bangladesh.html" class="external-link" data-en="06 MoA Mapping" style="margin-left:auto;color:var(--bd-red);border-bottom-color:var(--bd-red)">০৬ MoA Mapping →</a>
   </div>
 
   <div class="content">
@@ -989,7 +991,7 @@
 
     /* ---------- scrollspy ---------- */
     safe('scrollspy', function(){
-      var links = document.querySelectorAll('.nav-bar a');
+      var links = document.querySelectorAll('.nav-bar a:not(.external-link)');
       if (!links.length || !('IntersectionObserver' in window)) return;
       var spy = new IntersectionObserver(function(entries){
         entries.forEach(function(e){
