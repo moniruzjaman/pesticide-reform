@@ -1,0 +1,214 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  pesticide-bottle-moa.svg
+  A sample pesticide spray-bottle illustration with a label clearly showing
+  the proposed "MoA Group / Code" badge (IRAC 1B for an Organophosphate
+  insecticide — Chlorpyrifos 20 EC). This is the visual focal point of the
+  Pesticide Reform proposal: adding the international MoA Group/Code to
+  every registered pesticide label so farmers, dealers and field advisors
+  can quickly distinguish Modes of Action.
+
+  This SVG is browser-usable (drop-in <img src="pesticide-bottle-moa.svg">
+  or inline <svg> in index.html) and is also embedded in the social
+  preview PNG.
+
+  Theme: Bangladesh green (#006A4E), red (#DA1418), gold (#F4B41A).
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 460 620" width="460" height="620" role="img" aria-label="Sample pesticide bottle label with MoA Group IRAC 1B">
+  <defs>
+    <linearGradient id="bottleBody" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"  stop-color="#16361f"/>
+      <stop offset="18%" stop-color="#1f4a2b"/>
+      <stop offset="50%" stop-color="#2c6238"/>
+      <stop offset="82%" stop-color="#1f4a2b"/>
+      <stop offset="100%" stop-color="#0d2414"/>
+    </linearGradient>
+    <linearGradient id="bottleHi" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%"  stop-color="rgba(255,255,255,0)"/>
+      <stop offset="40%" stop-color="rgba(255,255,255,0.35)"/>
+      <stop offset="60%" stop-color="rgba(255,255,255,0.35)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <linearGradient id="capGold" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"  stop-color="#F4B41A"/>
+      <stop offset="100%" stop-color="#A8770F"/>
+    </linearGradient>
+    <linearGradient id="capGoldDark" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%"  stop-color="#C5901C"/>
+      <stop offset="100%" stop-color="#7A5A0A"/>
+    </linearGradient>
+    <linearGradient id="moaBadge" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="#E11E25"/>
+      <stop offset="100%" stop-color="#8A0A0D"/>
+    </linearGradient>
+    <linearGradient id="moaShine" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%"  stop-color="rgba(255,255,255,0.5)"/>
+      <stop offset="50%" stop-color="rgba(255,255,255,0)"/>
+      <stop offset="100%" stop-color="rgba(255,255,255,0)"/>
+    </linearGradient>
+    <radialGradient id="shadowGrad" cx="50%" cy="50%" r="50%">
+      <stop offset="0%"  stop-color="rgba(0,0,0,0.45)"/>
+      <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+    </radialGradient>
+  </defs>
+
+  <!-- Drop shadow on ground -->
+  <ellipse cx="230" cy="600" rx="170" ry="14" fill="url(#shadowGrad)"/>
+
+  <!-- ============================ SPRAY CAP / NOZZLE ============================ -->
+  <!-- Top spray nozzle (gold) -->
+  <path d="M 195 32 Q 195 14 215 14 L 245 14 Q 265 14 265 32 L 268 70 L 192 70 Z"
+        fill="url(#capGold)" stroke="#6b4d0a" stroke-width="2"/>
+  <!-- nozzle tip -->
+  <rect x="262" y="40" width="22" height="6" rx="2" fill="#A8770F" stroke="#6b4d0a" stroke-width="1"/>
+  <rect x="280" y="38" width="6" height="10" rx="1" fill="#5c3f08"/>
+
+  <!-- Cap collar -->
+  <rect x="188" y="68" width="84" height="14" rx="3" fill="url(#capGoldDark)" stroke="#5c3f0a" stroke-width="1.5"/>
+  <rect x="186" y="80" width="88" height="8" rx="2" fill="url(#capGold)" stroke="#6b4d0a" stroke-width="1.5"/>
+
+  <!-- ============================ BOTTLE NECK ============================ -->
+  <path d="M 200 88 L 260 88 L 268 132 L 192 132 Z" fill="url(#bottleBody)" stroke="#0d2414" stroke-width="2"/>
+
+  <!-- ============================ SPRAY TRIGGER HANDLE ============================ -->
+  <!-- Trigger (gold) on right side -->
+  <path d="M 270 110 Q 312 120 318 158 L 318 200 Q 318 220 300 222 L 280 222 Q 270 222 270 212 Z"
+        fill="url(#capGold)" stroke="#6b4d0a" stroke-width="2"/>
+  <!-- trigger inner shadow -->
+  <path d="M 290 130 Q 308 138 312 168 L 312 200 Q 312 212 304 214 L 296 214"
+        fill="none" stroke="rgba(0,0,0,0.25)" stroke-width="2" stroke-linecap="round"/>
+  <!-- trigger finger grip ridges -->
+  <line x1="290" y1="180" x2="310" y2="180" stroke="#6b4d0a" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="290" y1="188" x2="310" y2="188" stroke="#6b4d0a" stroke-width="1.2" stroke-linecap="round"/>
+  <line x1="290" y1="196" x2="310" y2="196" stroke="#6b4d0a" stroke-width="1.2" stroke-linecap="round"/>
+
+  <!-- ============================ BOTTLE BODY ============================ -->
+  <path d="M 155 130 Q 155 120 165 120 L 295 120 Q 305 120 305 130 L 325 200 Q 332 250 332 300 L 332 545 Q 332 585 295 585 L 165 585 Q 128 585 128 545 L 128 300 Q 128 250 135 200 Z"
+        fill="url(#bottleBody)" stroke="#0d2414" stroke-width="2.5"/>
+  <!-- Bottle highlight (gloss) -->
+  <path d="M 145 145 Q 145 135 155 135 L 175 135 L 175 565 L 155 565 Q 145 565 145 555 Z"
+        fill="url(#bottleHi)" opacity="0.6"/>
+
+  <!-- ============================ LABEL (front face) ============================ -->
+  <!-- Label outer rect with subtle shadow -->
+  <rect x="148" y="208" width="164" height="356" rx="6" fill="#ffffff" stroke="#0d2414" stroke-width="2"/>
+  <rect x="151" y="211" width="158" height="350" rx="4" fill="none" stroke="#006A4E" stroke-width="0.8" opacity="0.4"/>
+
+  <!-- ===== Label header band (Bangladesh green) ===== -->
+  <rect x="148" y="208" width="164" height="34" rx="6" fill="#006A4E"/>
+  <rect x="148" y="232" width="164" height="10" fill="#006A4E"/>
+  <text x="230" y="225" font-family="Inter, Arial, sans-serif" font-size="11" font-weight="800"
+        fill="#F4B41A" text-anchor="middle" letter-spacing="2.2">PESTICIDE</text>
+  <text x="230" y="237" font-family="Inter, Arial, sans-serif" font-size="6.5"
+        fill="#ffffff" text-anchor="middle" letter-spacing="0.6">Reg. No. BD-2026-0142 · DAE Bangladesh</text>
+
+  <!-- ===== Brand name ===== -->
+  <text x="230" y="260" font-family="Georgia, 'Playfair Display', serif" font-size="13" font-weight="700"
+        fill="#006A4E" text-anchor="middle" font-style="italic">GreenGuard®</text>
+
+  <!-- ===== Product name ===== -->
+  <text x="230" y="278" font-family="Inter, Arial, sans-serif" font-size="14" font-weight="800"
+        fill="#1a1a1a" text-anchor="middle">Chlorpyrifos 20 EC</text>
+  <text x="230" y="290" font-family="Inter, Arial, sans-serif" font-size="8"
+        fill="#555" text-anchor="middle">Insecticide · Emulsifiable Concentrate</text>
+
+  <!-- ===== Active ingredient ===== -->
+  <line x1="160" y1="298" x2="300" y2="298" stroke="#eee" stroke-width="1"/>
+  <text x="230" y="309" font-family="Inter, Arial, sans-serif" font-size="8" font-weight="700"
+        fill="#333" text-anchor="middle">Active Ingredient:</text>
+  <text x="230" y="319" font-family="Inter, Arial, sans-serif" font-size="8.5"
+        fill="#222" text-anchor="middle">Chlorpyrifos (ETHYL) 200 g/L</text>
+
+  <!-- ========================================================= -->
+  <!-- ===== MoA GROUP BADGE — the proposal's key visual ====== -->
+  <!-- ========================================================= -->
+  <rect x="156" y="332" width="148" height="68" rx="5" fill="url(#moaBadge)" stroke="#F4B41A" stroke-width="2.5"/>
+  <!-- badge highlight -->
+  <rect x="158" y="334" width="144" height="22" rx="3" fill="url(#moaShine)" opacity="0.7"/>
+
+  <text x="230" y="350" font-family="Inter, Arial, sans-serif" font-size="8.5" font-weight="800"
+        fill="#F4B41A" text-anchor="middle" letter-spacing="2.2">MoA GROUP</text>
+
+  <!-- Big "1B" code -->
+  <text x="218" y="389" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="900"
+        fill="#ffffff" text-anchor="middle" letter-spacing="-1">1B</text>
+
+  <!-- Right-side descriptor in badge -->
+  <text x="262" y="378" font-family="Inter, Arial, sans-serif" font-size="6.5" font-weight="700"
+        fill="#fff" text-anchor="middle">IRAC</text>
+  <text x="262" y="386" font-family="Inter, Arial, sans-serif" font-size="5.5"
+        fill="#ffe7e7" text-anchor="middle">Acetylcholin-</text>
+  <text x="262" y="393" font-family="Inter, Arial, sans-serif" font-size="5.5"
+        fill="#ffe7e7" text-anchor="middle">esterase inhibitor</text>
+
+  <!-- Vertical divider between 1B and IRAC descriptor -->
+  <line x1="240" y1="362" x2="240" y2="395" stroke="rgba(255,255,255,0.45)" stroke-width="1"/>
+
+  <!-- "NEW" indicator pinned on the badge corner -->
+  <g transform="translate(296, 332)">
+    <circle cx="0" cy="0" r="13" fill="#F4B41A" stroke="#ffffff" stroke-width="1.5"/>
+    <text x="0" y="-1" font-family="Inter, Arial, sans-serif" font-size="6" font-weight="800"
+          fill="#1a1a1a" text-anchor="middle">NEW</text>
+    <text x="0" y="6" font-family="Inter, Arial, sans-serif" font-size="5"
+          fill="#1a1a1a" text-anchor="middle">TAG</text>
+  </g>
+
+  <!-- ===== GHS Hazard pictograms (simplified) ===== -->
+  <g transform="translate(168, 412)">
+    <!-- Diamond frame -->
+    <rect x="0" y="0" width="26" height="26" rx="2" fill="#fff" stroke="#DA1418" stroke-width="2.5" transform="rotate(45 13 13)"/>
+    <!-- skull-and-crossbones (simplified) -->
+    <g transform="translate(13, 13)">
+      <circle cx="-4" cy="-2" r="2.6" fill="#1a1a1a"/>
+      <circle cx="4"  cy="-2" r="2.6" fill="#1a1a1a"/>
+      <circle cx="-3.2" cy="-2" r="0.7" fill="#fff"/>
+      <circle cx="3.2"  cy="-2" r="0.7" fill="#fff"/>
+      <path d="M -3 3 L -1 1 M 3 3 L 1 1 M 0 4 L 0 2" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="-7" y1="6" x2="-3" y2="3" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+      <line x1="7"  y1="6" x2="3"  y2="3" stroke="#1a1a1a" stroke-width="1.2" stroke-linecap="round"/>
+    </g>
+  </g>
+
+  <g transform="translate(206, 412)">
+    <rect x="0" y="0" width="26" height="26" rx="2" fill="#fff" stroke="#DA1418" stroke-width="2.5" transform="rotate(45 13 13)"/>
+    <!-- exclamation mark -->
+    <g transform="translate(13, 13)">
+      <rect x="-1.2" y="-6" width="2.4" height="9" rx="1.2" fill="#1a1a1a"/>
+      <circle cx="0" cy="6" r="1.4" fill="#1a1a1a"/>
+    </g>
+  </g>
+
+  <g transform="translate(244, 412)">
+    <rect x="0" y="0" width="26" height="26" rx="2" fill="#fff" stroke="#DA1418" stroke-width="2.5" transform="rotate(45 13 13)"/>
+    <!-- dead fish + tree (environmental hazard) -->
+    <g transform="translate(13, 13)">
+      <path d="M -7 0 Q -5 -3 -2 -2 L 4 -2 Q 6 -2 7 0 Q 6 2 4 2 L -2 2 Q -5 3 -7 0 Z" fill="#1a1a1a"/>
+      <circle cx="3.5" cy="-0.5" r="0.7" fill="#fff"/>
+      <line x1="5" y1="-2" x2="9" y2="-5" stroke="#1a1a1a" stroke-width="1"/>
+      <line x1="9" y1="-5" x2="9" y2="-7" stroke="#1a1a1a" stroke-width="1"/>
+    </g>
+  </g>
+
+  <!-- ===== Dose ===== -->
+  <text x="230" y="455" font-family="Inter, Arial, sans-serif" font-size="8"
+        fill="#444" text-anchor="middle">Dose: 1.0–1.5 L / ha · Spray volume 500 L</text>
+  <line x1="160" y1="465" x2="300" y2="465" stroke="#ddd" stroke-width="1"/>
+
+  <!-- ===== Net content + batch ===== -->
+  <text x="230" y="479" font-family="Inter, Arial, sans-serif" font-size="9.5" font-weight="700"
+        fill="#006A4E" text-anchor="middle">Net Content: 1 Litre</text>
+  <text x="230" y="491" font-family="Inter, Arial, sans-serif" font-size="6.5"
+        fill="#777" text-anchor="middle">Mfd: 09/2026 · Batch PR-26-0142 · Exp 09/2028</text>
+
+  <!-- ===== Manufacturer / footer ===== -->
+  <line x1="160" y1="500" x2="300" y2="500" stroke="#ddd" stroke-width="1"/>
+  <text x="230" y="513" font-family="Inter, Arial, sans-serif" font-size="7.5" font-weight="700"
+        fill="#333" text-anchor="middle">Bangladesh Agrochem Ltd.</text>
+  <text x="230" y="525" font-family="Inter, Arial, sans-serif" font-size="6.5"
+        fill="#777" text-anchor="middle">KEEP OUT OF REACH OF CHILDREN</text>
+
+  <!-- Antidote strip -->
+  <rect x="156" y="535" width="148" height="14" rx="2.5" fill="#FFF3E0" stroke="#F4B41A" stroke-width="1"/>
+  <text x="230" y="545" font-family="Inter, Arial, sans-serif" font-size="6.5" font-weight="700"
+        fill="#7a4a0a" text-anchor="middle" letter-spacing="0.5">ANTIDOTE: Atropine sulfate — consult physician</text>
+</svg>
