@@ -219,20 +219,21 @@
   .nat-band .tag{font-weight:900;color:var(--gold-light);font-size:15px}
   .nat-band .plans{font-size:12px;color:#cbd5e1;margin-top:6px}
 
-  /* toolbar — icon-only for a neat compact look */
+  /* toolbar — icon-only by default, expands into a pill on hover (modern FAB pattern) */
   .toolbar-floating{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:10px;z-index:9999;align-items:flex-end}
-  .btn-tool{background:var(--bd-green);color:#fff;border:none;width:46px;height:46px;border-radius:50%;font-size:19px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;transition:all .2s;font-family:inherit;padding:0;position:relative}
-  .btn-tool:hover{background:var(--bd-green-dark);transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.28)}
+  .btn-tool{background:var(--bd-green);color:#fff;border:none;height:46px;min-width:46px;border-radius:50%;font-size:19px;cursor:pointer;box-shadow:0 6px 18px rgba(0,0,0,.22);display:flex;align-items:center;justify-content:center;transition:background .2s ease,transform .2s ease,box-shadow .2s ease,border-radius .25s ease,min-width .25s ease,padding .25s ease;font-family:inherit;padding:0;position:relative;overflow:hidden}
+  .btn-tool > span{display:inline-block;opacity:0;max-width:0;margin-left:0;white-space:nowrap;font-size:13px;font-weight:600;transition:opacity .15s ease,max-width .25s ease,margin-left .25s ease}
+  .btn-tool:hover{background:var(--bd-green-dark);transform:translateY(-2px);box-shadow:0 10px 25px rgba(0,0,0,.32);padding:0 18px;border-radius:23px;min-width:auto}
+  .btn-tool:hover > span{opacity:1;max-width:220px;margin-left:8px}
   .btn-tool:focus-visible{outline:3px solid var(--gold);outline-offset:2px}
   .btn-tool.gold{background:var(--gold);color:var(--dark)}
   .btn-tool.gold:hover{background:#a8861f;color:#fff}
   .btn-tool.red{background:var(--bd-red)}
   .btn-tool.red:hover{background:#c81e33}
   .btn-tool.tts-active{background:var(--bd-red);animation:pulseA 1.4s infinite}
-  .btn-tool > span{display:none}
-  .btn-tool::after{content:attr(data-tip);position:absolute;right:calc(100% + 10px);top:50%;transform:translateY(-50%);background:var(--dark);color:#fff;font-size:11px;font-weight:600;padding:5px 10px;border-radius:6px;white-space:nowrap;opacity:0;pointer-events:none;transition:opacity .18s;box-shadow:0 4px 10px rgba(0,0,0,.2)}
-  .btn-tool:hover::after{opacity:1}
   @keyframes pulseA{0%,100%{box-shadow:0 0 0 0 rgba(244,42,65,.45)}50%{box-shadow:0 0 0 10px rgba(244,42,65,0)}}
+  /* Mobile: keep icon-only (don't expand), since touch has no hover */
+  @media (max-width:768px){.btn-tool > span{display:none}}
 
   /* modal */
   .modal-back{position:fixed;inset:0;background:rgba(10,40,27,.55);backdrop-filter:blur(3px);z-index:10000;display:none;align-items:center;justify-content:center;padding:1rem}
@@ -622,7 +623,7 @@
 
 <!-- FLOATING TOOLBAR -->
 <div class="toolbar-floating no-export">
-  <button class="btn-tool" id="btnPrint" type="button" data-tip="Print / Save PDF" aria-label="Print full dossier">🖨️ <span data-en="Print / Save PDF (full dossier)">প্রিন্ট / পিডিএফ (সম্পূর্ণ ডসিয়ে)</span></button>
+  <button class="btn-tool" id="btnPrint" type="button" data-tip="Print this part" aria-label="Print Part 01: Forwarding Letter">🖨️ <span data-en="Print this part">এই পার্ট প্রিন্ট</span></button>
   <button class="btn-tool gold" id="btnLetter" type="button" data-tip="Print letter only" aria-label="Print letter only">📄 <span data-en="Print letter only">শুধু লেটার প্রিন্ট</span></button>
   <button class="btn-tool" id="btnDocx" type="button" data-tip="Export to Word" aria-label="Export to Word DOCX">📑 <span data-en="Export to Word (DOCX)">ওয়ার্ড এক্সপোর্ট (DOCX)</span></button>
   <button class="btn-tool gold" id="btnTts" type="button" data-tip="Listen (TTS)" aria-label="Read aloud with TTS">🔊 <span id="ttsLabel" data-en="Listen (TTS)">শুনুন (TTS)</span></button>
