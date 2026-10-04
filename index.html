@@ -11,7 +11,7 @@
 <!-- Open Graph / Social Media Preview (1200x630) — WhatsApp / Messenger / Facebook / Twitter -->
 <meta property="og:type" content="website">
 <meta property="og:site_name" content="Pesticide Reform — DAE Kurigram">
-<meta property="og:url" content="https://github.com/moniruzjaman/pesticide-reform">
+<meta property="og:url" content="https://moniruzjaman.github.io/pesticide-reform/">
 <meta property="og:title" content="Pesticide Reform — MoA Group/Code on Pesticide Labels (Submission Dossier v4.0.0)">
 <meta property="og:description" content="Adding international Mode of Action (IRAC/FRAC/HRAC) Group/Code to labels of registered pesticides under the Pesticides Act, 2018 — DAE Kurigram submission dossier.">
 <meta property="og:image" content="https://raw.githubusercontent.com/moniruzjaman/pesticide-reform/main/social-preview.png">
@@ -254,6 +254,16 @@
   .doc-footer{text-align:center;padding-top:36px;border-top:2px solid var(--border);margin-top:46px;font-size:12px;color:#94a3b8}
   .doc-footer .tagline{color:var(--bd-green);font-weight:800;margin-top:6px}
 
+  /* Companion-app promo card (pesticideact2018.vercel.app) */
+  .app-promo{display:flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(0,106,78,0.08),rgba(218,20,24,0.08));border:1px solid rgba(0,106,78,0.35);border-left:4px solid var(--bd-green);border-radius:8px;padding:12px 16px;margin:18px auto 6px;max-width:560px;text-decoration:none;color:var(--slate);transition:all .2s;font-family:inherit}
+  .app-promo:hover{background:linear-gradient(135deg,rgba(0,106,78,0.14),rgba(218,20,24,0.14));border-left-color:var(--bd-red);transform:translateY(-1px);box-shadow:0 4px 14px rgba(0,0,0,.08)}
+  .app-promo .app-icon{width:44px;height:44px;flex-shrink:0;display:block;border-radius:50%;box-shadow:0 2px 6px rgba(0,0,0,.15)}
+  .app-promo .app-text{display:flex;flex-direction:column;gap:2px;flex:1;text-align:left}
+  .app-promo .app-text strong{color:var(--bd-green-dark);font-size:13.5px;font-weight:800}
+  .app-promo .app-text span{color:var(--slate);font-size:11.5px;font-style:italic;line-height:1.4}
+  .app-promo .app-cta{background:var(--bd-green);color:#fff;padding:7px 13px;border-radius:16px;font-size:11px;font-weight:800;letter-spacing:0.4px;flex-shrink:0;white-space:nowrap}
+  .app-promo:hover .app-cta{background:var(--bd-red)}
+
   .btn-mini{background:#fff;border:1.5px solid var(--bd-green);color:var(--bd-green);font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;cursor:pointer;font-family:inherit;transition:all .2s}
   .btn-mini:hover{background:var(--bd-green);color:#fff}
 
@@ -323,6 +333,11 @@
     .ver-tag{width:54px}
     .ver-desc{font-size:11.5px;padding-left:10px}
     .doc-footer{padding-top:26px;margin-top:32px;font-size:11px}
+    .app-promo{max-width:100%;padding:10px 12px;gap:10px}
+    .app-promo .app-icon{width:38px;height:38px}
+    .app-promo .app-text strong{font-size:12px}
+    .app-promo .app-text span{font-size:10.5px}
+    .app-promo .app-cta{padding:6px 10px;font-size:10px}
     .nat-band{padding:16px}
     .nat-band .tag{font-size:13px}
     .nat-band .plans{font-size:11px}
@@ -367,12 +382,15 @@
     .principle-box .big{font-size:14px}
     .principle-box .sub{font-size:11.5px}
     .modal-card{padding:14px 12px}
+    .app-promo{flex-wrap:wrap;justify-content:flex-start}
+    .app-promo .app-text{flex-basis:100%;order:2;margin-top:4px}
+    .app-promo .app-cta{order:3;margin-left:auto}
   }
 
   @media print{
     body{background:#fff;padding-bottom:0}
     .container{box-shadow:none;max-width:100%;margin:0;border-radius:0}
-    .nav-bar,.toolbar-floating,.modal-back,#toast,.no-print,.version-chip,.header-bottle,.frame-box .kick{display:none!important}
+    .nav-bar,.toolbar-floating,.modal-back,#toast,.no-print,.version-chip,.header-bottle,.app-promo,.frame-box .kick{display:none!important}
     section{break-inside:avoid}
     .print-break{break-before:page}
     body.letter-only .content>section:not(#part1),
@@ -866,7 +884,18 @@
     <div class="doc-footer">
       <p data-en="&lt;strong&gt;Official Submission Dossier — MoA Label Integration (Technical Examination & Pilot Proposal)&lt;/strong&gt;"><strong>অফিসিয়াল সাবমিশন ডসিয়ে — MoA লেবেল সংযোজন (কারিগরি পরীক্ষা ও পাইলট প্রস্তাব)</strong></p>
       <p data-en="Prepared by: Abu Md Moniruzjaman, Additional Deputy Director (Horticulture), DAE Kurigram · 📱 01712653740 · ✉️ mithun.hstu@gmail.com">প্রস্তুতকারী: আবু মোঃ মনিরুজ্জামান, অতিরিক্ত উপপরিচালক (উদ্যান), ডিএই কুড়িগ্রাম · 📱 ০১৭১২-৬৫৩৭৪০ · ✉️ mithun.hstu@gmail.com</p>
-      <p style="margin-top:6px;" data-en="Technical references: &lt;a href='https://www.irac-online.org/pesticide-mode-of-action-classification/' target='_blank' rel='noopener'&gt;IRAC MoA Classification Scheme v11.5 (February 2026)&lt;/a&gt; — irac-online.org · &lt;a href='https://www.frac.info/frac-codes' target='_blank' rel='noopener'&gt;FRAC Code List 2026&lt;/a&gt; — frac.info · &lt;a href='https://www.hracglobal.com/herbicide-classification' target='_blank' rel='noopener'&gt;HRAC Global 2026 classification&lt;/a&gt; · FAO Guidelines on Good Labelling Practice for Pesticides (Revised, 2015) · &lt;a href='http://www.ppw.gov.bd/' target='_blank' rel='noopener'&gt;DAE 81st PTAC Approval List — Plant Protection Wing&lt;/a&gt; · &lt;a href='http://bdlaws.minlaw.gov.bd/' target='_blank' rel='noopener'&gt;Pesticides Act, 2018 — Bangladesh Gazette, 29 July 2018&lt;/a&gt;">কারিগরি তথ্যসূত্র: <a href="https://www.irac-online.org/pesticide-mode-of-action-classification/" target="_blank" rel="noopener">IRAC MoA Classification Scheme v11.5 (ফেব্রুয়ারি ২০২৬) ↗</a> — irac-online.org · <a href="https://www.frac.info/frac-codes" target="_blank" rel="noopener">FRAC Code List 2026 ↗</a> — frac.info · <a href="https://www.hracglobal.com/herbicide-classification" target="_blank" rel="noopener">HRAC Global 2026 classification ↗</a> · FAO Good Labelling Practice Guidelines (Revised, 2015) · <a href="http://www.ppw.gov.bd/" target="_blank" rel="noopener">DAE ৮১তম PTAC অনুমোদন তালিকা — উদ্ভিদ সংরক্ষণ উইং ↗</a> · <a href="http://bdlaws.minlaw.gov.bd/" target="_blank" rel="noopener">বালাইনাশক আইন, ২০১৮ — বাংলাদেশ গেজেট, ২৯ জুলাই ২০১৮ ↗</a></p>
+      <p style="margin-top:6px;" data-en="Technical references: &lt;a href='https://www.irac-online.org/pesticide-mode-of-action-classification/' target='_blank' rel='noopener'&gt;IRAC MoA Classification Scheme v11.5 (February 2026)&lt;/a&gt; — irac-online.org · &lt;a href='https://www.frac.info/frac-codes' target='_blank' rel='noopener'&gt;FRAC Code List 2026&lt;/a&gt; — frac.info · &lt;a href='https://www.hracglobal.com/herbicide-classification' target='_blank' rel='noopener'&gt;HRAC Global 2026 classification&lt;/a&gt; · FAO Guidelines on Good Labelling Practice for Pesticides (Revised, 2015) · &lt;a href='http://www.ppw.gov.bd/' target='_blank' rel='noopener'&gt;DAE 81st PTAC Approval List — Plant Protection Wing&lt;/a&gt; · &lt;a href='pesticide-act-2018.pdf' target='_blank' rel='noopener'&gt;Pesticides Act, 2018 (full text, PDF, 15 pages)&lt;/a&gt;">কারিগরি তথ্যসূত্র: <a href="https://www.irac-online.org/pesticide-mode-of-action-classification/" target="_blank" rel="noopener">IRAC MoA Classification Scheme v11.5 (ফেব্রুয়ারি ২০২৬) ↗</a> — irac-online.org · <a href="https://www.frac.info/frac-codes" target="_blank" rel="noopener">FRAC Code List 2026 ↗</a> — frac.info · <a href="https://www.hracglobal.com/herbicide-classification" target="_blank" rel="noopener">HRAC Global 2026 classification ↗</a> · FAO Good Labelling Practice Guidelines (Revised, 2015) · <a href="http://www.ppw.gov.bd/" target="_blank" rel="noopener">DAE ৮১তম PTAC অনুমোদন তালিকা — উদ্ভিদ সংরক্ষণ উইং ↗</a> · <a href="pesticide-act-2018.pdf" target="_blank" rel="noopener">বালাইনাশক আইন, ২০১৮ (সম্পূর্ণ পাঠ্য, PDF, ১৫ পৃষ্ঠা) ↗</a></p>
+
+      <!-- Companion app promo -->
+      <a class="app-promo" href="https://pesticideact2018.vercel.app/" target="_blank" rel="noopener" title="Open the Pesticides Act 2018 companion web app">
+        <img src="pesticide-act-app-icon.svg" alt="Pesticides Act 2018 companion app icon" class="app-icon" loading="lazy">
+        <div class="app-text">
+          <strong data-en="Pesticides Act 2018 — Companion App">বালাইনাশক আইন ২০১৮ — কম্প্যানিয়ন অ্যাপ</strong>
+          <span data-en="Searchable web app for the full Act, rules &amp; PTAC decisions — pesticideact2018.vercel.app">সম্পূর্ণ আইন, বিধি ও PTAC সিদ্ধান্তের সার্চেবল ওয়েব অ্যাপ — pesticideact2018.vercel.app</span>
+        </div>
+        <span class="app-cta" data-en="Open ↗">খুলুন ↗</span>
+      </a>
+
       <p class="no-export" style="margin-top:8px;"><span class="live-dot" style="display:inline-block;vertical-align:middle;margin-right:6px;"></span><span data-en="Document version">নথি সংস্করণ</span> <button type="button" id="footerVersion" style="background:none;border:none;color:var(--gold);font-weight:800;cursor:pointer;font-family:inherit;font-size:12px;">v4.0.0</button> · <span data-en="Build">বিল্ড</span> <span id="footerBuild">2026-09-29</span></p>
       <p class="tagline">করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ। 🇧🇩</p>
     </div>

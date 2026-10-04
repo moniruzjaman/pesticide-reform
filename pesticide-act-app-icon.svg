@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+  pesticide-act-app-icon.svg
+  Companion app icon for https://pesticideact2018.vercel.app/ — a small
+  circular badge in Bangladesh green + gold depicting an open book of the
+  Pesticides Act 2018, used in the doc-footer app-promo card.
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Pesticides Act 2018 companion app icon">
+  <defs>
+    <linearGradient id="bgGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#006A4E"/>
+      <stop offset="100%" stop-color="#004A36"/>
+    </linearGradient>
+    <linearGradient id="pageGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" stop-color="#ffffff"/>
+      <stop offset="100%" stop-color="#e8f5ee"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Outer circle badge -->
+  <circle cx="32" cy="32" r="30" fill="url(#bgGrad)" stroke="#F4B41A" stroke-width="2.5"/>
+  <!-- Subtle inner ring -->
+  <circle cx="32" cy="32" r="26" fill="none" stroke="rgba(244,180,26,0.35)" stroke-width="0.8"/>
+
+  <!-- Open book centered -->
+  <g transform="translate(32, 30)">
+    <!-- Left page -->
+    <path d="M -16 -10 Q -16 -11 -15 -11 L -2 -9 L -2 14 L -15 12 Q -16 12 -16 11 Z"
+          fill="url(#pageGrad)" stroke="#004A36" stroke-width="1.1"/>
+    <!-- Right page -->
+    <path d="M 16 -10 Q 16 -11 15 -11 L 2 -9 L 2 14 L 15 12 Q 16 12 16 11 Z"
+          fill="url(#pageGrad)" stroke="#004A36" stroke-width="1.1"/>
+    <!-- Spine -->
+    <path d="M -2 -9 L 2 -9 L 2 14 L -2 14 Z" fill="#004A36" opacity="0.85"/>
+
+    <!-- Page lines (left) -->
+    <line x1="-12" y1="-5" x2="-5" y2="-4" stroke="#006A4E" stroke-width="0.7" stroke-linecap="round"/>
+    <line x1="-12" y1="-1" x2="-5" y2="0"  stroke="#006A4E" stroke-width="0.7" stroke-linecap="round"/>
+    <line x1="-12" y1="3"  x2="-5" y2="4"  stroke="#006A4E" stroke-width="0.7" stroke-linecap="round"/>
+    <line x1="-12" y1="7"  x2="-7" y2="8"  stroke="#006A4E" stroke-width="0.7" stroke-linecap="round"/>
+
+    <!-- Page lines (right) -->
+    <line x1="5" y1="-4" x2="12" y2="-5" stroke="#006A4E" stroke-width="0.7" stroke-linecap="round"/>
+    <line x1="5" y1="0"  x2="12" y2="-1" stroke="#006A4E" stroke-width="0.7" stroke-linecap="round"/>
+    <line x1="5" y1="4"  x2="12" y2="3"  stroke="#006A4E" stroke-width="0.7" stroke-linecap="round"/>
+    <line x1="7" y1="8"  x2="12" y2="7"  stroke="#006A4E" stroke-width="0.7" stroke-linecap="round"/>
+
+    <!-- Bangladesh-red bookmark ribbon -->
+    <path d="M 11 -11 L 16 -11 L 16 -3 L 13.5 -1 L 11 -3 Z" fill="#DA1418"/>
+  </g>
+
+  <!-- "2018" gold footer band -->
+  <text x="32" y="56" font-family="Inter, Arial, sans-serif" font-size="7"
+        font-weight="800" fill="#F4B41A" text-anchor="middle" letter-spacing="1.4">PESTICIDE ACT</text>
+</svg>
