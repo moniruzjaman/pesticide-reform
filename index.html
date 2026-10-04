@@ -264,6 +264,11 @@
   .app-promo .app-cta{background:var(--bd-green);color:#fff;padding:7px 13px;border-radius:16px;font-size:11px;font-weight:800;letter-spacing:0.4px;flex-shrink:0;white-space:nowrap}
   .app-promo:hover .app-cta{background:var(--bd-red)}
 
+  /* App-promo grid: lay multiple companion apps side-by-side on desktop */
+  .app-promo-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin:18px auto 6px;max-width:920px}
+  .app-promo-grid .app-promo{margin:0;max-width:none;height:100%}
+  @media (max-width:768px){.app-promo-grid{grid-template-columns:1fr}}
+
   .btn-mini{background:#fff;border:1.5px solid var(--bd-green);color:var(--bd-green);font-size:12px;font-weight:700;padding:6px 14px;border-radius:20px;cursor:pointer;font-family:inherit;transition:all .2s}
   .btn-mini:hover{background:var(--bd-green);color:#fff}
 
@@ -886,15 +891,28 @@
       <p data-en="Prepared by: Abu Md Moniruzjaman, Additional Deputy Director (Horticulture), DAE Kurigram · 📱 01712653740 · ✉️ mithun.hstu@gmail.com">প্রস্তুতকারী: আবু মোঃ মনিরুজ্জামান, অতিরিক্ত উপপরিচালক (উদ্যান), ডিএই কুড়িগ্রাম · 📱 ০১৭১২-৬৫৩৭৪০ · ✉️ mithun.hstu@gmail.com</p>
       <p style="margin-top:6px;" data-en="Technical references: &lt;a href='https://www.irac-online.org/pesticide-mode-of-action-classification/' target='_blank' rel='noopener'&gt;IRAC MoA Classification Scheme v11.5 (February 2026)&lt;/a&gt; — irac-online.org · &lt;a href='https://www.frac.info/frac-codes' target='_blank' rel='noopener'&gt;FRAC Code List 2026&lt;/a&gt; — frac.info · &lt;a href='https://www.hracglobal.com/herbicide-classification' target='_blank' rel='noopener'&gt;HRAC Global 2026 classification&lt;/a&gt; · FAO Guidelines on Good Labelling Practice for Pesticides (Revised, 2015) · &lt;a href='http://www.ppw.gov.bd/' target='_blank' rel='noopener'&gt;DAE 81st PTAC Approval List — Plant Protection Wing&lt;/a&gt; · &lt;a href='pesticide-act-2018.pdf' target='_blank' rel='noopener'&gt;Pesticides Act, 2018 (full text, PDF, 15 pages)&lt;/a&gt;">কারিগরি তথ্যসূত্র: <a href="https://www.irac-online.org/pesticide-mode-of-action-classification/" target="_blank" rel="noopener">IRAC MoA Classification Scheme v11.5 (ফেব্রুয়ারি ২০২৬) ↗</a> — irac-online.org · <a href="https://www.frac.info/frac-codes" target="_blank" rel="noopener">FRAC Code List 2026 ↗</a> — frac.info · <a href="https://www.hracglobal.com/herbicide-classification" target="_blank" rel="noopener">HRAC Global 2026 classification ↗</a> · FAO Good Labelling Practice Guidelines (Revised, 2015) · <a href="http://www.ppw.gov.bd/" target="_blank" rel="noopener">DAE ৮১তম PTAC অনুমোদন তালিকা — উদ্ভিদ সংরক্ষণ উইং ↗</a> · <a href="pesticide-act-2018.pdf" target="_blank" rel="noopener">বালাইনাশক আইন, ২০১৮ (সম্পূর্ণ পাঠ্য, PDF, ১৫ পৃষ্ঠা) ↗</a></p>
 
-      <!-- Companion app promo -->
-      <a class="app-promo" href="https://pesticideact2018.vercel.app/" target="_blank" rel="noopener" title="Open the Pesticides Act 2018 companion web app">
-        <img src="pesticide-act-app-icon.svg" alt="Pesticides Act 2018 companion app icon" class="app-icon" loading="lazy">
-        <div class="app-text">
-          <strong data-en="Pesticides Act 2018 — Companion App">বালাইনাশক আইন ২০১৮ — কম্প্যানিয়ন অ্যাপ</strong>
-          <span data-en="Searchable web app for the full Act, rules &amp; PTAC decisions — pesticideact2018.vercel.app">সম্পূর্ণ আইন, বিধি ও PTAC সিদ্ধান্তের সার্চেবল ওয়েব অ্যাপ — pesticideact2018.vercel.app</span>
-        </div>
-        <span class="app-cta" data-en="Open ↗">খুলুন ↗</span>
-      </a>
+      <!-- Companion app grid: dossier + field-level operational tools -->
+      <div class="app-promo-grid">
+        <!-- Companion app #1: Pesticides Act 2018 web app -->
+        <a class="app-promo" href="https://pesticideact2018.vercel.app/" target="_blank" rel="noopener" title="Open the Pesticides Act 2018 companion web app">
+          <img src="pesticide-act-app-icon.svg" alt="Pesticides Act 2018 companion app icon" class="app-icon" loading="lazy">
+          <div class="app-text">
+            <strong data-en="Pesticides Act 2018 — Companion App">বালাইনাশক আইন ২০১৮ — কম্প্যানিয়ন অ্যাপ</strong>
+            <span data-en="Searchable web app for the full Act, rules &amp; PTAC decisions — pesticideact2018.vercel.app">সম্পূর্ণ আইন, বিধি ও PTAC সিদ্ধান্তের সার্চেবল ওয়েব অ্যাপ — pesticideact2018.vercel.app</span>
+          </div>
+          <span class="app-cta" data-en="Open ↗">খুলুন ↗</span>
+        </a>
+
+        <!-- Companion app #2: PesticideNext field-decision PWA -->
+        <a class="app-promo" href="https://pesticide.krishiai.live/" target="_blank" rel="noopener" title="Open the PesticideNext field-decision PWA">
+          <img src="pesticidenext-app-icon.svg" alt="PesticideNext companion app icon" class="app-icon" loading="lazy">
+          <div class="app-text">
+            <strong data-en="PesticideNext — Field Decision PWA">পেস্টিসাইডনেক্সট — ফিল্ড ডিসিশন PWA</strong>
+            <span data-en="5,052+ registered products, MoA rotation planner, knapsack sprayer calculator, safety/PPE checklists — pesticide.krishiai.live">৫,০৫২+ নিবন্ধিত পণ্য, MoA রোটেশন প্ল্যানার, ন্যাপস্যাক স্প্রেয়ার ক্যালকুলেটর, সেফটি/PPE চেকলিস্ট — pesticide.krishiai.live</span>
+          </div>
+          <span class="app-cta" data-en="Open ↗">খুলুন ↗</span>
+        </a>
+      </div>
 
       <p class="no-export" style="margin-top:8px;"><span class="live-dot" style="display:inline-block;vertical-align:middle;margin-right:6px;"></span><span data-en="Document version">নথি সংস্করণ</span> <button type="button" id="footerVersion" style="background:none;border:none;color:var(--gold);font-weight:800;cursor:pointer;font-family:inherit;font-size:12px;">v4.0.0</button> · <span data-en="Build">বিল্ড</span> <span id="footerBuild">2026-09-29</span></p>
       <p class="tagline">করবো কাজ গড়বো দেশ; সবার আগে বাংলাদেশ। 🇧🇩</p>
