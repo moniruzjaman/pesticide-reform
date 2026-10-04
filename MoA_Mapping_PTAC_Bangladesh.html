@@ -8642,10 +8642,29 @@ ol.insights strong { color: var(--bd-green-dk); }
          ========================================================= -->
     <section class="downloads-section">
       <h2>Database Downloads &amp; Companion Tools</h2>
-      <p class="intro">Same 5,452-product dataset, three complementary formats — the database-ready star schema, a self-contained interactive dashboard, and the field-decision PWA.</p>
+      <p class="intro">Same 5,452-product dataset, four complementary formats — the DAE 81st PTAC source workbook, the database-ready star schema, the self-contained interactive dashboard, and the field-decision PWA.</p>
+
+      <div class="sync-banner" style="display:flex;align-items:center;gap:10px;padding:10px 14px;background:rgba(0,106,78,0.06);border:1px solid rgba(0,106,78,0.25);border-radius:8px;margin-bottom:16px;font-size:12px;color:var(--text);">
+        <span style="display:inline-flex;align-items:center;justify-content:center;width:22px;height:22px;border-radius:50%;background:var(--bd-green);color:#fff;font-weight:800;flex-shrink:0;font-size:13px;">✓</span>
+        <span>
+          <strong style="color:var(--bd-green-dk);">Database is in sync with</strong>
+          <a href="https://github.com/moniruzjaman/AgriChem-Guide-Pest-Control-Database" target="_blank" rel="noopener" style="color:var(--bd-green);text-decoration:underline dotted;">AgriChem-Guide-Pest-Control-Database</a>
+          (latest commit <code style="background:rgba(0,0,0,0.04);padding:1px 5px;border-radius:3px;font-family:monospace;font-size:11px;">411ad5e</code> · 2026-10-03 ·
+          <a href="database/README.md" target="_blank" rel="noopener" style="color:var(--bd-green);text-decoration:underline dotted;">provenance &amp; SHA-256 checksums</a>)
+        </span>
+      </div>
 
       <div class="dl-grid">
-        <a class="dl-card" href="database/bangladesh_pesticides_db_ready.xlsx" target="_blank" rel="noopener" title="Download the database-ready XLSX (786 KB, 9 sheets, 13,043 live formulas)">
+        <a class="dl-card" href="database/source/Bangladesh_Registered_Pesticides_Database_moa.xlsx" target="_blank" rel="noopener" title="Download the raw DAE 81st PTAC source workbook (494 KB, mirrored from AgriChem-Guide/data_raw/)">
+          <span class="dl-icon">📚</span>
+          <div class="dl-body">
+            <strong>DAE 81st PTAC Source Workbook</strong>
+            <span>Raw source XLSX · 494 KB · byte-identical to AgriChem-Guide-Pest-Control-Database/data_raw/ · SHA-256 verified</span>
+          </div>
+          <span class="dl-cta">Download ↗</span>
+        </a>
+
+        <a class="dl-card" href="database/bangladesh_pesticides_db_ready.xlsx" target="_blank" rel="noopener" title="Download the database-ready star-schema XLSX (786 KB, 9 sheets, 13,043 live formulas)">
           <span class="dl-icon">📊</span>
           <div class="dl-body">
             <strong>Database-Ready XLSX (Star Schema)</strong>
@@ -8661,6 +8680,15 @@ ol.insights strong { color: var(--bd-green-dk); }
             <span>Self-contained HTML · ECharts visualisations · KPIs + category / MoA / holder / crop filters · sortable 5,452-row table — works offline</span>
           </div>
           <span class="dl-cta">Open ↗</span>
+        </a>
+
+        <a class="dl-card" href="database/README.md" target="_blank" rel="noopener" title="Read the database provenance, sync status, file inventory and SHA-256 checksums">
+          <span class="dl-icon">📋</span>
+          <div class="dl-body">
+            <strong>Provenance &amp; Sync README</strong>
+            <span>Source-of-truth repo · latest commit hash · sync date · SHA-256 checksum table for all 4 source files · re-verification instructions</span>
+          </div>
+          <span class="dl-cta">Read ↗</span>
         </a>
       </div>
 
