@@ -418,6 +418,10 @@
   .part-nav a.current .num{background:rgba(255,255,255,0.25);color:#fff}
   .part-nav .pn-sep{color:var(--border)}
 
+  /* "Part N of 4" badge — inserted above the <h1> in the official-header
+     so users landing on a part file via a shared link see context instantly */
+  .part-of-badge{display:inline-block;background:rgba(244,180,26,0.18);border:1px solid var(--gold);color:var(--gold-light);font-size:11px;font-weight:800;letter-spacing:1.5px;padding:5px 14px;border-radius:16px;margin-bottom:14px;text-transform:uppercase}
+
   /* Part footer nav (bottom of each split part file) */
   .part-foot-nav{display:flex;align-items:stretch;justify-content:space-between;gap:12px;margin-top:36px;padding-top:22px;border-top:2px solid var(--border);flex-wrap:wrap}
   .part-foot-nav .pfn-card{flex:1;min-width:200px;display:flex;flex-direction:column;gap:4px;text-decoration:none;padding:14px 16px;border-radius:8px;border:1px solid var(--border);background:#fff;color:var(--slate);transition:all .15s}
@@ -497,10 +501,7 @@
   <!-- NAV -->
   <div class="nav-bar no-export">
     <a href="#framing" class="active" data-en="00 Positioning">০০ মূল অবস্থান</a>
-    <a href="#part1" data-en="01 Forwarding Letter">০১ ফরওয়ার্ডিং লেটার</a>
-    <a href="#part2" data-en="02 Concept Note">০২ কনসেপ্ট নোট</a>
-    <a href="#part3" data-en="03 Technical Annex">০৩ টেকনিক্যাল অ্যানেক্স</a>
-    <a href="#part4" data-en="04 Proposed DG Decision">০৪ প্রস্তাবিত DG সিদ্ধান্ত</a>
+    <a href="#parts" data-en="01–04 Submission Parts">০১–০৪ সাবমিশন পার্ট</a>
     <a href="#dash" data-en="05 Analytics">০৫ পরিসংখ্যান</a>
     <a href="MoA_Mapping_PTAC_Bangladesh.html" class="external-link" data-en="06 MoA Mapping" style="margin-left:auto;color:var(--bd-red);border-bottom-color:var(--bd-red)">০৬ MoA Mapping →</a>
   </div>
