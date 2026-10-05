@@ -73,6 +73,23 @@ A **1.9 MB** self-contained HTML file (no backend) that visualises the same 5,45
 
 Works offline — open in any modern browser.
 
+### `database/policy/` — policy aids for global perspective
+
+A two-file policy inventory that benchmarks the Bangladesh pesticide landscape against EU / WHO / FAO standards — useful for reviewers who want to position the submission's MoA-label proposal in a broader regulatory context.
+
+| File | Size | Pages / Sheets | Description |
+|------|------|----------------|-------------|
+| `Bangladesh_Pesticide_Policy_Inventory.pdf` | 157 KB | 11 pages | PDF version — opens in any browser/PDF reader. Covers the 8-criterion WHO/FAO HHP blacklist, crop-by-crop transition plan, regulatory frameworks, residue data, and 46 references. |
+| `Bangladesh_Pesticide_Policy_Inventory.xlsx` | 47 KB | 9 sheets | XLSX version with embedded charts. Sheets: Overview · HHP Criteria · Active Ingredients (45) · Formulation Materials (28) · Co-formulant Tiers (21) · Regulatory Frameworks (20) · Residue Bangladesh (27) · Policy Matrix (19) · Sources (46 references). |
+
+**Key benchmarks surfaced by the inventory:**
+- EU active substances: 1,473 (977 banned · 421 authorised · 75 under review)
+- UN acceptable co-formulants list: 144 (EU Reg. 2021/383, +14 proposed)
+- Vegetable samples exceeding MRL: 73% of contaminated produce (n = 1,577)
+- HHP poisoning rate: 900 per 100,000 people — among the world's highest
+
+The PDF is the human-readable reference; the XLSX is the machine-readable source-of-truth with all 46 references in the `Sources` sheet for traceability.
+
 ## Cross-repo verification
 
 The dataset in this `pesticide-reform` repo is the same dataset that powers the operational PWA at **`pesticide.krishiai.live`** (source repo: `AgriChem-Guide-Pest-Control-Database`). The dossier's MoA mapping page (`MoA_Mapping_PTAC_Bangladesh.html`) and the PWA's `DatabaseView` / `RotationPlanner` components both render the same 5,452 products / 55 MoA codes (56 including UNASSIGNED) / 478 active ingredients / 879 holders.
