@@ -82,13 +82,17 @@ A two-file policy inventory that benchmarks the Bangladesh pesticide landscape a
 | `Bangladesh_Pesticide_Policy_Inventory.pdf` | 157 KB | 11 pages | PDF version — opens in any browser/PDF reader. Covers the 8-criterion WHO/FAO HHP blacklist, crop-by-crop transition plan, regulatory frameworks, residue data, and 46 references. |
 | `Bangladesh_Pesticide_Policy_Inventory.xlsx` | 47 KB | 9 sheets | XLSX version with embedded charts. Sheets: Overview · HHP Criteria · Active Ingredients (45) · Formulation Materials (28) · Co-formulant Tiers (21) · Regulatory Frameworks (20) · Residue Bangladesh (27) · Policy Matrix (19) · Sources (46 references). |
 
-**Key benchmarks surfaced by the inventory:**
+**Key benchmarks surfaced by the inventory (not cleared for use as verified PTAC facts until independently reproduced and checked against the cited primary sources):**
 - EU active substances: 1,473 (977 banned · 421 authorised · 75 under review)
 - UN acceptable co-formulants list: 144 (EU Reg. 2021/383, +14 proposed)
 - Vegetable samples exceeding MRL: 73% of contaminated produce (n = 1,577)
 - HHP poisoning rate: 900 per 100,000 people — among the world's highest
 
 The PDF is the human-readable reference; the XLSX is the machine-readable source-of-truth with all 46 references in the `Sources` sheet for traceability.
+
+## PTAC data-quality and evidence gate
+
+Before using this dataset for formal PTAC decision-making, follow [`PTAC_DATA_VALIDATION_AND_REGULATORY_EVIDENCE_PROTOCOL.md`](PTAC_DATA_VALIDATION_AND_REGULATORY_EVIDENCE_PROTOCOL.md). It defines source-status labels, reproducibility requirements, MoA/HHP safeguards, legal-review requirements, and a release checklist. Workbook formula checks do not independently validate source accuracy, current registration status, or scientific/regulatory interpretation.
 
 ## Cross-repo verification
 
