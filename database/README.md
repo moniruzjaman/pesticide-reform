@@ -90,6 +90,16 @@ A two-file policy inventory that benchmarks the Bangladesh pesticide landscape a
 
 The PDF is the human-readable reference; the XLSX is the machine-readable source-of-truth with all 46 references in the `Sources` sheet for traceability.
 
+## Uploaded PTAC master workbook audit (2026-10-09)
+
+A separate workbook, `PTAC_Pesticide_MoA_Master_Database_2026_Rev4.xlsx`, was structurally audited on 2026-10-09. The audit report is [here](policy/PTAC_MASTER_WORKBOOK_AUDIT_2026-10-09.md). Its SHA-256 is `9f4bcb72d7bafcd35b142cb89b7e2223486b61dcb15d61972e098508be930368`.
+
+**Assessment: needs revision before formal PTAC submission.** The audited master workbook has 21 sheets and zero live Excel formulas; 5,452 Product_Register records; 1,123 `—` MoA codes; 14 duplicated registration-number keys; one missing registration number and one missing holder; all 5,452 WHO toxicity-class cells set to `—`; and a mismatch between the checklist's 4,716 mapped claim, the mapping-basis total of 4,711, and 4,329 non-dash MoA-code cells. The combination annex also needs product-level reconciliation; the audit documents the `Laraco 9SC` / AP-6069 inconsistency.
+
+This audit concerns the uploaded **PTAC master workbook**, not the separate `database/bangladesh_pesticides_db_ready.xlsx` star-schema workbook described above. Do not transfer sheet counts, formula counts, or validation claims between these files.
+
+The report records internal workbook findings only; it does not independently certify current DAE registration status, all scientific mappings, HHP classifications, foreign regulatory status, or Bangladesh legal interpretation. Do not describe the master workbook as fully validated or officially accepted until the release gates are cleared.
+
 ## PTAC data-quality and evidence gate
 
 Before using this dataset for formal PTAC decision-making, follow [`PTAC_DATA_VALIDATION_AND_REGULATORY_EVIDENCE_PROTOCOL.md`](PTAC_DATA_VALIDATION_AND_REGULATORY_EVIDENCE_PROTOCOL.md). It defines source-status labels, reproducibility requirements, MoA/HHP safeguards, legal-review requirements, and a release checklist. Workbook formula checks do not independently validate source accuracy, current registration status, or scientific/regulatory interpretation.
